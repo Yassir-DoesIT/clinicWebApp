@@ -1,20 +1,7 @@
 
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Bienvenu sur HealthGeist</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link rel="icon" href="Images/Logo.png">
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet"> 
-      <script src="https://kit.fontawesome.com/c964be31f4.js" crossorigin="anonymous"></script>
-      <script src="../someFrontEnd.js"></script>
-      <script type="text/javascript">
+<?php require('Partials/header.php')?>
+
+<script type="text/javascript">
         function pageLoad() {
             if(window.location.hash==='#login'){
               let y = document.getElementById('loginAccordionButton');
@@ -28,9 +15,6 @@
           }
         
         </script>
-  </head>
-
-<body>
 
 <div class='w3-modal' id='errorModal'>
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" id='errorChild' style="max-width:600px">  
@@ -191,14 +175,15 @@
         <span onclick="closeLoginP()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
       </div>
 
-      <form class="w3-container" action="">
+      <form class="w3-container" action="/SignInForm" method="POST">
         <div class="w3-section">
           <label><b>Email</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="Tapez votre email" name="email" required>
           <label><b>Mot de Passe</b></label>
           <input class="w3-input w3-border" type="password" placeholder="Tapez votre mot de passe" name="password" required>
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Connexion</button>
-          <input class="w3-check w3-margin-top" type="checkbox" name="rememberMe" value="rememberMe" checked> Se souvenir de moi
+          <input class="w3-check w3-margin-top" type="checkbox" name="rememberMe" value="yes" checked> Se souvenir de moi
+          <input type="hidden" name="role" value="p"> 
         </div>
       </form>
 
@@ -216,14 +201,15 @@
         <span onclick="closeLoginD()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
       </div>
 
-      <form class="w3-container" action="">
+      <form class="w3-container" action="/SignInForm" method="POST">
         <div class="w3-section">
           <label><b>Email</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="Tapez votre email" name="email" required>
           <label><b>Mot de Passe</b></label>
           <input class="w3-input w3-border" type="password" placeholder="Tapez votre mot de passe" name="password" required>
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Connexion</button>
-          <input class="w3-check w3-margin-top" type="checkbox" name="rememberMe" value="rememberMe" checked> Se souvenir de moi
+          <input class="w3-check w3-margin-top" type="checkbox" name="rememberMe" value="yes" checked> Se souvenir de moi
+          <input type="hidden" name="role" value="d"> 
         </div>
       </form>
 
@@ -235,5 +221,4 @@
     </div>
   </div>
 
-</body>
-</html>
+<?php require('Partials/footer.php')?>

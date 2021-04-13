@@ -1,9 +1,23 @@
 <?php
 
+if(isset($_SESSION['email']) && isset($_SESSION['role'])){
+	if ($_SESSION['role']=='a') {
+		header('Location: admin');
+		exit;
+	}elseif ($_SESSION['role']=='d') {
+		header('Location: doctor');
+		exit;
+	}elseif ($_SESSION['role']=='p') {
+		header('Location: patient');
+		exit;
+	}
+}
+
 if($_SERVER['REQUEST_METHOD']=="POST"){
 	
 	if($_POST['role']=='p'){
 	$result=$patient->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role']);
+
 	}elseif ($_POST['role']=='d') {
 		//justificatif upload 
 		if (isset($_FILES["justificatif"]) && $_FILES["justificatif"]["error"]==0) {
@@ -22,19 +36,19 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 				$maxsize=5 * 1024 * 1024;
 				if($filesize > $maxsize){die("Error : file size is larger than the allowed limit ". $maxsize);}
 		if (in_array($filetype, $allowed)) {
-			if (file_exists("UsersCache/Justificatif/". $filename)) {
+				if (file_exists("UsersCache/Justificatif/". $filename)) {
 			
-			return ['errorMessage'=>"{$filename} already exists"];
+				return ['errorMessage'=>"{$filename} already exists"];
 			
-			}else{
+				}else{
 
 				$filename=$_POST['cin'] . "." . $extension;
 				move_uploaded_file($_FILES["justificatif"]["tmp_name"],"UsersCache/Justificatif/".$filename);
 				$result=$doctor->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'], $_POST['specialite'],  $filename);
 				}
-		}else{
-			echo "Error: There was a problem uploading your file. Please try again."; 
-		}
+				
+			}else{
+				echo "Error: There was a problem uploading your file. Please try again."; }
 		}else{
 			echo "Error: " . $_FILES["justificatif"]["error"];
 	}
@@ -43,4 +57,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	}
 
 }
+
+
+
+
 require 'main.view.php';
