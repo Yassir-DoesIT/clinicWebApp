@@ -1,13 +1,13 @@
 <?php
 
 if(isset($_SESSION['email']) && isset($_SESSION['role'])){
-	if ($_SESSION['role']=='a') {
+	if ($_SESSION['role']=='admin') {
 		header('Location: admin');
 		exit;
-	}elseif ($_SESSION['role']=='d') {
+	}elseif ($_SESSION['role']=='doctor') {
 		header('Location: doctor');
 		exit;
-	}elseif ($_SESSION['role']=='p') {
+	}elseif ($_SESSION['role']=='patient') {
 		header('Location: patient');
 		exit;
 	}
