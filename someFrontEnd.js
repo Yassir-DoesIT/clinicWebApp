@@ -1,10 +1,11 @@
-function emptyQuartierDiv()
+/*
+    function emptyQuartierDiv()
     {
         let divToEmpty = document.getElementById('quartierContainer');
         divToEmpty.style.display = 'none';
         divToEmpty.innerHTML = '';
     }
-
+*/
 function show(cityName)
     {
         //emptyQuartierDiv();
@@ -26,12 +27,53 @@ function show(cityName)
 
 function buildMap(latVar,lngVar)
     {
+      var mapStyle = [
+            {
+              "featureType": "landscape",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.medical",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "on"
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            }
+          ]
+
         const map = new google.maps.Map(document.getElementById('map'),
             {
                 center: {lat: latVar, lng: lngVar},
                 zoom: 16,
             }
         )
+
+        map.set('styles',mapStyle);
     }
 
 function goToLoginAccordion()
