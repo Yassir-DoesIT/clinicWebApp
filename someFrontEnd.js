@@ -11,7 +11,7 @@ function show(cityName)
         //var divToFill = document.getElementById('quartierContainer');
         //divToFill.style.display = 'block';
         var xhr = new XMLHttpRequest();
-        xhr.open("GET","routes.php?city="+cityName,true);
+        // xhr.open("GET","routes.php?city="+cityName,true);
         xhr.open("GET","etab?city="+cityName,true);
         xhr.onload = function() {
             if(xhr.status ==200)

@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+session_regenerate_id(true);
+
 $files = glob('Database/*.php');
 
 foreach ($files as $file) {
@@ -14,3 +18,4 @@ $pdo=$conn->make();
 $patient = new Patient($pdo);
 $doctor	= new Doctor($pdo);
 $quartier = new Quartier($pdo);
+$admin = new Admin($pdo);
