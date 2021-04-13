@@ -14,6 +14,10 @@
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet"> 
       <script src="https://kit.fontawesome.com/c964be31f4.js" crossorigin="anonymous"></script>
       <script src="someFrontEnd.js"></script>
+      <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhpf2Ki3cYl9SbuyWh6jrmPBR7Np5TWKs&callback=initMap">
+    </script>
+
   </head>
 
   <body>
@@ -55,7 +59,7 @@
         </div>
         <span id="cities"></span>
     </div>
-    <div class="w3-container w3-hide" id="quartierContainer" style="display : block;">
+    <div class="w3-container" id="map" style="height: 100%;">
 
     </div>
   </body>

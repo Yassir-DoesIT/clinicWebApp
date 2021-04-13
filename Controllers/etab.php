@@ -5,11 +5,12 @@ if (isset($_GET['city'])) {
 $cityName= $_GET['city'];
 $quartiers = $quartier->selectAllQ($cityName);
 
-echo "<table> <tr> <th> Quartiers de " . $cityName . "</th></tr>";
+
+echo "<h3>Quartiers de " . $cityName . "</h3>";
 foreach ($quartiers as $quartier) {
-  echo "<tr><td>". $quartier->INTITULE_QUARTIER . "</td></tr>";
+  echo '<button class="w3-btn w3-block w3-teal w3-hover-green" onclick="buildMap('.$quartier->LAT_QUARTIER.','.$quartier->LNG_QUARTIER.')"
+        >'.$quartier->INTITULE_QUARTIER.'</button>';
 }
-echo "</table>";
 }else{
 	require 'etab.view.php';
 }

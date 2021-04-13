@@ -17,7 +17,7 @@ function show(cityName)
             if(xhr.status ==200)
             {
                 // divToFill.innerHTML = this.responseText;
-                document.getElementById('cities').innerHTML=xhr.responseText;
+                document.getElementById("cities").innerHTML=this.responseText;
             }
         };
         
