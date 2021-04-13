@@ -59,7 +59,7 @@
         </div>
         <div id="cities"></div>
     </div>
-    <div class="w3-container" id="map" style="height: 100%;">
+    <div class="w3-container" id="map" style="height: 400px; width: 80%">
 
     </div>
   </body>

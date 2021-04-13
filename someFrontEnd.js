@@ -24,9 +24,14 @@ function show(cityName)
         xhr.send();
     }
 
-function buildMap()
+function buildMap(latVar,lngVar)
     {
-
+        const map = new google.maps.Map(document.getElementById('map'),
+            {
+                center: {lat: latVar, lng: lngVar},
+                zoom: 16,
+            }
+        )
     }
 
 function goToLoginAccordion()
