@@ -7,9 +7,9 @@ function emptyQuartierDiv()
 
 function show(cityName)
     {
-        emptyQuartierDiv();
-        var divToFill = document.getElementById('quartierContainer');
-        divToFill.style.display = 'block';
+        //emptyQuartierDiv();
+        //var divToFill = document.getElementById('quartierContainer');
+        //divToFill.style.display = 'block';
         var xhr = new XMLHttpRequest();
         xhr.open("GET","routes.php?city="+cityName,true);
         xhr.open("GET","etab?city="+cityName,true);
@@ -22,6 +22,11 @@ function show(cityName)
         };
         
         xhr.send();
+    }
+
+function buildMap()
+    {
+
     }
 
 function goToLoginAccordion()

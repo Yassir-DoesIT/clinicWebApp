@@ -15,7 +15,7 @@
       <script src="https://kit.fontawesome.com/c964be31f4.js" crossorigin="anonymous"></script>
       <script src="someFrontEnd.js"></script>
       <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhpf2Ki3cYl9SbuyWh6jrmPBR7Np5TWKs&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVFUx9XDLvnTKVWTEeZs7GGeW4RTI7w3M&callback=initMap">
     </script>
 
   </head>
@@ -57,7 +57,7 @@
                 <img src="../Images/Taroudant.jpg" alt="Taroudant" class="w3-border" style="width: 95%; height: 90%">
             </div>
         </div>
-        <span id="cities"></span>
+        <div id="cities"></div>
     </div>
     <div class="w3-container" id="map" style="height: 100%;">
 
