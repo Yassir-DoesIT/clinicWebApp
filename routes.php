@@ -9,7 +9,8 @@ $router->define([
     'patient'=>'controllers/patient.php',
     'doctor'=>'controllers/doctor.php',
     'admin'=>'controllers/admin.php',
-    'SignInForm'=>'controllers/signIn.php'
+    'SignInForm'=>'controllers/signIn.php',
+    'logout'=>'controllers/logout.php'
 
 ]);
 if (isset($_GET['city'])) {

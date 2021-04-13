@@ -89,18 +89,25 @@ class User{
                 $emailFound=$checkEmail->fetch(PDO::FETCH_ASSOC);
                 $passwordMatch=password_verify($this->password, $emailFound['PASSWORD']);
                 if ($passwordMatch) {
-                    $_SESSION = [
-                        'user_id'=>$emailFound['USER_ID'],
+                    $firstPart = [
+                        'user_id'=>$emailFound['ID_USER'],
                         'email'=>$emailFound['EMAIL'],
                         'isVerified'=>$emailFound['ESTVERIFIER'],
-                        'role'=>$emailFound['ROLE']
+                        'nom'=>$emailFound['NOM'],
+                        'prenom'=>$emailFound['PRENOM']
                     ];
                     
-                    if($emailFound['role']=='a'){
+                    if($emailFound['ROLE']=='a'){
+                        $secondPart = ['role'=>'admin'];
+                        $_SESSION = array_merge($firstPart, $secondPart);
                         header('location: admin');
-                    }elseif($emailFound['role']=='d'){
+                    }elseif($emailFound['ROLE']=='d'){
+                        $secondPart = ['role'=>'doctor'];
+                        $_SESSION = array_merge($firstPart, $secondPart);
                         header('location: doctor');
-                    }elseif($emailFound['role']=='p'){
+                    }elseif($emailFound['ROLE']=='p'){
+                        $secondPart = ['role'=>'patient'];
+                        $_SESSION = array_merge($firstPart, $secondPart);
                         header('location: patient');
                     }
                     return ['successMessage'=>'Logged in successfully'];
