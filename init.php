@@ -19,3 +19,4 @@ $patient = new Patient($pdo);
 $doctor	= new Doctor($pdo);
 $quartier = new Quartier($pdo);
 $admin = new Admin($pdo);
+$service = new Service($pdo);

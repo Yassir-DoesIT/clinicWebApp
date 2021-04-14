@@ -11,9 +11,12 @@ $router->define([
     'admin'=>'controllers/admin.php',
     'SignInForm'=>'controllers/signIn.php',
     'logout'=>'controllers/logout.php',
-    'adminSignIn'=>'controllers/adminSignIn.php'
+    'adminSignIn'=>'controllers/adminSignIn.php',
 
 ]);
 if (isset($_GET['city'])) {
 	$router->define(['etab?city='.$_GET['city']=>'controllers/etab.php']);
+}
+if (isset($_GET['quartier'])) {
+    $router->define(['service?quartier='.$_GET['quartier']=>'controllers/service.php']);
 }
