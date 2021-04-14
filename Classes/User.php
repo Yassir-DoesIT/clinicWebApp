@@ -53,7 +53,7 @@ class User{
                     return ['errorMessage'=> 'CIN already exists'];
                 
                 }else{
-                    $this->hashedPassword=password_hash($this->password, PASSWORD_DEFAULT);
+                    $this->hashedPassword=password_hash(password, PASSWORD_DEFAULT);
                     $sql="insert into utilisateurs(ROLE, EMAIL, PASSWORD, CIN, NOM, PRENOM, DATE_NAISSANCE, SEXE, ESTVERIFIER, SPECIALITE, JUSTIFICATIF) values(:role, :email, :hashedPassword, :cin, :nom, :prenom,:dateNaissance, :sexe, 0, :specialite, :justificatif)";
                     $sign_up_stmt=$this->pdo->prepare($sql);
                     $sign_up_stmt->bindValue(':role', $this->role);

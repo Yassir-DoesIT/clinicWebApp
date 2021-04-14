@@ -1,4 +1,4 @@
-
+<?php $title='Bienvenu sur HealthGeist'?>
 <?php require('Partials/header.php')?>
 
 <script type="text/javascript">

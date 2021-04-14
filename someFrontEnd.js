@@ -196,6 +196,11 @@ function openLoginD()
         let loginInterface = document.getElementById('loginModalD');
         loginInterface.style.display = 'block';
     }
+function openLoginA()
+    {
+        let loginInterface = document.getElementById('loginModalA');
+        loginInterface.style.display = 'block';
+    }
 function closeLoginP()
     {
         document.getElementById('loginModalP').style.display='none'
@@ -203,6 +208,10 @@ function closeLoginP()
 function closeLoginD()
     {
         document.getElementById('loginModalD').style.display='none'
+    }
+function closeLoginA()
+    {
+        document.getElementById('loginModalA').style.display='none'
     }
 
 function openSignUpModal()

@@ -1,3 +1,4 @@
+<?php $title='Les etablissments de santé'?>
 <?php require('Partials/header.php')?>
 <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVFUx9XDLvnTKVWTEeZs7GGeW4RTI7w3M&callback=initMap">
@@ -38,7 +39,7 @@
             </div>
         </div>
         <div id="cities"></div>
-        <div class="w3-container w3-margin w3-hide" style="height: 400px; width: 80%;  padding-left: 300px">
+        <div class="w3-container w3-margin " style="height: 400px; width: 80%;  padding-left: 300px">
         <div class ="w3-center w3-margin" id="map" style="height: 350px; width: 80%;"></div>
         </div>
     </div>
