@@ -1,16 +1,7 @@
 <?php
 
-if(isset($_SESSION['email']) && isset($_SESSION['role'])){
-	if ($_SESSION['role']=='admin') {
-		header('Location: admin');
-		exit;
-	}elseif ($_SESSION['role']=='doctor') {
-		header('Location: doctor');
-		exit;
-	}elseif ($_SESSION['role']=='patient') {
-		header('Location: patient');
-		exit;
-	}
+if (isset($_SESSION['role'])) {
+	header('location:'. $_SESSION['role']);
 }
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
