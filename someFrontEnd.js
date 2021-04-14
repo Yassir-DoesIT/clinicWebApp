@@ -28,7 +28,7 @@ function show(cityName)
 function buildMap(latVar,lngVar,quartierName)
     {
 
-       let xhr = new XMLHttpRequest();
+       var xhr = new XMLHttpRequest();
        xhr.open("GET","service?quartier="+quartierName, true)
        xhr.onload = function()
         {

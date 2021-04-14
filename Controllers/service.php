@@ -13,7 +13,8 @@ if (isset($_GET['city'])) {
 				$counter = $counter + 1;
 				echo "['coordinates" . $counter ."', '{ lat:" .  $service->LAT_SERVICE . ", lng:" . $service->LNG_SERVICE . "}'], ";
 				}
-				}else{
+
+				else{
 					require 'etab.view.php';
-						}
+				}
 }
