@@ -28,76 +28,73 @@ function show(cityName)
 function buildMap(latVar,lngVar,quartierName)
     {
 
-        let quartierNameInFunction = quartierName;
        let xhr = new XMLHttpRequest();
-       xhr.open("GET","service?quartier="+quartierNameInFunction, true)
-
+       xhr.open("GET","service?quartier="+quartierName, true)
        xhr.onload = function()
         {
             if(xhr.status == 200)
                 {
-                    // var servicesPermanence = new Map([this.responseText]);
-                    document.writeln(this.responseText);
+                    var servicesPermanence = new Map([this.responseText]);
                 }
         } 
         xhr.send();
-      // var mapStyle = [
-      //       {
-      //         "featureType": "landscape",
-      //         "elementType": "labels",
-      //         "stylers": [
-      //           {
-      //             "visibility": "off"
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         "featureType": "poi",
-      //         "elementType": "labels",
-      //         "stylers": [
-      //           {
-      //             "visibility": "off"
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         "featureType": "poi.medical",
-      //         "elementType": "labels",
-      //         "stylers": [
-      //           {
-      //             "visibility": "on"
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         "featureType": "transit",
-      //         "elementType": "labels",
-      //         "stylers": [
-      //           {
-      //             "visibility": "off"
-      //           }
-      //         ]
-      //       }
-      //     ]
+      var mapStyle = [
+            {
+              "featureType": "landscape",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.medical",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "on"
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            }
+          ]
 
-      //   const googleMap = new google.maps.Map(document.getElementById('map'),
-      //       {
-      //           center: {lat: latVar, lng: lngVar},
-      //           zoom: 16,
-      //       }
-      //   )
+        const googleMap = new google.maps.Map(document.getElementById('map'),
+            {
+                center: {lat: latVar, lng: lngVar},
+                zoom: 16,
+            }
+        )
 
-      //   googleMap.set('styles',mapStyle);
+        googleMap.set('styles',mapStyle);
 
-      //   for (let coordinates of servicesPermanence.values())
-      //       {
-      //           var marker = new google.maps.Marker(
-      //               {
-      //                   position: coordinates,
-      //                   map: googleMap,
-      //               }
-      //           )
-      //       }
+        for (let coordinates of servicesPermanence.values())
+            {
+                var marker = new google.maps.Marker(
+                    {
+                        position: coordinates,
+                        map: googleMap,
+                    }
+                )
+            }
     }
     
 
