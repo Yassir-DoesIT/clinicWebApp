@@ -27,6 +27,18 @@ function show(cityName)
 
 function buildMap(latVar,lngVar)
     {
+
+       let quartierName = this.innerHTML;
+       let xhr = new XMLHttpRequest();
+       xhr.open("GET","permanence?services="+quartierName, true)
+       xhr.onload = function()
+        {
+            if(xhr.status == 200)
+                {
+                    var servicesPermanence = new Map([this.responseText]);
+                }
+        } 
+        xhr.send();
       var mapStyle = [
             {
               "featureType": "landscape",
@@ -66,15 +78,28 @@ function buildMap(latVar,lngVar)
             }
           ]
 
-        const map = new google.maps.Map(document.getElementById('map'),
+        const googleMap = new google.maps.Map(document.getElementById('map'),
             {
                 center: {lat: latVar, lng: lngVar},
                 zoom: 16,
             }
         )
 
-        map.set('styles',mapStyle);
+        googleMap.set('styles',mapStyle);
+
+        for (let coordinates of servicesPermanence.values())
+            {
+                var marker = new google.maps.Marker(
+                    {
+                        position: coordinates,
+                        map: googleMap,
+                    }
+                )
+            }
     }
+    
+
+
 
 function goToLoginAccordion()
     {
