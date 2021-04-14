@@ -7,14 +7,16 @@ if (isset($_GET['city'])) {
 
 
 	if (isset($_GET['quartier'])) {
-			$services=$service->selectAllS($_GET['quartier'], $_GET['city']);
-			$counter = 0 ;
-			foreach ($services as $service) {
-				$counter = $counter + 1;
-				echo "['coordinates" . $counter ."', '{ lat:" .  $service->LAT_SERVICE . ", lng:" . $service->LNG_SERVICE . "}'], ";
-				}
+			// $services=$service->selectAllS($_GET['quartier'], $_GET['city']);
+			// $counter = 0 ;
+			// foreach ($services as $service) {
+			// 	$counter = $counter + 1;
+			// 	echo '[\'coordinates' . $counter .'\', \'{ lat:' .  $service->LAT_SERVICE . ', lng:' . $service->LNG_SERVICE . '}\'], ';
+			// 	}
+		echo "hello";
 
-				else{
+				// else{
 					require 'etab.view.php';
-				}
+				// }
+}
 }
