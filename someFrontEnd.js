@@ -28,8 +28,10 @@ function show(cityName)
 function buildMap(latVar,lngVar,quartierName)
     {
 
-       var xhr = new XMLHttpRequest();
-       xhr.open("GET","service?quartier="+quartierName, true)
+        let quartierNameInFunction = quartierName;
+       let xhr = new XMLHttpRequest();
+       xhr.open("GET","service?quartier="+quartierNameInFunction, true)
+
        xhr.onload = function()
         {
             if(xhr.status == 200)
