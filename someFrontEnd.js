@@ -36,10 +36,12 @@ function buildMap(latVar,lngVar,quartierName)
         {
             if(xhr.status == 200)
                 {
+                    var placeHolder = this.responseText;
                     var servicesPermanence = new Map([this.responseText]);
                 }
         } 
         xhr.send();
+        var servicesPermanence = new Map([placeHolder]);
       var mapStyle = [
             {
               "featureType": "landscape",
