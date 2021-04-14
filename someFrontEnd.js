@@ -25,12 +25,11 @@ function show(cityName)
         xhr.send();
     }
 
-function buildMap(latVar,lngVar)
+function buildMap(latVar,lngVar,quartierName)
     {
 
-       let quartierName = this.innerHTML;
        let xhr = new XMLHttpRequest();
-       xhr.open("GET","permanence?services="+quartierName, true)
+       xhr.open("GET","service?quartier="+quartierName, true)
        xhr.onload = function()
         {
             if(xhr.status == 200)
