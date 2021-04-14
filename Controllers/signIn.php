@@ -11,19 +11,8 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['role']))
   }
 }
 // IF USER ALREADY LOGGED IN
-if(isset($_SESSION['email']) && isset($_SESSION['role'])){
-	if ($_SESSION['role']=='a') {
-		header('Location: admin');
-		exit;
-	}elseif ($_SESSION['role']=='d') {
-		header('Location: doctor');
-		exit;
-	}elseif ($_SESSION['role']=='p') {
-		header('Location: patient');
-		exit;
-	}
-  
-  
+if (isset($_SESSION['role'])) {
+	header('location:'. $_SESSION['role']);
 }
 }
 require 'main.view.php';
