@@ -31,17 +31,16 @@ function buildMap(latVar,lngVar,quartierName)
         let quartierNameInFunction = quartierName;
        let xhr = new XMLHttpRequest();
        xhr.open("GET","service?quartier="+quartierNameInFunction, true)
-
+        var placeHolder = '';
        xhr.onload = function()
         {
             if(xhr.status == 200)
                 {
-                    var placeHolder = this.responseText;
-                    var servicesPermanence = new Map([this.responseText]);
+                    placeHolder = this.responseText;
                 }
         } 
         xhr.send();
-        var servicesPermanence = new Map([placeHolder]);
+        var servicesPermanence = [placeHolder];
       var mapStyle = [
             {
               "featureType": "landscape",
@@ -90,14 +89,17 @@ function buildMap(latVar,lngVar,quartierName)
 
         googleMap.set('styles',mapStyle);
 
-        for (let coordinates of servicesPermanence.values())
+        for(var i = 0; i<servicesPermanence.length; i++)
             {
+                var currentEtab = servicesPermanence[i];
+                var position = new google.maps.LatLng(currentEtab[1],currentEtab[2]);
                 var marker = new google.maps.Marker(
                     {
-                        position: coordinates,
                         map: googleMap,
+                        position: position,
+                        title: currentEtab[0]
                     }
-                )
+                );
             }
     }
     
