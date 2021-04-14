@@ -43,11 +43,5 @@
         </div>
     </div>
     </div>
-<<<<<<< HEAD
-    
-  </body>
-  </html>
-=======
 <?php require('Partials/footer.php')?>
 
->>>>>>> 0e8cc7bb6b459e8f22f865fa82311f3c8b59e5e7
