@@ -4,22 +4,24 @@
 
 class Service{
 	protected $pdo;
-	protected $quartier;
-	protected $ville;
+	protected $id_quartier;
+
 	function __construct($pdo){
 		$this->pdo=$pdo;
 	}
 
-	function selectAllS($quartier, $ville){
+	public function selectAllServices($id_quartier){
 	try {
-			$this->quartier=$quartier;
-			$this->ville=$ville;
-			$sql="select * from services_medicaux where id_quartier=(select id_quartier from quartiers where intitule_quartier=:quartier and code_postale_ville=(select code_postale_ville from villes where intitule_ville=:ville))";
-			$statement=$this->pdo->prepare($sql);
-			$statement->bindValue(':quartier', $this->quartier);
-			$statement->bindValue(':ville', $this->ville);
+		$this->id_quartier=$id_quartier;
+		$services=$this->pdo->prepare("select * from SERVICES_MEDICAUX where ID_QUARTIER=:quartier");
+		$services->bindValue(':quartier', $this->id_quartier);
+		$services->execute();
+ 		
+ 		return $services->fetchAll(PDO::FETCH_OBJ);
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}		
 	}
+	
+	
 }

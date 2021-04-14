@@ -3,20 +3,27 @@ if (isset($_SESSION['role'])) {
 	header('location:'. $_SESSION['role']);
 }
 
-if (isset($_GET['city'])) {
 
 
-	if (isset($_GET['quartier'])) {
-			// $services=$service->selectAllS($_GET['quartier'], $_GET['city']);
-			// $counter = 0 ;
-			// foreach ($services as $service) {
-			// 	$counter = $counter + 1;
-			// 	echo '[\'coordinates' . $counter .'\', \'{ lat:' .  $service->LAT_SERVICE . ', lng:' . $service->LNG_SERVICE . '}\'], ';
-			// 	}
-		echo "hello";
 
-				// else{
+if (isset($_GET['quartierId'])) {
+			$id=$_GET['quartierId'];
+			$services=$service->selectAllServices(1);
+			foreach($services as $service){
+				echo '[\'';
+				echo $service->INTITULE_SERVICE;
+				echo '\'';
+				echo ', ';
+				echo $service->LAT_SERVICE;
+				echo ', ';
+				echo $service->LNG_SERVICE;
+				echo ']';
+				}
+
+		}else{
 					require 'etab.view.php';
-				// }
-}
-}
+				}
+
+
+
+

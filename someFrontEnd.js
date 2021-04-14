@@ -25,16 +25,17 @@ function show(cityName)
         xhr.send();
     }
 
-function buildMap(latVar,lngVar,quartierName)
+function buildMap(latVar,lngVar,quartierId)
     {
 
        let xhr = new XMLHttpRequest();
-       xhr.open("GET","service?quartier="+quartierName, true)
+       xhr.open("GET","service?quartierId="+quartierId, true)
        xhr.onload = function()
         {
             if(xhr.status == 200)
                 {
-                    var servicesPermanence = new Map([this.responseText]);
+                    // var servicesPermanence = new Map([this.responseText]);
+                    console.log(this.responseText);
                 }
         } 
         xhr.send();
@@ -86,15 +87,15 @@ function buildMap(latVar,lngVar,quartierName)
 
         googleMap.set('styles',mapStyle);
 
-        for (let coordinates of servicesPermanence.values())
-            {
-                var marker = new google.maps.Marker(
-                    {
-                        position: coordinates,
-                        map: googleMap,
-                    }
-                )
-            }
+        // for (let coordinates of servicesPermanence.values())
+        //     {
+        //         var marker = new google.maps.Marker(
+        //             {
+        //                 position: coordinates,
+        //                 map: googleMap,
+        //             }
+        //         )
+        //     }
     }
     
 
