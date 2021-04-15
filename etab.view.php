@@ -27,7 +27,7 @@
           <img src="Images/Hospital.jpg" alt="HealthGeist" style="width: 100%; max-width: width 400px; max-height: 300px;" class="w3-image w3-opacity-max w3-margin-top w3-round-large"></img>
           <div class="w3-display-middle w3-xlarge" style="font-family: 'Open Sans Condensed', sans-serif; font-weight: 700;">Consultez Votre Médecin Sans Tracas!</div>
       </div>  
-    <div class="w3-section" style="padding-left: 25px">
+    <div class="w3-section" style="padding-left: 25px; height : auto">
         <div class="w3-container w3-margin w3-padding-large w3-round-large">
             <h3>Choisissez une ville pour accéder à la liste des établissments de santé par quartier.</h3>
             <div class="w3-card w3-third w3-margin w3-round-large w3-hover-green w3-hover-opaque" name='Oujda' onclick="show('Oujda')"  style="height:350px; width: 350px; cursor: pointer">
@@ -42,11 +42,12 @@
                     <span style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">Taroudant</span>
                 <img src="Images/Taroudant.jpg" alt="Taroudant" class="w3-border" style="width: 95%; height: 90%">
             </div>
+            <div id="cities"></div>
+                 <div class="w3-container w3-margin" id="mapContainer" style="height: 400px; width: 80%;  padding-left: 300px; display: none;">
+                       <div class ="w3-center" id="map" style="height: 100%; width: 80%;"></div>
+                 </div>
         </div>
-        <div id="cities"></div>
-        <div class="w3-container w3-margin" id="mapContainer" style="height: 400px; width: 80%;  padding-left: 300px; display: none;">
-            <div class ="w3-center" id="map" style="height: 350px; width: 80%;"></div>
-        </div>
+        
     </div>
     </div>
 <?php require('Partials/footer.php')?>

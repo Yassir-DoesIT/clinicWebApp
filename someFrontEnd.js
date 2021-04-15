@@ -36,12 +36,12 @@ function buildMap(latVar,lngVar,quartierId)
             if(xhr.status == 200)
                 {
                     placeHolder = this.responseText;
-                    //console.log(this.responseText);
-                    //console.log(placeHolder+" inside of the xhr function");
+                    console.log(this.responseText);
+                    console.log(placeHolder+" inside of the xhr function");
                 }
         } 
         xhr.send();
-       // console.log(placeHolder+" outside of the xhr function");
+       console.log(placeHolder+" outside of the xhr function");
         var servicesPermanence = [eval(placeHolder)
                                     ];
         console.log(servicesPermanence);
