@@ -37,13 +37,11 @@ function buildMap(latVar,lngVar,quartierId)
             if(xhr.status == 200)
                 {
                     placeHolder = this.responseText;
-                    console.log(this.responseText);
                     jsonObject_services = JSON.parse(placeHolder);
                     console.log(jsonObject_services);
                 }
         } 
         xhr.send();
-       console.log(jsonObject_services);
       var mapStyle = [
             {
               "featureType": "landscape",

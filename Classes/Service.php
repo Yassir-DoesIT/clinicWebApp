@@ -30,18 +30,18 @@ class Service{
 		}		
 	}
 
-	public function is247($id_quartier){
-	try {
-		$this->id_quartier=$id_quartier;
-		$services=$this->pdo->prepare("select * from services_medicaux where id_quartier=:quartier and permanance=1");
-		$services->bindValue(':quartier', $this->id_quartier);
-		$services->execute();
+	// public function is247($id_quartier){
+	// try {
+	// 	$this->id_quartier=$id_quartier;
+	// 	$services=$this->pdo->prepare("select * from services_medicaux where id_quartier=:quartier and permanance=1");
+	// 	$services->bindValue(':quartier', $this->id_quartier);
+	// 	$services->execute();
  		
- 		return $services->fetchAll(PDO::FETCH_OBJ);
-		}catch (PDOException $e) {
-			$e->getMessage();
-		}		
-	}
+ // 		return $services->fetchAll(PDO::FETCH_OBJ);
+	// 	}catch (PDOException $e) {
+	// 		$e->getMessage();
+	// 	}		
+	// }
 	
 	
 }
