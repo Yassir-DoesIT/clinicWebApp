@@ -89,7 +89,7 @@ function buildMap(latVar,lngVar,quartierId)
         const googleMap = new google.maps.Map(document.getElementById('map'),
             {
                 center: {lat: latVar, lng: lngVar},
-                zoom: 15.4,
+                zoom: 15,
             }
         )
 
