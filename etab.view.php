@@ -43,12 +43,15 @@
                 <img src="Images/Taroudant.jpg" alt="Taroudant" class="w3-border" style="width: 95%; height: 90%">
             </div>
             <div id="cities"></div>
-                 <div class="w3-container w3-margin" id="mapContainer" style="height: 400px; width: 80%;  padding-left: 300px; display: none;">
-                       <div class ="w3-center" id="map" style="height: 100%; width: 80%;"></div>
+                 <div class="w3-container w3-margin-top" id="mapContainer" style="height: 550px; width: 100%; display: none;">
+                       <div class ="w3-center" id="map" style="height: 80%; width: 100%;"></div>
                  </div>
+
+    </div>
+    </div>            
         </div>
-        
-    </div>
-    </div>
+       
+
+    
 <?php require('Partials/footer.php')?>
 
