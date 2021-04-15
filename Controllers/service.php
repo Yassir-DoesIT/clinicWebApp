@@ -8,7 +8,7 @@ if (isset($_SESSION['role'])) {
 
 if (isset($_GET['quartierId'])) {
 			$id=$_GET['quartierId'];
-			$services=$service->selectAllServices(1);
+			$services=$service->selectAllServices($id);
 			foreach($services as $service){
 				echo '[\'';
 				echo $service->INTITULE_SERVICE;
