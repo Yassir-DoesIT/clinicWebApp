@@ -37,11 +37,11 @@ function buildMap(latVar,lngVar,quartierId)
                 {
                     placeHolder = this.responseText;
                     //console.log(this.responseText);
-                    console.log(placeHolder+" inside of the xhr function");
+                    //console.log(placeHolder+" inside of the xhr function");
                 }
         } 
         xhr.send();
-        console.log(placeHolder+" outside of the xhr function");
+       // console.log(placeHolder+" outside of the xhr function");
         var servicesPermanence = [eval(placeHolder)
                                     ];
         console.log(servicesPermanence);
@@ -83,6 +83,8 @@ function buildMap(latVar,lngVar,quartierId)
               ]
             }
           ]
+
+          document.getElementById('mapContainer').style.display = "block";
 
         const googleMap = new google.maps.Map(document.getElementById('map'),
             {

@@ -44,8 +44,8 @@
             </div>
         </div>
         <div id="cities"></div>
-        <div class="w3-container w3-margin " style="height: 400px; width: 80%;  padding-left: 300px">
-        <div class ="w3-center w3-margin" id="map" style="height: 350px; width: 80%;"></div>
+        <div class="w3-container w3-margin" id="mapContainer" style="height: 400px; width: 80%;  padding-left: 300px; display: none;">
+            <div class ="w3-center" id="map" style="height: 350px; width: 80%;"></div>
         </div>
     </div>
     </div>
