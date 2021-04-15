@@ -29,16 +29,16 @@ function buildMap(latVar,lngVar,quartierId)
     {
 
        let xhr = new XMLHttpRequest();
-       var placeHolder;
+      // var placeHolder;
        var jsonObject_services;
        xhr.open("GET","service?quartierId="+quartierId, false)
        xhr.onload = function()
         {
             if(xhr.status == 200)
                 {
-                    placeHolder = this.responseText;
-                    console.log(this.responseText);
-                    jsonObject_services = JSON.parse(placeHolder);
+                    //placeHolder = this.responseText;
+                    //console.log(this.responseText);
+                    jsonObject_services = JSON.parse(this.responseText);
                     //console.log(jsonObject_services);
                 }
         } 
