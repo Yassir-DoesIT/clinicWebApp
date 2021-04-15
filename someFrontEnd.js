@@ -84,6 +84,8 @@ function buildMap(latVar,lngVar,quartierId)
             }
           ]
 
+          document.getElementById('mapContainer').style.display = "block";
+
         const googleMap = new google.maps.Map(document.getElementById('map'),
             {
                 center: {lat: latVar, lng: lngVar},
