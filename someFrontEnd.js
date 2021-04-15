@@ -153,6 +153,10 @@ function goToEtab()
     {
         window.location.href = "etab";
     }
+function goToProfile($role)
+    {
+        window.location.href = $role;
+    }
 
 function goToHome()
 {

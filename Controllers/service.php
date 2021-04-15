@@ -1,7 +1,7 @@
 <?php
-if (isset($_SESSION['role'])) {
-	header('location:'. $_SESSION['role']);
-}
+// if (isset($_SESSION['role'])) {
+// 	header('location:'. $_SESSION['role']);
+// }
 
 
 

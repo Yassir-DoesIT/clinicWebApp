@@ -14,7 +14,11 @@
   <div class="w3-bar w3-teal w3-right-align">
       <button class="w3-button w3-teal w3-hover-gray" onclick="goToHome()">Page d'Acceuil</button>
       <button class="w3-button w3-teal w3-hover-gray" onclick="goToEtab()">Consulter Les Etablissments de Santé</button>
-      <button class="w3-button w3-teal w3-hover-gray" onclick="loginFromEtab()">Se Connecter</button>
+      <?php if(isset($_SESSION['email'])&&isset($_SESSION['user_id'])) : ?>
+      <?php echo '<button class="w3-button w3-teal w3-hover-gray" onclick="goToProfile(\''.$_SESSION['role'].'\')">Profile</button>' ?>
+      <?php else : ?>
+        <button class="w3-button w3-teal w3-hover-gray" onclick="loginFromEtab()">Se Connecter</button>
+      <?php endif;?>
       </div>
 
   <div class="w3-row-padding w3-center w3-section">
