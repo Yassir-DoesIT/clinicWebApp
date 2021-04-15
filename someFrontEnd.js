@@ -42,8 +42,12 @@ function buildMap(latVar,lngVar,quartierId)
         } 
         xhr.send();
        console.log(placeHolder+" outside of the xhr function");
+<<<<<<< HEAD
         var servicesPermanence = [eval(placeHolder)
                                     ];
+=======
+        var servicesPermanence = [eval(placeHolder)];
+>>>>>>> 7a0c0cfb1f18efb04e1367b1ad57d576c46f12bc
         console.log(servicesPermanence);
       var mapStyle = [
             {
