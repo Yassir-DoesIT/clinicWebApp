@@ -8,7 +8,7 @@ class Admin extends User{
 
 	function insertService(){
 		try {
-
+			
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
