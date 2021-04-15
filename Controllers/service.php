@@ -8,7 +8,7 @@
 
 if (isset($_GET['quartierId'])) {
 			$id=$_GET['quartierId'];
-			$services=$service->selectAllServices($id);
+			$services=$service->is247($id);
 			$json=json_encode($services);
 			echo $json;
 			// $rows=count($services);

@@ -88,7 +88,7 @@ function buildMap(latVar,lngVar,quartierId)
         const googleMap = new google.maps.Map(document.getElementById('map'),
             {
                 center: {lat: latVar, lng: lngVar},
-                zoom: 16,
+                zoom: 15.4,
             }
         )
 
@@ -153,6 +153,10 @@ function closeErrorModal()
 function goToEtab()
     {
         window.location.href = "etab";
+    }
+function goToLogOut()
+    {
+        window.location.href = "logout";
     }
 function goToProfile($role)
     {
