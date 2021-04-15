@@ -30,6 +30,7 @@ function buildMap(latVar,lngVar,quartierId)
 
        let xhr = new XMLHttpRequest();
        var placeHolder;
+       var jsonObject_services;
        xhr.open("GET","service?quartierId="+quartierId, false)
        xhr.onload = function()
         {
@@ -37,13 +38,12 @@ function buildMap(latVar,lngVar,quartierId)
                 {
                     placeHolder = this.responseText;
                     console.log(this.responseText);
-                    console.log(placeHolder+" inside of the xhr function");
+                    jsonObject_services = JSON.parse(placeHolder);
+                    console.log(jsonObject_services);
                 }
         } 
         xhr.send();
-       console.log(placeHolder+" outside of the xhr function");
-        var servicesPermanence = [eval(placeHolder)];
-        console.log(servicesPermanence);
+       console.log(jsonObject_services);
       var mapStyle = [
             {
               "featureType": "landscape",
@@ -94,15 +94,15 @@ function buildMap(latVar,lngVar,quartierId)
 
         googleMap.set('styles',mapStyle);
 
-        for(var i = 0; i<servicesPermanence.length; i++)
+        for(var i = 0; i<jsonObject_services.length; i++)
             {
-                var currentEtab = servicesPermanence[i];
-                var position = new google.maps.LatLng(currentEtab[1], currentEtab[2]);
+                var currentEtab = jsonObject_services[i];
+                var position = new google.maps.LatLng(currentEtab.LAT_SERVICE, currentEtab.LNG_SERVICE);
                 var marker = new google.maps.Marker(
                     {
                         map : googleMap,
                         position: position,
-                        title: currentEtab[0]
+                        title: currentEtab.INTITULE_SERVICE
                     }
                 );
             }
