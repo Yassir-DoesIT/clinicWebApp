@@ -39,11 +39,11 @@ function buildMap(latVar,lngVar,quartierId)
                     placeHolder = this.responseText;
                     console.log(this.responseText);
                     jsonObject_services = JSON.parse(placeHolder);
-                    console.log(jsonObject_services);
+                    //console.log(jsonObject_services);
                 }
         } 
         xhr.send();
-       console.log(jsonObject_services);
+       //console.log(jsonObject_services);
       var mapStyle = [
             {
               "featureType": "landscape",
