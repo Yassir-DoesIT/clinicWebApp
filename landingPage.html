@@ -92,9 +92,9 @@
                                                            </tr>
                                                            <tr>
                                                                    <td><b>Sexe</b></td>
-                                                                   <td><input class="w3-radio" type="radio" name="gender" value="male" checked>
+                                                                   <td><input id="maleRadio" class="w3-radio" type="radio" name="gender" value="male" disabled checked>
                                                                        <label>Male</label>
-                                                                   <input class="w3-radio" type="radio" name="gender" value="female" style="margin-left: 50px">
+                                                                   <input id="femaleRadio" class="w3-radio" type="radio" name="gender" value="female" style="margin-left: 50px" disabled>
                                                                        <label>Female</label>
                                                                    </td>
                                                            </tr>
@@ -103,6 +103,24 @@
                                                                    <td><b>Mot de Passe</b></td>
                                                                    <td><input style="width: 70%" type="password" name="password" class="w3-input w3-border" readonly></td>
            
+                                                           </tr>
+                                                           <tr id="imageChange" style="display: none">
+
+                                                            <td><b>Charger une Nouvelle Image</b></td>
+                                                            <td><input  class="w3-input w3-border" type="file"></td>
+
+                                                           </tr>
+                                                           <tr>
+
+                                                                <td>
+                                                                        <button type="button" onclick="renderEditable()" class="w3-button">Modifier</button>
+                                                                        
+                                                                </td>
+
+                                                                <td>
+                                                                        <button class="w3-button" id="submitInput" style="display: none">Envoyer</button>
+                                                                </td>
+
                                                            </tr>
                                                        </form>
                                                    </table>
