@@ -3,10 +3,36 @@
 <?php 
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // 	echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
-var_dump($_SESSION);
+// var_dump($_SESSION);
 ?>
-<body>
 
+        <script type="text/javascript">
+        window.onload = function()
+         {
+          showErrorOrSuccess();
+          }
+        
+        </script>
+
+<div class='w3-modal' id='errorModal'>
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" id='errorChild' style="max-width:600px">  
+        <?php if(isset($result['errorMessage'])) : ?>
+        <div class="w3-center"><br>
+         <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
+       
+       </div>
+       <div class="w3-container"><?=$result["errorMessage"]?></div>;
+       
+       <?php  elseif(isset($result['successMessage'])) : ?>
+          
+          <div class="w3-center"><br>
+         <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
+       </div>
+       <div class="w3-container"><?=$result['successMessage']?></div>;
+        
+        <?php endif;?>
+     </div>   
+</div> 
 <div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
 <button class="w3-bar-item w3-button w3-large"
 onclick="w3_close()">Close &times;</button>
@@ -38,7 +64,8 @@ onclick="w3_close()">Close &times;</button>
 </div>
 
 <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src="placeHolder.jpg" style="width: 500px; height: 500px">
+<img class="w3-modal-content" src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> style="width: 500px; height: 500px">
+
 </div>
 
 <div id="mainDiv">
@@ -55,11 +82,21 @@ onclick="w3_close()">Close &times;</button>
 <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
 
    <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
-       <img src="placeHolder.jpg" onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
-       <h3 style="padding-top: 15px">USERNAME</h3>
-       <span>EMAIL</span>
+       <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
+       <h3 style="padding-top: 15px"><?= 'Bienvenu '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
+       <span><?='Patient num ' . $_SESSION['user_id'] ?></span><br>
+       
+        <form action="patient" method="post" enctype="multipart/form-data">
+        <label  style="float:left; margin-top: 25px; text-decoration: underline;" for="photoProfile">Charger une nouvelle image</label>
+        
+        <input  class="w3-button w3-margin-top" type="file" id="photoProfile" name="photoProfile" style="display: none">
+        <input class="w3-button w3-margin-top" type="submit" name="submitPhoto" value="submit"
+        style="float:left">
+       </form>
+
        <table class="w3-table w3-margin-top" style="margin-left: 100px">
-           <form action="placeHolder.php" method="post" enctype="multipart/form-data">
+
+           <form action="patient" method="post" enctype="multipart/form-data">
                <tr>
                    <td ><b>Prénom</b></td>
                    <td><input style="width: 70%" type="text" name="prenom" class="w3-input w3-border"  readonly value=<?=$_SESSION['prenom'] ?>></td>
@@ -74,21 +111,27 @@ onclick="w3_close()">Close &times;</button>
                </tr>
                <tr>
                    <td><b>Date de Naissance</b></td>
-                   <td><input style="width: 70%" type="date" name="date" class="w3-input w3-border" value= <?=date("Y-m-d", strtotime($_SESSION['dateNaissance']));?> readonly></td>
+                   <td><input style="width: 70%" type="date" name="dateNaissance" class="w3-input w3-border" value= <?=date("Y-m-d", strtotime($_SESSION['dateNaissance']));?> readonly></td>
+               </tr>
+               <tr>
+                   <td><b>CIN</b></td>
+                   <td><input style="width: 70%" type="text" name="cin" class="w3-input w3-border" readonly value= <?=$_SESSION['cin']?> ></td>
+                   <input style="width: 70%" type="hidden" name="role" class="w3-input w3-border" readonly value="p" >
+
                </tr>
                <tr>
                       <?php if($_SESSION['sexe']=='m') : ?>
                        <td><b>Sexe</b></td>
-                       <td><input id="maleRadio" class="w3-radio" type="radio" name="gender" value="m" disabled checked>
+                       <td><input id="maleRadio" class="w3-radio" type="radio" name="sexe" value="m" disabled checked>
                            <label>Male</label>
-                       <input id="femaleRadio" class="w3-radio" type="radio" name="gender" value="f" style="margin-left: 50px" disabled>
+                       <input id="femaleRadio" class="w3-radio" type="radio" name="sexe" value="f" style="margin-left: 50px" disabled>
                            <label>Female</label>
                        </td>
                      <?php else :?>
                       <td><b>Sexe</b></td>
-                       <td><input id="maleRadio" class="w3-radio" type="radio" name="gender" value="m" disabled >
+                       <td><input id="maleRadio" class="w3-radio" type="radio" name="sexe" value="m" disabled >
                            <label>Male</label>
-                       <input id="femaleRadio" class="w3-radio" type="radio" name="gender" value="f" style="margin-left: 50px" disabled checked="">
+                       <input id="femaleRadio" class="w3-radio" type="radio" name="sexe" value="f" style="margin-left: 50px" disabled checked="">
                            <label>Female</label>
                        </td>
                      <?php endif;?>
@@ -97,13 +140,8 @@ onclick="w3_close()">Close &times;</button>
                <tr  id="password" style="display: none">
 
                        <td><b>Mot de Passe</b></td>
-                       <td><input style="width: 70%" type="password" name="password" class="w3-input w3-border" readonly></td>
-
-               </tr>
-               <tr id="imageChange" style="display: none">
-
-                <td><b>Charger une Nouvelle Image</b></td>
-                <td><input   type="file"></td>
+                       <td><input style="width: 70%" type="password" name="password" class="w3-input w3-border" readonly>
+                       </td>
 
                </tr>
                <tr>
@@ -118,7 +156,7 @@ onclick="w3_close()">Close &times;</button>
                     </td>
 
                     <td>
-                            <button class="w3-button" id="submitInput" style="display: none">Envoyer</button>
+                            <button class="w3-button" type="submit" id="submitInput" style="display: none">Envoyer</button>
                     </td>
 
                </tr>

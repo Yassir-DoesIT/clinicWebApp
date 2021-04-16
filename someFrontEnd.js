@@ -36,11 +36,10 @@ function show(cityName)
 
 function renderEditable()
     {
-        document.getElementById("myDropdown").disabled = false;
         document.getElementById("maleRadio").disabled = false;
         document.getElementById("femaleRadio").disabled = false;
-        document.getElementById("imageChange").style.display = "table-row";
-       document.getElementById("submitInput").style.display = "block";
+        // document.getElementById("imageChange").style.display = "table-row";
+       document.getElementById("submitInput").style.display = "table-cell";
        document.getElementById("password").style.display = "table-row";
        document.getElementById("goBack").style.display = "block";
         var myInputs = document.getElementsByTagName("input");
@@ -54,7 +53,7 @@ function back()
     {
         document.getElementById("maleRadio").disabled = true;
         document.getElementById("femaleRadio").disabled = true;
-        document.getElementById("imageChange").style.display = "none";
+        // document.getElementById("imageChange").style.display = "none";
        document.getElementById("submitInput").style.display = "none";
        document.getElementById("password").style.display = "none";
        document.getElementById("goBack").style.display = "none";
@@ -63,7 +62,9 @@ function back()
         for(var input of myInputs)
         {
             input.readOnly = true;
+            console.log(input);
         }
+
     }
 
 
@@ -192,13 +193,15 @@ function validateForm()
     else return true;
 }
 
-function validDoctor()
-    {
-        let validDoctorModalChild = document.getElementById('validDoctorChild');
-        let validDoctorModal = document.getElementById('validDoctorModal');
-        if(validDoctorModalChild.childElementCount !== 0)
-        validDoctorModal.style.display = 'block';
-    }
+// function validDoctor()
+//     {
+//         let validDoctorModalChild = document.getElementById('validDoctorChild');
+//         let validDoctorModal = document.getElementById('validDoctorModal');
+//         if(validDoctorModalChild.childElementCount !== 0)
+//         {validDoctorModal.style.display = 'block';}
+//         console.log(validDoctorModal);
+//         console.log(validDoctorModalChild);
+//     }
 
 function showErrorOrSuccess()
 {
