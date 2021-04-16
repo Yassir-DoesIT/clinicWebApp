@@ -4,6 +4,7 @@
 
 class User{
     protected $pdo;
+    protected $user_id;
     protected $nom;
     protected $prenom;
     protected $cin;
