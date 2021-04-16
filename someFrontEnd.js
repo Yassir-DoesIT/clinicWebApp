@@ -36,6 +36,7 @@ function show(cityName)
 
 function renderEditable()
     {
+        document.getElementById("myDropdown").disabled = false;
         document.getElementById("maleRadio").disabled = false;
         document.getElementById("femaleRadio").disabled = false;
         document.getElementById("imageChange").style.display = "table-row";
@@ -190,6 +191,14 @@ function validateForm()
     }
     else return true;
 }
+
+function validDoctor()
+    {
+        let validDoctorModalChild = document.getElementById('validDoctorChild');
+        let validDoctorModal = document.getElementById('validDoctorModal');
+        if(validDoctorModalChild.childElementCount !== 0)
+        validDoctorModal.style.display = 'block';
+    }
 
 function showErrorOrSuccess()
 {
