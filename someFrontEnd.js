@@ -38,7 +38,7 @@ function renderEditable()
     {
         document.getElementById("maleRadio").disabled = false;
         document.getElementById("femaleRadio").disabled = false;
-        document.getElementById("imageChange").style.display = "block";
+        document.getElementById("imageChange").style.display = "table-row";
        document.getElementById("submitInput").style.display = "block";
         var myInputs = document.getElementsByTagName("input");
         console.log(myInputs);
