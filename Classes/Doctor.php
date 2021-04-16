@@ -7,8 +7,13 @@ class Doctor extends User{
 		parent::__construct($pdo);
 	}
 
-	function selectNotVerified(){
-		$doctors=$this->pdo->prepare("select * from utilisateurs where role='d' and estverifier=0")
+	function selectNotApproved(){
+		$doctors=$this->pdo->prepare("select * from utilisateurs where role='d' and estverifier=0");
+		$doctor->execute();
+
+	}
+	function Approve($user_id){
+		$approve=$this->pdo->prepare("update utilisateurs set estverifier=1 where user_id=:user_id")
 	}
 
 }
