@@ -4,8 +4,7 @@
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // 	echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
 ?>
-<div class="w3-display-container"><button class="w3-display-topright"><a href="logout">Log Out</a></button>
-<div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+        <div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
                 <button class="w3-bar-item w3-button w3-large"
                 onclick="w3_close()">Close &times;</button>
                 <form action="/action_page.php">
@@ -35,7 +34,9 @@
 
     </div>
             
-
+    <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
+            <img class="w3-modal-content" src="placeHolder.jpg" style="width: 500px; height: 500px">
+          </div>
 
     <div id="mainDiv">
 
@@ -51,7 +52,7 @@
                                            <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
            
                                                <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
-                                                   <img src="placeHolder.jpg" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 80px; height: 80px;margin-left: 20px; margin-top: 10px"> 
+                                                   <img src="placeHolder.jpg" onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
                                                    <h3 style="padding-top: 15px">USERNAME</h3>
                                                    <span>EMAIL</span>
                                                    <table class="w3-table w3-margin-top" style="margin-left: 100px">
