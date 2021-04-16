@@ -5,4 +5,5 @@ class Patient extends User {
 	function __construct($pdo){
 		parent::__construct($pdo);
 	}
+	
 }

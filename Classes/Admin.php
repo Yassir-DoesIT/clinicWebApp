@@ -6,9 +6,11 @@ class Admin extends User{
 		parent::__construct($pdo);
 	}
 
-	function insertService(){
+	
+	function Approve($user_id){
 		try {
-			
+			$approve=$this->pdo->prepare("update utilisateurs set estverifier=1 where user_id=?");
+			$approve->execute($user_id);
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
