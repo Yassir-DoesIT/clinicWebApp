@@ -1,5 +1,5 @@
 
-<?php $title='Les etablissments de santé'?>
+<?php $title='Les Etablissments de Santé'?>
 <?php require('Partials/header.php')?>
 <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVFUx9XDLvnTKVWTEeZs7GGeW4RTI7w3M&callback=initMap">

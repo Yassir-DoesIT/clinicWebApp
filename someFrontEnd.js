@@ -6,6 +6,14 @@
         divToEmpty.innerHTML = '';
     }
 */
+function openSideBar() {
+    document.getElementById("Sidebar").style.display = "block";
+  }
+  
+  function closeSideBar() {
+    document.getElementById("Sidebar").style.display = "none";
+  }
+
 function show(cityName)
     {
         //emptyQuartierDiv();
