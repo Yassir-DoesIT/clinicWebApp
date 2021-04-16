@@ -17,10 +17,11 @@ class User{
     protected $justificatif;
     protected $hashedPassword;
     protected $age;
+    protected $lieuTravaille;
     public function __construct($pdo){
         $this->pdo=$pdo;
     }
-    public function signUpUser($nom, $prenom, $cin, $dateNaissance, $sexe, $email, $password, $role, $specialite=null, $justificatif=null){
+    public function signUpUser($nom, $prenom, $cin, $dateNaissance, $sexe, $email, $password, $role, $specialite=null, $justificatif=null, $lieuTravaille=null){
         try{
             $this->nom=$nom;
             $this->prenom=$prenom;
@@ -32,6 +33,7 @@ class User{
             $this->role=$role;
             $this->specialite=$specialite;
             $this->justificatif=$justificatif;
+            $this->lieuTravaille=$lieuTravaille;
 
                 //check if email or cin already exist
                 
@@ -53,8 +55,8 @@ class User{
                     return ['errorMessage'=> 'CIN already exists'];
                 
                 }else{
-                    $this->hashedPassword=password_hash(password, PASSWORD_DEFAULT);
-                    $sql="insert into utilisateurs(ROLE, EMAIL, PASSWORD, CIN, NOM, PRENOM, DATE_NAISSANCE, SEXE, ESTVERIFIER, SPECIALITE, JUSTIFICATIF) values(:role, :email, :hashedPassword, :cin, :nom, :prenom,:dateNaissance, :sexe, 0, :specialite, :justificatif)";
+                    $this->hashedPassword=password_hash($this->password, PASSWORD_DEFAULT);
+                    $sql="insert into utilisateurs(ROLE, EMAIL, PASSWORD, CIN, NOM, PRENOM, DATE_NAISSANCE, SEXE, ESTVERIFIER, SPECIALITE, JUSTIFICATIF,LIEUTRAVAILLE) values(:role, :email, :hashedPassword, :cin, :nom, :prenom,:dateNaissance, :sexe, :estVerifier, :specialite, :justificatif,:lieuTravaille)";
                     $sign_up_stmt=$this->pdo->prepare($sql);
                     $sign_up_stmt->bindValue(':role', $this->role);
                     $sign_up_stmt->bindValue(':email', $this->email);
@@ -66,6 +68,12 @@ class User{
                     $sign_up_stmt->bindValue(':sexe', $this->sexe);
                     $sign_up_stmt->bindValue(':specialite', $this->specialite);
                     $sign_up_stmt->bindValue(':justificatif', $this->justificatif);
+                    $sign_up_stmt->bindValue(':lieuTravaille', $this->lieuTravaille);
+                    if ($this->role=='d') {
+                       $sign_up_stmt->bindValue(':estVerifier', 0); 
+                    }else{
+                       $sign_up_stmt->bindValue(':estVerifier', 1); 
+                    }
                     $sign_up_stmt->execute();
                     return ['successMessage'=>'Success'];
                 }
@@ -94,7 +102,9 @@ class User{
                         'email'=>$emailFound['EMAIL'],
                         'isVerified'=>$emailFound['ESTVERIFIER'],
                         'nom'=>$emailFound['NOM'],
-                        'prenom'=>$emailFound['PRENOM']
+                        'prenom'=>$emailFound['PRENOM'],
+                        'date_Naissance'=>$emailFound['DATE_NAISSANCE'],
+                        'sexe'=>$emailFound['SEXE']
                     ];
                     
                     if($emailFound['ROLE']=='a'){
@@ -102,9 +112,19 @@ class User{
                         $_SESSION = array_merge($firstPart, $secondPart);
                         header('location: admin');
                     }elseif($emailFound['ROLE']=='d'){
-                        $secondPart = ['role'=>'doctor'];
+                        $secondPart = [
+                        'role'=>'doctor',
+                        'specialite'=>$emailFound['SPECIALITE'],
+                        'estVerifier'=>$emailFound['ESTVERIFIER'],
+                        'justificatif'=>$emailFound['JUSTIFICATIF']
+                        ];
                         $_SESSION = array_merge($firstPart, $secondPart);
-                        header('location: doctor');
+                        if ($_SESSION['estVerifier']==1) {
+                            header('location: doctor');
+                        }else{
+                            header('location: toBeVerified');
+                        }
+                        
                     }elseif($emailFound['ROLE']=='p'){
                         $secondPart = ['role'=>'patient'];
                         $_SESSION = array_merge($firstPart, $secondPart);

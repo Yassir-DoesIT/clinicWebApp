@@ -118,7 +118,7 @@
         <span onclick="closeSignUpModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
       </div>
 
-      <form class="w3-container" action="/signUpForm" onsubmit="return validateForm()" method="post" id="signUpForm" name="signUpForm" enctype="multipart/form-data">
+      <form class="w3-container" action="/" onsubmit="return validateForm()" method="post" id="signUpForm" name="signUpForm" enctype="multipart/form-data">
         <div class="w3-section">
           <label><b>Nom</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Veuillez taper votre nom" name="nom" required>
@@ -147,14 +147,12 @@
             <input class="w3-radio" type="radio" name="role" value="d" onclick="showDocStuff()"><label>Docteur</label>
           </div>
           <div id="docStuff" style="display: none;">
-            <label><b>Spécialité</b></label>
-            <select class="w3-border w3-margin-bottom" name="specialite" form="signUpForm">
-              <option value="generaliste">Généraliste</option>
-              <option value="cardiologue">Cardiologue</option>
-              <option value="gynecologue">Gynécologue</option>
-            </select><br>
-            <label><b>Justificatif</b></label>
-            <input class="w3-input w3-border w3-margin-bottom" type="file"  name="justificatif" id="docJustificatif" >
+            <label for="docSpecialite"><b>Votre spécialité</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Ex: Generaliste" name="specialite" id="docSpecialite">
+          <label for="docLieuTravaille"><b>Lieu de travaille</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Ex: Clinique de .." name="lieuTravaille" id="docLieuTravaille" >
+            <label for="docJustificatif"><b>Attestation de travaille</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="file"  name="justificatif" id="docJustificatif">
           </div>
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="submit">S'inscrire</button>
         </div>

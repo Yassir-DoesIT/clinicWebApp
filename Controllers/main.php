@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
 				$filename=$_POST['cin'] . "." . $extension;
 				move_uploaded_file($_FILES["justificatif"]["tmp_name"],"UsersCache/Justificatif/".$filename);
-				$result=$doctor->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'], $_POST['specialite'],  $filename);
+				$result=$doctor->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'], $_POST['specialite'],  $filename, $_POST['lieuTravaille']);
 				}
 				
 			}else{

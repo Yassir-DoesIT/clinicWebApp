@@ -280,13 +280,21 @@ function showDocStuff()
 {
     let docStuff = document.getElementById('docStuff');
     let docJustificatif = document.getElementById('docJustificatif');
+    let docLieuTravaille = document.getElementById('docLieuTravaille');
+    let docSpecialite = document.getElementById('docSpecialite');
     docStuff.style.display = 'block';
     docJustificatif.required = true;
+    docLieuTravaille.required = true;
+    docSpecialite.required = true;
 }
 function hideDocStuff()
 {
     let docStuff = document.getElementById('docStuff');
     let docJustificatif = document.getElementById('docJustificatif');
+    let docLieuTravaille = document.getElementById('docLieuTravaille');
+    let docSpecialite = document.getElementById('docSpecialite');
     docStuff.style.display = 'none';
     docJustificatif.removeAttribute('required');
+    docLieuTravaille.removeAttribute('required');
+    docSpecialite.removeAttribute('required');
 }
