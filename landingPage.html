@@ -51,7 +51,9 @@
 
     </div>
             
-
+    <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
+            <img class="w3-modal-content" src="placeHolder.jpg" style="width: 500px; height: 500px">
+          </div>
 
     <div id="mainDiv">
 
@@ -67,7 +69,7 @@
                                            <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
            
                                                <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
-                                                   <img src="placeHolder.jpg" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 80px; height: 80px;margin-left: 20px; margin-top: 10px"> 
+                                                   <img src="placeHolder.jpg" onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
                                                    <h3 style="padding-top: 15px">USERNAME</h3>
                                                    <span>EMAIL</span>
                                                    <table class="w3-table w3-margin-top" style="margin-left: 100px">
