@@ -33,6 +33,22 @@ function show(cityName)
         xhr.send();
     }
 
+
+function renderEditable()
+    {
+        document.getElementById("maleRadio").disabled = false;
+        document.getElementById("femaleRadio").disabled = false;
+        document.getElementById("imageChange").style.display = "block";
+       document.getElementById("submitInput").style.display = "block";
+        var myInputs = document.getElementsByTagName("input");
+        console.log(myInputs);
+        for(var input of myInputs)
+        {
+            input.readOnly = false;
+        }
+        return false;
+    }
+
     function w3_open() {
         document.getElementById("mainDiv").style.marginLeft = "25%";
         document.getElementById("mySidebar").style.width = "25%";
