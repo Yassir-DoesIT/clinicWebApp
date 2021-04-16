@@ -104,7 +104,7 @@ class User{
                         'isVerified'=>$emailFound['ESTVERIFIER'],
                         'nom'=>$emailFound['NOM'],
                         'prenom'=>$emailFound['PRENOM'],
-                        'date_Naissance'=>$emailFound['DATE_NAISSANCE'],
+                        'dateNaissance'=>$emailFound['DATE_NAISSANCE'],
                         'sexe'=>$emailFound['SEXE']
                     ];
                     

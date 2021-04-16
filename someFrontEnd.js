@@ -40,14 +40,31 @@ function renderEditable()
         document.getElementById("femaleRadio").disabled = false;
         document.getElementById("imageChange").style.display = "table-row";
        document.getElementById("submitInput").style.display = "block";
+       document.getElementById("password").style.display = "table-row";
+       document.getElementById("goBack").style.display = "block";
         var myInputs = document.getElementsByTagName("input");
         console.log(myInputs);
         for(var input of myInputs)
         {
             input.readOnly = false;
         }
-        return false;
     }
+function back()
+    {
+        document.getElementById("maleRadio").disabled = true;
+        document.getElementById("femaleRadio").disabled = true;
+        document.getElementById("imageChange").style.display = "none";
+       document.getElementById("submitInput").style.display = "none";
+       document.getElementById("password").style.display = "none";
+       document.getElementById("goBack").style.display = "none";
+        var myInputs = document.getElementsByTagName("input");
+        console.log(myInputs);
+        for(var input of myInputs)
+        {
+            input.readOnly = true;
+        }
+    }
+
 
     function w3_open() {
         document.getElementById("mainDiv").style.marginLeft = "25%";
