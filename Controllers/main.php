@@ -33,6 +33,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 				$photoProfile=$_POST['role'].$_POST['cin'] . ".png";
 				move_uploaded_file($_FILES["photoProfile"]["tmp_name"],"UsersCache/photoProfile/".$photoProfile);
 				$result=$patient->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'], $photoProfile);
+
 				}
 				
 			}else{
@@ -109,7 +110,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	}
 
 }
-
 
 
 

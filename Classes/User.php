@@ -192,7 +192,7 @@ class User{
                     $_SESSION['specialite']=$this->specialite;
                     $_SESSION['lieuTravaille']=$this->lieuTravaille;
                     
-                    $sql="update utilisateurs set ROLE=:role, EMAIL=:email, PASSWORD=:hashedPassword, CIN=:cin, NOM=:nom, PRENOM=:prenom, DATE_NAISSANCE=:dateNaissance, SEXE=:sexe, SPECIALITE=:specialite ,LIEUTRAVAILLE=:lieuTravaille";
+                    $sql="update utilisateurs set ROLE=:role, EMAIL=:email, PASSWORD=:hashedPassword, CIN=:cin, NOM=:nom, PRENOM=:prenom, DATE_NAISSANCE=:dateNaissance, SEXE=:sexe, SPECIALITE=:specialite ,LIEUTRAVAILLE=:lieuTravaille where id_user=:user_id";
                     $sign_up_stmt=$this->pdo->prepare($sql);
                     $sign_up_stmt->bindValue(':role', $this->role);
                     $sign_up_stmt->bindValue(':email', $this->email);
@@ -204,6 +204,7 @@ class User{
                     $sign_up_stmt->bindValue(':sexe', $this->sexe);
                     $sign_up_stmt->bindValue(':specialite', $this->specialite);
                     $sign_up_stmt->bindValue(':lieuTravaille', $this->lieuTravaille);
+                    $sign_up_stmt->bindValue(':user_id', $_SESSION['user_id']);
                     $sign_up_stmt->execute();
 
                     
