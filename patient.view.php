@@ -82,17 +82,23 @@ onclick="w3_close()">Close &times;</button>
 <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
 
    <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
-       <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
-       <h3 style="padding-top: 15px"><?= 'Bienvenue '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
-       <span><?='Patient num ' . $_SESSION['user_id'] ?></span><br>
-       
-        <form action="patient" id="imageForm" method="post" enctype="multipart/form-data">
-        <label  style="float:left; margin-top: 25px;cursor: pointer ;text-decoration: underline;" for="photoProfile">Charger une nouvelle image</label>
+    <table class="w3-table w3-margin-top" style="margin-left: 100px">
+      <tr><td>
+       <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer; display: block;"> 
+       <form action="patient" id="imageForm" method="post" enctype="multipart/form-data">
+        <label  style="float:left; margin-top: 10px;cursor: pointer;" for="photoProfile" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" >Charger une nouvelle image</label>
         
         <input  class="w3-button w3-margin-top" type="file" onchange="submitUpload()" id="photoProfile" name="photoProfile" style="display: none">
-       </form>
+       </form></td>
 
-       <table class="w3-table w3-margin-top" style="margin-left: 100px">
+       <td><h3 style="padding-top: 15px"><?= 'Bienvenue '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
+       <span><?='Patient num ' . $_SESSION['user_id'] ?></span><br></td>
+     </tr>
+       
+        
+
+
+       
 
            <form action="patient" method="post" enctype="multipart/form-data">
                <tr>
