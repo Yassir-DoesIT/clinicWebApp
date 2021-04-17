@@ -3,7 +3,7 @@
 <?php 
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // 	echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
-// var_dump($_SESSION);
+var_dump($_POST);
 ?>
 
         <script type="text/javascript">
@@ -144,24 +144,25 @@ onclick="w3_close()">Close &times;</button>
                        </td>
 
                </tr>
-               <tr>
+               </table>
+               <main class="main" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr">
 
 
-                    <td>
+                    <div class="button1" style="grid-row-start: 1/2">
                             <button type="button" onclick="renderEditable()" class="w3-button">Modifier</button>
                             
-                    </td>
-                    <td>
+                    </div>
+                    <div class="button2" style="grid-row-start: 2/3; align-self: center">
                             <button class="w3-button" type="button" id="goBack" onclick="back()" style="display: none">Retour</button>
-                    </td>
+                    </div>
 
-                    <td>
+                    <div class="button3" style="grid-row-start: 3/4">
                             <button class="w3-button" type="submit" id="submitInput" style="display: none">Envoyer</button>
-                    </td>
+                    </div>
 
-               </tr>
+               </main>
            </form>
-       </table>
+       
        
    </div>
 

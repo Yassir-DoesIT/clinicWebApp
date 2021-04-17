@@ -111,7 +111,11 @@ class User{
                         'sexe'=>$emailFound['SEXE'],
                         'photoProfile'=>$emailFound['PHOTOPROFILE'],
                         'cin'=>$emailFound['CIN'],
-                        'password'=>$emailFound['PASSWORD']
+                        'password'=>$emailFound['PASSWORD'],
+                        'specialite'=>$emailFound['SPECIALITE'],
+                        'estVerifier'=>$emailFound['ESTVERIFIER'],
+                        'justificatif'=>$emailFound['JUSTIFICATIF'],
+                        'lieuTravaille'=>$emailFound['LIEUTRAVAILLE']
                     ];
                     
                     if($emailFound['ROLE']=='a'){
@@ -119,20 +123,9 @@ class User{
                         $_SESSION = array_merge($firstPart, $secondPart);
                         header('location: admin');
                     }elseif($emailFound['ROLE']=='d'){
-                        $secondPart = [
-                        'role'=>'doctor',
-                        'specialite'=>$emailFound['SPECIALITE'],
-                        'estVerifier'=>$emailFound['ESTVERIFIER'],
-                        'justificatif'=>$emailFound['JUSTIFICATIF'],
-                        'lieuTravaille'=>$emailFound['LIEUTRAVAILLE']
-                        ];
+                        $secondPart = ['role'=>'doctor'];
                         $_SESSION = array_merge($firstPart, $secondPart);
-                        if ($_SESSION['estVerifier']==1) {
                             header('location: doctor');
-                        }else{
-                            header('location: toBeVerified');
-                        }
-                        
                     }elseif($emailFound['ROLE']=='p'){
                         $secondPart = ['role'=>'patient'];
                         $_SESSION = array_merge($firstPart, $secondPart);
@@ -172,7 +165,8 @@ class User{
                     $checkEmail->execute();
                     if($checkEmail->rowcount()>0){
                     return ['errorMessage'=>'Email already exists'];}
-                     }elseif($this->cin!==$_SESSION['cin']){
+                }
+                if($this->cin!==$_SESSION['cin']){
 
                     $checkCin=$this->pdo->prepare("select * from utilisateurs where lower(CIN)=:cin and ROLE=:role");
                     $checkCin->bindValue(':cin', $this->cin);
@@ -182,12 +176,21 @@ class User{
                     if($checkCin->rowcount()>0){
                         return ['errorMessage'=> 'CIN already exists'];}
 
-                    }else{
-                        if (empty($this->password)) {
+                }
+                if (empty($this->password)) {
                         $this->hashedPassword=$_SESSION['password'];
                         }else{
                         $this->hashedPassword=password_hash($this->password, PASSWORD_DEFAULT);
                         }
+                    $_SESSION['email']=$this->email;
+                    $_SESSION['nom']=$this->nom;
+                    $_SESSION['prenom']=$this->prenom;
+                    $_SESSION['dateNaissance']=$this->dateNaissance;
+                    $_SESSION['sexe']=$this->sexe;
+                    $_SESSION['cin']=$this->cin;
+                    $_SESSION['password']=$this->hashedPassword;
+                    $_SESSION['specialite']=$this->specialite;
+                    $_SESSION['lieuTravaille']=$this->lieuTravaille;
                     
                     $sql="update utilisateurs set ROLE=:role, EMAIL=:email, PASSWORD=:hashedPassword, CIN=:cin, NOM=:nom, PRENOM=:prenom, DATE_NAISSANCE=:dateNaissance, SEXE=:sexe, SPECIALITE=:specialite ,LIEUTRAVAILLE=:lieuTravaille";
                     $sign_up_stmt=$this->pdo->prepare($sql);
@@ -202,8 +205,10 @@ class User{
                     $sign_up_stmt->bindValue(':specialite', $this->specialite);
                     $sign_up_stmt->bindValue(':lieuTravaille', $this->lieuTravaille);
                     $sign_up_stmt->execute();
+
+                    
+                    // header('location: patient');
                     return ['successMessage'=>'Success'];
-                }
             
         }catch(PDOException $e){
             die($e->getMessage());

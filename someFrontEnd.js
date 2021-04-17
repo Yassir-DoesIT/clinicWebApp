@@ -41,7 +41,7 @@ function renderEditable()
         // document.getElementById("imageChange").style.display = "table-row";
        document.getElementById("submitInput").style.display = "table-cell";
        document.getElementById("password").style.display = "table-row";
-       document.getElementById("goBack").style.display = "block";
+       document.getElementById("goBack").style.display = "table-cell";
         var myInputs = document.getElementsByTagName("input");
         console.log(myInputs);
         for(var input of myInputs)
