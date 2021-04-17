@@ -21,14 +21,14 @@
          <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
        
        </div>
-       <div class="w3-container"><?=$result["errorMessage"]?></div>;
+       <div class="w3-container"><?=$result["errorMessage"]?></div><span style="visibility : hidden">;</span>
        
        <?php  elseif(isset($result['successMessage'])) : ?>
           
           <div class="w3-center"><br>
          <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
        </div>
-       <div class="w3-container"><?=$result['successMessage']?></div>;
+       <div class="w3-container"><?=$result['successMessage']?></div><span style="visibility : hidden">;</span>
         
         <?php endif;?>
      </div>   
@@ -49,7 +49,7 @@ onclick="w3_close()">Close &times;</button>
 
 <div class="w3-container w3-padding-64">
 
-<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px"></img>
+<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px">
 
 </div>
 </div>
@@ -153,15 +153,15 @@ onclick="w3_close()">Close &times;</button>
 
 
                     <div class="button1" style="grid-row-start: 1/2">
-                            <button type="button" onclick="renderEditable()" class="w3-button">Modifier</button>
+                            <button type="button" onclick="renderEditable()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Modifier</button>
                             
                     </div>
                     <div class="button2" style="grid-row-start: 2/3; align-self: center">
-                            <button class="w3-button" type="button" id="goBack" onclick="back()" style="display: none">Retour</button>
+                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="button" id="goBack" onclick="back()" style="display: none">Retour</button>
                     </div>
 
                     <div class="button3" style="grid-row-start: 3/4">
-                            <button class="w3-button" type="submit" id="submitInput" style="display: none">Envoyer</button>
+                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="submit" id="submitInput" style="display: none">Envoyer</button>
                     </div>
 
                </main>
