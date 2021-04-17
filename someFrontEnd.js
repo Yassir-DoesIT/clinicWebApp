@@ -6,6 +6,12 @@
         divToEmpty.innerHTML = '';
     }
 */
+
+function submitUpload()
+    {
+        document.getElementById("imageForm").submit();
+    }
+
 function openSideBar() {
     document.getElementById("Sidebar").style.display = "block";
   }

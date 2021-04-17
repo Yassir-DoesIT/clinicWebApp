@@ -3,7 +3,7 @@
 <?php 
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // 	echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
-// var_dump($_POST);
+//var_dump($_POST);
 ?>
 
         <script type="text/javascript">
