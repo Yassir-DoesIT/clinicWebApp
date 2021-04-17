@@ -86,12 +86,10 @@ onclick="w3_close()">Close &times;</button>
        <h3 style="padding-top: 15px"><?= 'Bienvenue '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
        <span><?='Patient num ' . $_SESSION['user_id'] ?></span><br>
        
-        <form action="patient" method="post" enctype="multipart/form-data">
-        <label  style="float:left; margin-top: 25px; text-decoration: underline;" for="photoProfile">Charger une nouvelle image</label>
+        <form action="patient" id="imageForm" method="post" enctype="multipart/form-data">
+        <label  style="float:left; margin-top: 25px;cursor: pointer ;text-decoration: underline;" for="photoProfile">Charger une nouvelle image</label>
         
-        <input  class="w3-button w3-margin-top" type="file" id="photoProfile" name="photoProfile" style="display: none">
-        <input class="w3-button w3-margin-top" type="submit" name="submitPhoto" value="submit"
-        style="float:left">
+        <input  class="w3-button w3-margin-top" type="file" onchange="submitUpload()" id="photoProfile" name="photoProfile" style="display: none">
        </form>
 
        <table class="w3-table w3-margin-top" style="margin-left: 100px">
