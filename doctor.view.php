@@ -3,16 +3,17 @@
 <?php
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
-// var_dump($_POST);
+// var_dump($_SESSION);
 ?>
 
-<div class="w3-display-container"><button class="w3-display-topright"><a href="logout">Log Out</a></button>
+
 <body>
 <script>
 // window.onload = validDoctor();    
 </script>
 
 <?php if($_SESSION['estVerifier']=='0') : ?>
+<div class="w3-display-container"><button class="w3-display-topright"><a href="logout">Log Out</a></button></div>
 <h1>Waiting to be verified</h1>
 <?php else : ?>
 <script type="text/javascript">
@@ -29,14 +30,14 @@
          <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
        
        </div>
-       <div class="w3-container"><?=$result["errorMessage"]?></div>;
+       <div class="w3-container"><?=$result["errorMessage"]?></div><span style="visibility : hidden">;</span>
        
        <?php  elseif(isset($result['successMessage'])) : ?>
           
           <div class="w3-center"><br>
          <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
        </div>
-       <div class="w3-container"><?=$result['successMessage']?></div>;
+       <div class="w3-container"><?=$result['successMessage']?></div><span style="visibility : hidden">;</span>
         
         <?php endif;?>
      </div>   
@@ -48,8 +49,8 @@ onclick="w3_close()">Close &times;</button>
 <input class="w3-input" type="text" placeholder="Search.." name="search">
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
-<a href="#" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="#" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="doctor" class="w3-bar-item w3-button">Mes Informations</a>
+<a href="MesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
@@ -89,31 +90,33 @@ onclick="w3_close()">Close &times;</button>
 <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
 
 <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
-<img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
-<h3 style="padding-top: 15px"><?= 'Bienvenu '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
-       <span><?='Docteur num ' . $_SESSION['user_id'] ?></span><br>
-       
-        <form action="doctor" method="post" enctype="multipart/form-data">
-        <label  style="float:left; margin-top: 25px; text-decoration: underline;" for="photoProfile">Charger une nouvelle image</label>
-        
-        <input  class="w3-button w3-margin-top" type="file" id="photoProfile" name="photoProfile" style="display: none">
-        <input class="w3-button w3-margin-top" type="submit" name="submitPhoto" value="submit"
-        style="float:left">
-       </form>
-<div >
+ 
+
+
 <table class="w3-table w3-margin-top" style="margin-left: 100px">
+<tr><td>
+       <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer; display: block;"> 
+       <form action="doctor" id="imageForm" method="post" enctype="multipart/form-data">
+        <label  style="float:left; margin-top: 10px;cursor: pointer;" for="photoProfile" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" >Charger une nouvelle image</label>
+        
+        <input  class="w3-button w3-margin-top" type="file" onchange="submitUpload()" id="photoProfile" name="photoProfile" style="display: none">
+       </form></td>
+
+       <td><h3 style="padding-top: 15px"><?= 'Bienvenue '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
+       <span><?='Doctor'?></span><br></td>
+     </tr>
    <form action="doctor" method="post" enctype="multipart/form-data">
        <tr>
            <td ><b>Prénom</b></td>
-           <td><input style="width: 70%" type="text" name="prenom" class="w3-input w3-border"  value=<?=$_SESSION['prenom'] ?> readonly></td>
+           <td><input style="width: 70%" type="text" name="prenom" class="w3-input w3-border"  value="<?=$_SESSION['prenom'] ?>" readonly></td>
        </tr>
        <tr>
            <td><b>Nom</b></td>
-           <td><input style="width: 70%" type="text" name="nom" class="w3-input w3-border"value=<?=$_SESSION['nom']?> readonly></td>
+           <td><input style="width: 70%" type="text" name="nom" class="w3-input w3-border"value="<?=$_SESSION['nom']?>" readonly></td>
        </tr>
        <tr>
            <td><b>Email</b></td>
-           <td><input style="width: 70%" type="text" name="email" class="w3-input w3-border" value=<?=$_SESSION['email'] ?>  readonly ></b></td>
+           <td><input style="width: 70%" type="text" name="email" class="w3-input w3-border" value="<?=$_SESSION['email'] ?>"  readonly ></b></td>
        </tr>
        <tr>
            <td><b>Date de Naissance</b></td>
@@ -121,7 +124,7 @@ onclick="w3_close()">Close &times;</button>
                </tr>
        <tr>
                    <td><b>CIN</b></td>
-                   <td><input style="width: 70%" type="text" name="cin" class="w3-input w3-border" readonly value= <?=$_SESSION['cin']?> ></td>
+                   <td><input style="width: 70%" type="text" name="cin" class="w3-input w3-border" readonly value= "<?=$_SESSION['cin']?>" ></td>
                    <input style="width: 70%" type="hidden" name="role" class="w3-input w3-border" readonly value="d" >
 
                </tr>
@@ -146,11 +149,11 @@ onclick="w3_close()">Close &times;</button>
         
 
             <td><b>Spécialité</b></td>
-            <td><input type="text" class="w3-input w3-border" style="width: 70%" name="specialite" value=<?=$_SESSION['specialite'] ?> readonly>
+            <td><input type="text" class="w3-input w3-border" style="width: 70%" name="specialite" value="<?=$_SESSION['specialite'] ?>" readonly>
        </tr>
        <tr>
            <td><b>Lieu de Travail</b></td>
-           <td><input type="text" style="width: 70%" name="lieuTravaille" class="w3-input w3-border"     value=<?=$_SESSION['lieuTravaille']?> readonly></td>
+           <td><input type="text" style="width: 70%" name="lieuTravaille" class="w3-input w3-border"     value="<?=$_SESSION['lieuTravaille']?>" readonly></td>
        </tr>
        <tr id="password" style="display: none">
 
@@ -164,31 +167,35 @@ onclick="w3_close()">Close &times;</button>
         <td><input   type="file"></td>
 
        </tr>
-       <tr>
+       </table>
+       <main class="main" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr">
 
-            <td>
-                    <button type="button" onclick="renderEditable()" class="w3-button">Modifier</button>
-                    
-            </td>
-            <td>
-               <button class="w3-button" type="button" id="goBack" onclick="back()" style="display: none">Retour</button>
-               </td>
 
-            <td>
-                    <button class="w3-button" id="submitInput" style="display: none">Envoyer</button>
-            </td>
+                    <div class="button1" style="grid-row-start: 1/2">
+                            <button type="button" onclick="renderEditable()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Modifier</button>
+                            
+                    </div>
+                    <div class="button2" style="grid-row-start: 2/3; align-self: center">
+                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="button" id="goBack" onclick="back()" style="display: none">Retour</button>
+                    </div>
 
-       </tr>
+                    <div class="button3" style="grid-row-start: 3/4">
+                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="submit" id="submitInput" style="display: none">Envoyer</button>
+                    </div>
+
+               </main>
    </form>
-</table>
+
 </div>
 </div>
 
-
-</div>
 
 </div>
 
+</div>
+
+</div>
+</div>
 </div>
 <?php endif;?>
 <?php require('Partials/footer.php')?>

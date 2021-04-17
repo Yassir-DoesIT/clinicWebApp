@@ -92,7 +92,7 @@ onclick="w3_close()">Close &times;</button>
        </form></td>
 
        <td><h3 style="padding-top: 15px"><?= 'Bienvenue '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
-       <span><?='Patient num ' . $_SESSION['user_id'] ?></span><br></td>
+       <span><?='Patient'?></span><br></td>
      </tr>
        
         
@@ -103,15 +103,15 @@ onclick="w3_close()">Close &times;</button>
            <form action="patient" method="post" enctype="multipart/form-data">
                <tr>
                    <td ><b>Prénom</b></td>
-                   <td><input style="width: 70%" type="text" name="prenom" class="w3-input w3-border"  readonly value=<?=$_SESSION['prenom'] ?>></td>
+                   <td><input style="width: 70%" type="text" name="prenom" class="w3-input w3-border"  readonly value="<?=$_SESSION['prenom'] ?>"></td>
                </tr>
                <tr>
                    <td><b>Nom</b></td>
-                   <td><input style="width: 70%" type="text" name="nom" class="w3-input w3-border" value=<?=$_SESSION['nom'] ?> readonly></td>
+                   <td><input style="width: 70%" type="text" name="nom" class="w3-input w3-border" value="<?=$_SESSION['nom'] ?>" readonly></td>
                </tr>
                <tr>
                    <td><b>Email</b></td>
-                   <td><input style="width: 70%" type="text" name="email" class="w3-input w3-border" readonly value=<?=$_SESSION['email'] ?>></b></td>
+                   <td><input style="width: 70%" type="text" name="email" class="w3-input w3-border" readonly value="<?=$_SESSION['email'] ?>"></b></td>
                </tr>
                <tr>
                    <td><b>Date de Naissance</b></td>
@@ -119,7 +119,7 @@ onclick="w3_close()">Close &times;</button>
                </tr>
                <tr>
                    <td><b>CIN</b></td>
-                   <td><input style="width: 70%" type="text" name="cin" class="w3-input w3-border" readonly value= <?=$_SESSION['cin']?> ></td>
+                   <td><input style="width: 70%" type="text" name="cin" class="w3-input w3-border" readonly value= "<?=$_SESSION['cin']?>" ></td>
                    <input style="width: 70%" type="hidden" name="role" class="w3-input w3-border" readonly value="p" >
 
                </tr>
@@ -176,6 +176,8 @@ onclick="w3_close()">Close &times;</button>
 </div>
 
 </div>
-
+</div>
+</div>
+</div>
 
 <?php require('Partials/footer.php')?>

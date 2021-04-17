@@ -23,15 +23,14 @@
          <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
        
        </div>
-       <div class="w3-container"><?=$result["errorMessage"]?></div>;
+       <div class="w3-container"><?=$result["errorMessage"]?></div><span style="visibility : hidden">;</span>
        
        <?php  elseif(isset($result['successMessage'])) : ?>
           
           <div class="w3-center"><br>
          <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
        </div>
-       <div class="w3-container"><?=$result['successMessage']?></div>;
-        
+       <div class="w3-container"><?=$result['successMessage']?></div><span style="visibility : hidden">;</span>
         <?php endif;?>
      </div>   
 </div> 

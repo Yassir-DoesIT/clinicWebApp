@@ -30,7 +30,7 @@ class User{
             $this->cin=$cin;
             $this->dateNaissance=$dateNaissance;
             $this->sexe=$sexe;
-            $this->email=$email;
+            $this->email=trim($email, "");
             $this->password=$password;
             $this->role=$role;
             $this->specialite=$specialite;
@@ -88,7 +88,7 @@ class User{
     }
     function logInUser($email, $password, $role){
         try {
-            $this->email=$email;
+            $this->email=trim($email, "");;
             $this->password=$password;
             $this->role=$role;
 
@@ -151,7 +151,7 @@ class User{
             $this->cin=$cin;
             $this->dateNaissance=$dateNaissance;
             $this->sexe=$sexe;
-            $this->email=$email;
+            $this->email=trim($email, "");;
             $this->password=$password;
             $this->role=$role;
             $this->specialite=$specialite;
