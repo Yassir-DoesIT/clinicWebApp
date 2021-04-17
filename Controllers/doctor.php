@@ -20,7 +20,7 @@ if (isset($_SESSION['prenom']) && isset($_SESSION['nom']) && $_SESSION['role']==
 				if($filesize > $maxsize){die("Error : file size is larger than the allowed limit ". $maxsize);}
 		if (in_array($filetype, $allowed)) {
 
-				$photoProfile=$_SESSION['user_id'].$_SESSION['cin'] . "." . $extension;
+				$photoProfile='d'.$_SESSION['cin'] . ".png";
 				move_uploaded_file($_FILES["photoProfile"]["tmp_name"],"UsersCache/photoProfile/".$photoProfile);
 				$result=$doctor->updatePicture($_SESSION['user_id'], $photoProfile);
 				

@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			
 				}else{
 
-				$photoProfile=$_POST['cin'] . "." . $extension;
+				$photoProfile=$_POST['role'].$_POST['cin'] . ".png";
 				move_uploaded_file($_FILES["photoProfile"]["tmp_name"],"UsersCache/photoProfile/".$photoProfile);
 				$result=$patient->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'], $photoProfile);
 				}
@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 		if (in_array($filetype, $allowed)) {
 			
 
-				$photoProfile=$_POST['cin'] . "." . $extension;
+				$photoProfile=$_POST['role'].$_POST['cin'] . ".png";
 				move_uploaded_file($_FILES["photoProfile"]["tmp_name"],"UsersCache/photoProfile/".$photoProfile);
 				$result=$doctor->signUpUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'], $photoProfile,$_POST['specialite'], $justificatif, $_POST['lieuTravaille']);
 				

@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 				if($filesize > $maxsize){die("Error : file size is larger than the allowed limit ". $maxsize);}
 		if (in_array($filetype, $allowed)) {
 
-				$photoProfile=$_SESSION['user_id'].$_SESSION['cin'] . "." . $extension;
+				$photoProfile='p'.$_SESSION['cin'] . ".png";
 				move_uploaded_file($_FILES["photoProfile"]["tmp_name"],"UsersCache/photoProfile/".$photoProfile);
 				$result=$patient->updatePicture($_SESSION['user_id'], $photoProfile);
 				
