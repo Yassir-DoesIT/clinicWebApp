@@ -3,7 +3,7 @@
 <?php 
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // 	echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
-var_dump($_POST);
+//var_dump($_POST);
 ?>
 
         <script type="text/javascript">
@@ -83,15 +83,13 @@ onclick="w3_close()">Close &times;</button>
 
    <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
        <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle w3-display-topleft" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer;"> 
-       <h3 style="padding-top: 15px"><?= 'Bienvenu '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
+       <h3 style="padding-top: 15px"><?= 'Bienvenue '.$_SESSION['prenom'].' '.$_SESSION['nom']?></h3>
        <span><?='Patient num ' . $_SESSION['user_id'] ?></span><br>
        
-        <form action="patient" method="post" enctype="multipart/form-data">
+        <form action="patient" id="imageForm" method="post" enctype="multipart/form-data">
         <label  style="float:left; margin-top: 25px; text-decoration: underline;" for="photoProfile">Charger une nouvelle image</label>
         
-        <input  class="w3-button w3-margin-top" type="file" id="photoProfile" name="photoProfile" style="display: none">
-        <input class="w3-button w3-margin-top" type="submit" name="submitPhoto" value="submit"
-        style="float:left">
+        <input  class="w3-button w3-margin-top" type="file" onchange="submitUpload()" id="photoProfile" name="photoProfile" style="display: none">
        </form>
 
        <table class="w3-table w3-margin-top" style="margin-left: 100px">
