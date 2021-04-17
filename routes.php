@@ -12,7 +12,8 @@ $router->define([
     'logout'=>'controllers/logout.php',
     'adminSignIn'=>'controllers/adminSignIn.php',
     'service'=>'controllers/service.php',
-    'signUpForm'=>'controllers/main.php'
+    'signUpForm'=>'controllers/main.php',
+    'MesConsultations'=>'controllers/consultations.php'
 
 ]);
 if (isset($_GET['city'])) {

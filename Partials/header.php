@@ -10,9 +10,13 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="icon" href="Images/Logo.png">
+      <?php if($title=="Mes Consultations") : ?>
+        <link rel="stylesheet" href="css/consultations.css">
+        <?php endif;?>
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet"> 
       <script src="https://kit.fontawesome.com/c964be31f4.js" crossorigin="anonymous"></script>
       <script src="./someFrontEnd.js"></script>
+
       
   </head>
 
