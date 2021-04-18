@@ -301,6 +301,18 @@ function controlPharmacyAccordion()
                 x.className = x.className.replace(" w3-show", "");
             }
     }
+
+function openSentModal()
+    {
+        document.getElementById("sentModal").style.display ='block';
+    }
+
+
+function closeSentModal()
+    {
+        document.getElementById("sentModal").style.display ='none';
+    }    
+
 function openLoginP()
     {
         let loginInterface = document.getElementById('loginModalP');
