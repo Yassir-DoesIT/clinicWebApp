@@ -7,7 +7,15 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-gap: 10px;
 align-items: center;
+grid-template-areas: 
+"card card card card"
+"card card card card"
+"pages pages pages pages";		
 
+}
+
+.pages{
+	grid-area: pages;
 }
       
       </style>
@@ -41,9 +49,7 @@ onclick="w3_close()">Close &times;</button>
 
 </div>
 
-<div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src="placeHolder.jpg" style="width: 500px; height: 500px">
-</div>
+
 
 <div id="mainDiv">
 
@@ -61,16 +67,27 @@ onclick="w3_close()">Close &times;</button>
 <div id="myGrid"  style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
 <?php if ($rows>=1) : ?>
 <?php foreach($cards as $card) : ?>
-<div class="w3-card w3-white w3-round-xlarge" style="border: 2px solid teal">
-        <img src="placeHolder.jpg" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$card->NOM?></div><div><button style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border">PLACEHOLDER</button><button style="margin: 0 0 5px 0" class="w3-button w3-border w3-hover-pale-blue w3-round-xlarge">PLACEHOLDER</button></div>
+	<div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
+<img class="w3-modal-content" src="<?="UsersCache/photoProfile/". $card->PHOTOPROFILE?>" style="width: 500px; height: 500px">
+</div>
+<div class="w3-card w3-white w3-round-xlarge card" style="border: 2px solid teal">
+
+        <img src="<?="UsersCache/photoProfile/". $card->PHOTOPROFILE?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$card->NOM . ' '. $card->PRENOM . ' role= '. $card->ID_USER?></div>
+        <div>
+        <?php echo '<a  href="profile?profile='.$card->ID_USER.'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?>
+
+        <?php echo '<a  href="#" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Contact </a>';?>
+    </div>
 </div>
 <?php endforeach;?>
+<div class="pages">
 <?php for ($page=1; $page<=$pages ; $page++) : ?>
 	<?= '<a href="search?page='. $page .'">'.$page?>
 <?php endfor; ?>
 <?php else : ?>
 	<h1>No Results</h1>
 <?php endif;?>
+</div>
 </div>
 </div>   
 </div>

@@ -64,7 +64,7 @@ onclick="w3_close()">Close &times;</button>
 </div>
 
 <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> style="width: 500px; height: 500px">
+<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?>" style="width: 500px; height: 500px">
 
 </div>
 

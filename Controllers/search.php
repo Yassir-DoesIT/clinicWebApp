@@ -11,9 +11,9 @@ if (!isset($fullName[1])) {
 }
 // var_dump($fullName[1]);
 $rows=$doctor->searchDoctors($fullName[0],$fullName[1],null,null);
-echo 'rows '. $rows;
+// echo 'rows '. $rows;
 $pages= ceil($rows/$result_per_page);
-echo "<br> pages". $pages . "<br>";
+// echo "<br> pages". $pages . "<br>";
 //page number
 if (!isset($_GET['page'])) {
 	$page=1;
@@ -22,7 +22,7 @@ if (!isset($_GET['page'])) {
 }
 //starting number
 $starting_number=($page-1)*$result_per_page;
-echo "start ". $starting_number;
+// echo "start ". $starting_number;
 //retrieve data
 $cards=$doctor->searchDoctors($fullName[0],$fullName[1],$starting_number,$result_per_page);
 

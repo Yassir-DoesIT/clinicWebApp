@@ -31,3 +31,8 @@ if (isset($_GET['search'])) {
     // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
     $router->define(['search?search='.implode("+", explode(" ", $_GET['search']))=>'controllers/search.php']);
 }
+if (isset($_GET['profile'])) {
+    // $_SESSION['search']=$_GET['search'];
+    // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
+    $router->define(['profile?profile='.$_GET['profile']=>'controllers/profile.php']);
+}
