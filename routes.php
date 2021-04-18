@@ -26,4 +26,8 @@ if (isset($_GET['page'])) {
     $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
     $router->define([$route[0].'?page='.$_GET['page']=>'controllers/'.$route[0].'.php']);
 }
-
+if (isset($_GET['search'])) {
+    $_SESSION['search']=$_GET['search'];
+    // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
+    $router->define(['search?search='.implode("+", explode(" ", $_GET['search']))=>'controllers/search.php']);
+}
