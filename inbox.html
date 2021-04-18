@@ -59,8 +59,23 @@
 
     </div>
             
-    <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-            <img class="w3-modal-content" src="placeHolder.jpg" style="width: 500px; height: 500px">
+    <div id="sentModal" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+        
+        
+              <form class="w3-container" action="placeHolder" method="POST">
+                <div class="w3-section">
+                  <label><b>Envoyé À</b><input class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="sentTo" readonly required></label>
+                  
+                  <textarea class="w3-input w3-border" name="password" required>Douchebag Message</textarea>
+                </div>
+              </form>
+        
+              <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="closeSentModal()" type="button" class="w3-button w3-red">Fermez</button>
+              </div>
+        
+            </div>
           </div>
 
     <div id="mainDiv">
@@ -78,15 +93,15 @@
                                                 <span class="w3-bar w3-left-align">
 
                                                         
-                                                        <button class="w3-button w3-hover-gray" onclick="goToEtab()">Messages Reçu</button>
-                                                        <button class="w3-button w3-hover-gray" onclick="goToLogOut()">Messages Envoyés</button>
+                                                        <button class="w3-button w3-hover-gray" onclick="getRecieved()">Messages Reçu</button>
+                                                        <button class="w3-button w3-hover-gray" onclick="getSent()">Messages Envoyés</button>
                                                         
                                             
                                                 </span>
            
                                                <div id="myGrid"  style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
                                                    
-                                                        <div class="w3-card w3-row w3-round-xlarge" style="border: 2px solid teal">
+                                                        <div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">
                                                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem sunt, consequatur dolorum optio nihil necessitatibus nemo cupiditate, ea amet debitis saepe nulla expedita cum assumenda iste quia nobis veritatis fugit.
                                                         </div>
                                                        
