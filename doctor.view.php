@@ -49,8 +49,8 @@ onclick="w3_close()">Close &times;</button>
 <input class="w3-input" type="text" placeholder="Search.." name="search">
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
-<a href="doctor" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="MesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="" class="w3-bar-item w3-button">Mes Informations</a>
+<a href="mesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
