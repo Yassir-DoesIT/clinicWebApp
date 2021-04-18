@@ -17,7 +17,7 @@ showErrorOrSuccess();
 
 #myGrid{
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-gap: 10px;
 align-items: center;
 
@@ -51,8 +51,8 @@ onclick="w3_close()">Close &times;</button>
 <input class="w3-input" type="text" placeholder="Search.." name="search">
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
-<a href="#" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="#" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
+<a href="mesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
@@ -92,7 +92,7 @@ onclick="w3_close()">Close &times;</button>
          <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
 
              <div id="myGrid"   style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
-                 <?php for ($i=0; $i <4 ; $i++) : ?>
+                 <?php for ($i=0; $i <8; $i++) : ?>
                   <div class="w3-card w3-white w3-round-xlarge" style="border: 2px solid teal">
                   <img src="placeHolder.jpg" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> Name</div><div><button style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border">Profile</button><button style="margin: 0 0 5px 0" class="w3-button w3-border w3-hover-pale-blue w3-round-xlarge">Contact</button></div>
                   </div>

@@ -13,7 +13,7 @@ $router->define([
     'adminSignIn'=>'controllers/adminSignIn.php',
     'service'=>'controllers/service.php',
     'signUpForm'=>'controllers/main.php',
-    'MesConsultations'=>'controllers/consultations.php'
+    'mesConsultations'=>'controllers/mesConsultations.php'
 
 ]);
 if (isset($_GET['city'])) {
@@ -21,5 +21,9 @@ if (isset($_GET['city'])) {
 }
 if (isset($_GET['quartierId'])) {
     $router->define(['service?quartierId='.$_GET['quartierId']=>'controllers/service.php']);
+}
+if (isset($_GET['page'])) {
+    $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
+    $router->define([$route[0].'?page='.$_GET['page']=>'controllers/'.$route[0].'.php']);
 }
 
