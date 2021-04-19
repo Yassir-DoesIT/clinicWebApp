@@ -171,6 +171,22 @@ function buildMap(latVar,lngVar,quartierId)
     }
     
 
+function getRecievedMessages()
+    {
+        var jsonObject_recieved;
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","Recieved.php",false)
+        xhr.onload = function()
+        {
+            if(xhr.status==200)
+            {
+                jsonObject_recieved = JSON.parse(this.responseText);
+            }
+        }
+        xhr.send();
+        console.log(jsonObject_recieved);
+    }
+
 
 function getCity(city)
     {
