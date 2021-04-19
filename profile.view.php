@@ -122,7 +122,9 @@ onclick="w3_close()">Close &times;</button>
         
         
               <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
+
                 <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
+                <button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyer</button>
               </div>
         </form>
         
