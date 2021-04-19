@@ -32,7 +32,11 @@ onclick="w3_close()">Close &times;</button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
+<<<<<<< HEAD
 <a href="boiteReception" class="w3-bar-item w3-button">Boite de Réception</a>
+=======
+<a href="boite" class="w3-bar-item w3-button">Boite de Réception</a>
+>>>>>>> 5aa14a2c9b7f9557194082f3c3fb56ce41113bcd
 
 <?php endif ?>
 
@@ -92,12 +96,20 @@ onclick="w3_close()">Close &times;</button>
                     <span class="w3-bar w3-left-align">
 
                             
+<<<<<<< HEAD
                             <form action="received"  style="display: inline" method="post">
                               <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
                             </form>
                             <form action="sent"  style="display: inline" method="post">
                             <button type="button" class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
                             </form>
+=======
+                            
+                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecieved()">Messages Reçu</button>
+                            
+                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSent()">Messages Envoyés</button>
+
+>>>>>>> 5aa14a2c9b7f9557194082f3c3fb56ce41113bcd
                             
                 
                     </span>
