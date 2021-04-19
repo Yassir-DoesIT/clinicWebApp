@@ -75,8 +75,6 @@ onclick="w3_close()">Close &times;</button>
         <img src="<?="UsersCache/photoProfile/". $card->PHOTOPROFILE?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$card->NOM . ' '. $card->PRENOM?></div>
         <div>
         <?php echo '<a  href="profile?profile='.$card->ID_USER.'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?>
-
-        <?php echo '<a  href="#" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Contact </a>';?>
     </div>
 </div>
 <?php endforeach;?>

@@ -17,6 +17,7 @@ $router->define([
     'consultationsDoctor'=>'controllers/consultationsDoctor.php',
     'profile'=>'controllers/profile.php',
     'patientProfile'=>'controllers/patientProfile.php',
+    'message'=>'controllers/message.php',
     'demande'=>'controllers/demande.php'
 
 ]);

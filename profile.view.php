@@ -88,17 +88,12 @@ onclick="w3_close()">Close &times;</button>
                                 </form> 
                                 <?php endif ?>
                           <?php else: ?>
-                            <form action="#" method="post" style="display: inline">
-                           <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
                             <button type="submit" name="contact" onclick="openSendModal()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Contact</button>
-                            </form>
                             <form action="profile" method="post" style="display: inline">
                            <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
                           <button type="submit" name="delete" class="w3-button w3-border w3-hover-red w3-pale-blue w3-round-xlarge">Delete</button>
                           </form>
                           <?php endif; ?>
-                          
-                          <!-- <button class="w3-button w3-border w3-hover-teal w3-white w3-round-xlarge" style="margin-left: 10px">Contact</button> -->
                          </td></tr>
                       
                  </table>
@@ -122,12 +117,12 @@ onclick="w3_close()">Close &times;</button>
                 <div class="w3-section">
                   <label id="sendLabel"><b>Envoyé À</b></label><input id="sendInput" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="send" required>
                   
-                  <textarea id="messageContent" class="w3-input w3-border" name="password" required>Douchebag Message</textarea>
+                  <textarea id="messageContent" class="w3-input w3-border" name="contenu" required></textarea>
                 </div>
         
         
               <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
-                <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermez</button>
+                <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
               </div>
         </form>
         

@@ -90,10 +90,7 @@ onclick="w3_close()">Close &times;</button>
                           <button type="submit" name="refuse" class="w3-button w3-border w3-hover-red w3-pale-blue w3-round-xlarge">Refuse</button>
                           </form>
                           <?php elseif($ifAccepted>0): ?>
-                            <form action="#" method="post" style="display: inline">
-                           <input type="hidden" name="patient_id" value="<?=$profile[0]['ID_USER']?>" > 
-                            <button type="submit" name="contact" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Contact</button>
-                            </form>
+                             <button type="submit" name="contact" onclick="openSendModal()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Contact</button>
                             <form action="patientProfile" method="post" style="display: inline">
                            <input type="hidden" name="patient_id" value="<?=$profile[0]['ID_USER']?>" > 
                           <button type="submit" name="delete" class="w3-button w3-border w3-hover-red w3-pale-blue w3-round-xlarge">Delete</button>
@@ -118,4 +115,23 @@ onclick="w3_close()">Close &times;</button>
 </div>
 </div>
 </div>
+<div id="sendModal" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+        
+        
+              <form class="w3-container" action="placeHolder" method="POST">
+                <div class="w3-section">
+                  <label id="sendLabel"><b>Envoyé À</b></label><input id="sendInput" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="send" required>
+                  
+                  <textarea id="messageContent" class="w3-input w3-border" name="contenu" required></textarea>
+                </div>
+        
+        
+              <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
+                <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
+              </div>
+        </form>
+        
+            </div>
+          </div>
 <?php require('Partials/footer.php')?>
