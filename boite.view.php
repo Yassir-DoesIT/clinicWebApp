@@ -1,7 +1,11 @@
 <?php $title='Boite de Réception'?>
 <?php require 'partials/header.php'?>
 <script>
-window.onload = getRecievedMessages();
+window.onload =setTimeout(() => {
+  getRecievedMessages();
+  
+}, 10);
+  
 </script>
 <style>
 
@@ -32,11 +36,7 @@ onclick="w3_close()">Close &times;</button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
-<<<<<<< HEAD
-<a href="boiteReception" class="w3-bar-item w3-button">Boite de Réception</a>
-=======
 <a href="boite" class="w3-bar-item w3-button">Boite de Réception</a>
->>>>>>> 5aa14a2c9b7f9557194082f3c3fb56ce41113bcd
 
 <?php endif ?>
 
@@ -96,29 +96,18 @@ onclick="w3_close()">Close &times;</button>
                     <span class="w3-bar w3-left-align">
 
                             
-<<<<<<< HEAD
-                            <form action="received"  style="display: inline" method="post">
+                            
                               <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
-                            </form>
-                            <form action="sent"  style="display: inline" method="post">
-                            <button type="button" class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
-                            </form>
-=======
                             
-                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecieved()">Messages Reçu</button>
-                            
-                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSent()">Messages Envoyés</button>
+                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
 
->>>>>>> 5aa14a2c9b7f9557194082f3c3fb56ce41113bcd
                             
                 
                     </span>
 
                    <div id="myGrid"  style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
                        
-                            <div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem sunt, consequatur dolorum optio nihil necessitatibus nemo cupiditate, ea amet debitis saepe nulla expedita...
-                            </div>
+                            
                            
                        
                    </div>
