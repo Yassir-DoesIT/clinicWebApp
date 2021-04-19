@@ -175,7 +175,7 @@ function getRecievedMessages()
     {
         var jsonObject_recieved;
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","Recieved.php",false)
+        xhr.open("GET","Received",true)
         xhr.onload = function()
         {
             if(xhr.status==200)

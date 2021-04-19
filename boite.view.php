@@ -1,5 +1,8 @@
 <?php $title='Boite de Réception'?>
 <?php require 'partials/header.php'?>
+<script>
+window.onload = getRecievedMessages();
+</script>
 <style>
 
 #myGrid{
@@ -28,7 +31,7 @@ onclick="w3_close()">Close &times;</button>
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="boiteReception" class="w3-bar-item w3-button">Boite de Réception</a>
 
 <?php endif ?>
@@ -39,7 +42,7 @@ onclick="w3_close()">Close &times;</button>
 
 <div class="w3-container w3-padding-64">
 
-<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px"></img>
+<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px">
 
 </div>
 </div>
@@ -89,11 +92,11 @@ onclick="w3_close()">Close &times;</button>
                     <span class="w3-bar w3-left-align">
 
                             
-                            <form action="received" method="post">
-                              <button class="w3-button w3-hover-gray" name="received" onclick="getRecieved()">Messages Reçu</button>
+                            <form action="received"  style="display: inline" method="post">
+                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
                             </form>
-                            <form action="received" method="post">
-                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSent()">Messages Envoyés</button>
+                            <form action="sent"  style="display: inline" method="post">
+                            <button type="button" class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
                             </form>
                             
                 
