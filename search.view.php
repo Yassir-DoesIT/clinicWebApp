@@ -28,7 +28,7 @@ onclick="w3_close()">Close &times;</button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="received" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
 <div class="w3-display-container w3-teal">
@@ -75,8 +75,6 @@ onclick="w3_close()">Close &times;</button>
         <img src="<?="UsersCache/photoProfile/". $card->PHOTOPROFILE?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$card->NOM . ' '. $card->PRENOM?></div>
         <div>
         <?php echo '<a  href="profile?profile='.$card->ID_USER.'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?>
-
-        <?php echo '<a  href="#" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Contact </a>';?>
     </div>
 </div>
 <?php endforeach;?>

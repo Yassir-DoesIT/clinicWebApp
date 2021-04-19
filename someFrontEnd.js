@@ -389,8 +389,8 @@ function rendreModalEditable()
         document.getElementById("messageContent").readOnly = false;
         document.getElementById("replyButton").style.display = "none";
         document.getElementById("closeButton").style.display = "none";
-        document.getElementById("buttonsDiv").insertAdjacentHTML('afterbegin','<button id="resetButton" onclick="resetSentModal()" type="button" class="w3-button w3-red">Annulez</button>');
-        document.getElementById("buttonsDiv").insertAdjacentHTML('beforeend',"<button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyez</button>");
+        document.getElementById("buttonsDiv").insertAdjacentHTML('afterbegin','<button id="resetButton" onclick="resetSentModal()" type="button" class="w3-button w3-red">Annuler</button>');
+        document.getElementById("buttonsDiv").insertAdjacentHTML('beforeend',"<button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyer</button>");
     }    
 
 function closeSentModal()

@@ -57,7 +57,7 @@ onclick="w3_close()">Close &times;</button>
 
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="received" class="w3-bar-item w3-button">Boite de Réception</a>
 <a href="demande" class="w3-bar-item w3-button"><span>Demandes de Consultation</span>
   <?php if ($rows>0) : ?>
    <span style="padding: 5px; position: relative; left: 50px;background: red;color: white;"><?=$rows?></span>
@@ -111,9 +111,32 @@ onclick="w3_close()">Close &times;</button>
                   <img src="<?="UsersCache/photoProfile/".$result[0]['PHOTOPROFILE']?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div>
                     <?php echo $result[0]['NOM'].' '.$result[0]['PRENOM'] ?></div>
                     <div><?php echo '<a  href="patientProfile?patientProfile='.$result[0]['ID_USER'].'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?>
-                    <?php echo '<a  href="#" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Contact </a>';?>
+                    <button type="submit" name="contact" onclick="openSendModal()"  class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border">Contact</button>
                     </div>
-                  </div>
+                  </div> 
+                  <div id="sendModal" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+        
+        
+              <form class="w3-container" action="message" method="POST">
+                <div class="w3-section">
+                  <label id="sendLabel"><b>Envoyé À</b></label><input id="sendInput" class="w3-input w3-border w3-margin-bottom" type="text" value="<?=$result[0]['NOM'].' '.$result[0]['PRENOM'].'#'.$result[0]['ID_USER']?>" name="send" readonly>
+                  
+                  <textarea id="messageContent" class="w3-input w3-border" name="contenu" required></textarea>
+                </div>
+                <input type="hidden" name="receiver_id" value="<?=$result[0]['ID_USER']?>">
+        
+          
+              <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
+
+                <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
+                <input id="sendButton" type="submit" name="send" class="w3-button w3-green">
+              </div>
+              <?php $_SESSION['location']='consultationsDoctor'?>
+        </form>
+        
+            </div>
+          </div>
       
                  <?php endforeach ?>
                  <?php else: ?> 
@@ -129,7 +152,27 @@ onclick="w3_close()">Close &times;</button>
 </div>
 
 </div>
+<div id="sendModal" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+        
+        
+              <form class="w3-container" action="placeHolder" method="POST">
+                <div class="w3-section">
+                  <label id="sendLabel"><b>Envoyé À</b></label><input id="sendInput" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="send" required>
+                  
+                  <textarea id="messageContent" class="w3-input w3-border" name="contenu" required></textarea>
+                </div>
+        
+        
+              <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
 
+                <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
+                <button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyer</button>
+              </div>
+        </form>
+        
+            </div>
+          </div>
 
 
 <?php require('Partials/footer.php')?>

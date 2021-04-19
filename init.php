@@ -22,4 +22,5 @@ $admin = new Admin($pdo);
 $service = new Service($pdo);
 $demande = new Demande($pdo);
 $consultation = new Consultation($pdo);
+$message= new Message($pdo);
 
