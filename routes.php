@@ -13,8 +13,11 @@ $router->define([
     'adminSignIn'=>'controllers/adminSignIn.php',
     'service'=>'controllers/service.php',
     'signUpForm'=>'controllers/main.php',
-    'mesConsultations'=>'controllers/mesConsultations.php',
-    'profile'=>'controllers/profile.php'
+    'consultationsPatient'=>'controllers/consultationsPatient.php',
+    'consultationsDoctor'=>'controllers/consultationsDoctor.php',
+    'profile'=>'controllers/profile.php',
+    'patientProfile'=>'controllers/patientProfile.php',
+    'demande'=>'controllers/demande.php'
 
 ]);
 if (isset($_GET['city'])) {
@@ -37,3 +40,9 @@ if (isset($_GET['profile'])) {
     // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
     $router->define(['profile?profile='.$_GET['profile']=>'controllers/profile.php']);
 }
+if (isset($_GET['patientProfile'])) {
+    $_SESSION['patient_id']=$_GET['patientProfile'];
+    // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
+    $router->define(['patientProfile?patientProfile='.$_GET['patientProfile']=>'controllers/patientProfile.php']);
+}
+

@@ -56,8 +56,14 @@ onclick="w3_close()">Close &times;</button>
 <?php endif ?>
 
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="mesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="demande" class="w3-bar-item w3-button"><span>Demandes de Consultation</span>
+  <?php if ($rows>0) : ?>
+   <span style="padding: 5px; position: relative; left: 50px;background: red;color: white;"><?=$rows?></span>
+
+  <?php endif ?>
+  </a>
 </div>
 
 <div class="w3-display-container w3-teal">
@@ -96,12 +102,23 @@ onclick="w3_close()">Close &times;</button>
          <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
 
              <div id="myGrid"   style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
-                 <?php for ($i=0; $i <8; $i++) : ?>
+                 <?php if ($consultations_rows>0): ?>
+                
+                 <?php foreach ($consultations as $consultation): ?>
+                  <?php $result=$patient->selectPatient($consultation->PATIENT)?>
+                 
                   <div class="w3-card w3-white w3-round-xlarge" style="border: 2px solid teal">
-                  <img src="placeHolder.jpg" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> Name</div><div><button style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border">Profile</button><button style="margin: 0 0 5px 0" class="w3-button w3-border w3-hover-pale-blue w3-round-xlarge">Contact</button></div>
+                  <img src="<?="UsersCache/photoProfile/".$result[0]['PHOTOPROFILE']?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div>
+                    <?php echo $result[0]['NOM'].' '.$result[0]['PRENOM'] ?></div>
+                    <div><?php echo '<a  href="patientProfile?patientProfile='.$result[0]['ID_USER'].'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?>
+                    <?php echo '<a  href="#" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Contact </a>';?>
+                    </div>
                   </div>
       
-                 <?php endfor;?>
+                 <?php endforeach ?>
+                 <?php else: ?> 
+                  <h1 style="padding-left: 490px">Pas de consultations</h1>
+                 <?php endif;?>
                  
              </div>
           </div>   
@@ -115,4 +132,4 @@ onclick="w3_close()">Close &times;</button>
 
 
 
-<?php require('Partials/footer.php')?>}}}
+<?php require('Partials/footer.php')?>

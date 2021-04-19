@@ -27,7 +27,7 @@ onclick="w3_close()">Close &times;</button>
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="mesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
@@ -85,7 +85,7 @@ onclick="w3_close()">Close &times;</button>
 	<?= '<a href="search?page='. $page .'">'.$page?>
 <?php endfor; ?>
 <?php else : ?>
-	<h1>No Results</h1>
+	<h1 style="padding-left: 490px" >No Results</h1>
 <?php endif;?>
 </div>
 </div>

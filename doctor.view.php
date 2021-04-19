@@ -46,8 +46,14 @@
 <button class="w3-bar-item w3-button w3-large"
 onclick="w3_close()">Close &times;</button>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="mesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="demande" class="w3-bar-item w3-button"><span>Demandes de Consultation</span>
+  <?php if ($rows>0) : ?>
+   <span style="padding: 5px; position: relative; left: 50px;background: red;color: white;"><?=$rows?></span>
+
+  <?php endif ?>
+  </a>
 </div>
 
 <div class="w3-display-container w3-teal">
@@ -69,7 +75,7 @@ onclick="w3_close()">Close &times;</button>
 </div>
 
 <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> style="width: 500px; height: 500px">
+<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?>" style="width: 500px; height: 500px">
 </div>
 
 <div id="mainDiv">
@@ -91,7 +97,7 @@ onclick="w3_close()">Close &times;</button>
 
 <table class="w3-table w3-margin-top" style="margin-left: 100px">
 <tr><td>
-       <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer; display: block;"> 
+       <img src="<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?>" onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer; display: block;"> 
        <form action="doctor" id="imageForm" method="post" enctype="multipart/form-data">
         <label  style="float:left; margin-top: 10px;cursor: pointer;" for="photoProfile" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" >Charger une nouvelle image</label>
         

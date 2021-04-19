@@ -9,13 +9,15 @@ color: white;}
 <div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
 <button class="w3-bar-item w3-button w3-large"
 onclick="w3_close()">Close &times;</button>
-<form action="search" method="get">
-<input class="w3-input" type="text" placeholder="Search.." name="search">
-<button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
-</form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="demande" class="w3-bar-item w3-button"><span>Demandes de Consultation</span>
+  <?php if ($rows>0) : ?>
+   <span style="padding: 5px; position: relative; left: 50px;background: red;color: white;"><?=$rows?></span>
+
+  <?php endif ?>
+  </a>
 </div>
 
 <div class="w3-display-container w3-teal">
@@ -50,9 +52,9 @@ onclick="w3_close()">Close &times;</button>
 
      <div class="w3-container w3-margin w3-padding-large w3-round-large">
         <?php if($profile[0]['SEXE']=='m') : ?>
-         <h3><?= "Dr. ". ucwords($profile[0]['NOM'].' '.$profile[0]['PRENOM'])?></h3>
+         <h3><?= "Mr. ". ucwords($profile[0]['NOM'].' '.$profile[0]['PRENOM'])?></h3>
           <?php elseif($profile[0]['SEXE']=='f') : ?>
-         <h3><?= "Dra. ". ucwords($profile[0]['NOM'].' '.$profile[0]['PRENOM'])?></h3>
+         <h3><?= "Mrs. ". ucwords($profile[0]['NOM'].' '.$profile[0]['PRENOM'])?></h3>
          <?php endif; ?>
          <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
            
@@ -70,33 +72,35 @@ onclick="w3_close()">Close &times;</button>
                              <td><?= ucwords($profile[0]['NOM'].' '.$profile[0]['PRENOM'])?></td>
                          </tr>
                          <tr>
-                             <td><?= "Specialite: ". ucwords($profile[0]['SPECIALITE'])?></td>
+                             <td><?= "CIN: ". ucwords($profile[0]['CIN'])?></td>
                          </tr>
                          <tr>
-                             <td><?= "Lieu de travaille: ".ucwords( $profile[0]['LIEUTRAVAILLE'])?></td>
+                             <td><?= "Date Naissance: ".date("d-m-Y", strtotime($profile[0]['DATE_NAISSANCE']))?></td>
                              
                          </tr>
 
-                         <tr><td colspan="2" style="padding-left: 315px">
-                          <?php if($ifAccepted==0): ?>
-                                <?php if ($rows!=0): ?>
-                                  <button type="button" name="request" class="w3-button w3-border w3-hover-black w3-black w3-round-xlarge" disabled >Request Sent</button>
-                                  <?php elseif($rows==0): ?>
-                                    <form action="profile" method="post">
-                                 <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
-                                <button type="submit" name="request" class="w3-button w3-border w3-hover-green w3-pale-blue w3-round-xlarge">Send Request</button>
-                                </form> 
-                                <?php endif ?>
-                          <?php else: ?>
+                         <tr><td colspan="2" style="padding-left: 315px" >
+                          <?php if ($ifSent>0): ?>
+                            <form action="patientProfile" method="post" style="display: inline">
+                           <input type="hidden" name="patient_id" value="<?=$profile[0]['ID_USER']?>" > 
+                            <button type="submit" name="accept" class="w3-button w3-border w3-hover-green w3-pale-blue w3-round-xlarge">Accept</button>
+                            </form>
+                            <form action="patientProfile" method="post" style="display: inline">
+                           <input type="hidden" name="patient_id" value="<?=$profile[0]['ID_USER']?>" > 
+                          <button type="submit" name="refuse" class="w3-button w3-border w3-hover-red w3-pale-blue w3-round-xlarge">Refuse</button>
+                          </form>
+                          <?php elseif($ifAccepted>0): ?>
                             <form action="#" method="post" style="display: inline">
-                           <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
+                           <input type="hidden" name="patient_id" value="<?=$profile[0]['ID_USER']?>" > 
                             <button type="submit" name="contact" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Contact</button>
                             </form>
-                            <form action="profile" method="post" style="display: inline">
-                           <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
+                            <form action="patientProfile" method="post" style="display: inline">
+                           <input type="hidden" name="patient_id" value="<?=$profile[0]['ID_USER']?>" > 
                           <button type="submit" name="delete" class="w3-button w3-border w3-hover-red w3-pale-blue w3-round-xlarge">Delete</button>
                           </form>
-                          <?php endif; ?>
+                          <?php endif ?>
+                            
+
                           
                           <!-- <button class="w3-button w3-border w3-hover-teal w3-white w3-round-xlarge" style="margin-left: 10px">Contact</button> -->
                          </td></tr>
