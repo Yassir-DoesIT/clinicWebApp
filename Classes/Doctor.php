@@ -65,5 +65,14 @@ class Doctor extends User{
 		}
 
 	}
+	function approveDoctor($user_id){
+		try {
+			$this->user_id=$user_id;
+			$approve=$this->pdo->prepare("update utilisateurs set estverifier=1 where user_id=?");
+			$approve->execute($this->user_id);
+		} catch (PDOException $e) {
+			$e->getMessage();
+		}
+	}
 
 }

@@ -47,10 +47,14 @@ align-items: center;
 <div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
 <button class="w3-bar-item w3-button w3-large"
 onclick="w3_close()">Close &times;</button>
-<form action="search" method="get">
+<?php if ($_SESSION['role']=='doctor'): ?>
+  <?php else: ?>
+    <form action="search" method="get">
 <input class="w3-input" type="text" placeholder="Search.." name="search">
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
+<?php endif ?>
+
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="mesConsultations" class="w3-bar-item w3-button">Mes Consultations</a>
 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>

@@ -13,7 +13,8 @@ $router->define([
     'adminSignIn'=>'controllers/adminSignIn.php',
     'service'=>'controllers/service.php',
     'signUpForm'=>'controllers/main.php',
-    'mesConsultations'=>'controllers/mesConsultations.php'
+    'mesConsultations'=>'controllers/mesConsultations.php',
+    'profile'=>'controllers/profile.php'
 
 ]);
 if (isset($_GET['city'])) {
@@ -32,7 +33,7 @@ if (isset($_GET['search'])) {
     $router->define(['search?search='.implode("+", explode(" ", $_GET['search']))=>'controllers/search.php']);
 }
 if (isset($_GET['profile'])) {
-    // $_SESSION['search']=$_GET['search'];
+    $_SESSION['doctor_id']=$_GET['profile'];
     // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
     $router->define(['profile?profile='.$_GET['profile']=>'controllers/profile.php']);
 }
