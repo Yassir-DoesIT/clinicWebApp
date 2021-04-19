@@ -173,6 +173,7 @@ function buildMap(latVar,lngVar,quartierId)
 
 
 
+
 function goToLoginAccordion()
     {
         let y = document.getElementById('loginAnchor');
@@ -307,11 +308,33 @@ function openSentModal()
         document.getElementById("sentModal").style.display ='block';
     }
 
+function rendreModalEditable()
+    {
+        document.getElementById("sentOrRecievedLabel").innerHTML = "<b>Envoyez À :</b>";
+        document.getElementById("sentOrRecievedButton").readOnly = false;
+        document.getElementById("messageContent").readOnly = false;
+        document.getElementById("replyButton").style.display = "none";
+        document.getElementById("closeButton").style.display = "none";
+        document.getElementById("buttonsDiv").insertAdjacentHTML('afterbegin','<button id="resetButton" onclick="resetSentModal()" type="button" class="w3-button w3-red">Annulez</button>');
+        document.getElementById("buttonsDiv").insertAdjacentHTML('beforeend',"<button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyez</button>");
+    }    
 
 function closeSentModal()
     {
         document.getElementById("sentModal").style.display ='none';
     }    
+
+function resetSentModal()
+    {
+        document.getElementById("sentOrRecievedLabel").innerHTML = "<b>Envoyez Par :</b>";
+        document.getElementById("sentOrRecievedButton").readOnly = true;
+        document.getElementById("messageContent").readOnly = true;
+        document.getElementById("replyButton").style.display = "initial";
+        document.getElementById("closeButton").style.display = "initial";
+        document.getElementById("resetButton").style.display = "none";
+        document.getElementById("sendButton").style.display = "none";
+        closeSentModal();
+    }
 
 function openLoginP()
     {

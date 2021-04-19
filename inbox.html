@@ -24,6 +24,7 @@
       
       </style>
       
+      
   
 </head>
 
@@ -39,6 +40,8 @@
                 <a href="#" class="w3-bar-item w3-button">Mes Informations</a>
                 <a href="#" class="w3-bar-item w3-button">Mes Consultations</a>
                 <a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+                <a href="#" class="w3-bar-item w3-button"><span>Demandes de Consultation</span><span style="padding: 5px; position: relative; left: 100px;background: red;
+                        color: white;">6</span></a>
               </div>
 
      <div class="w3-display-container w3-teal">
@@ -65,15 +68,17 @@
         
               <form class="w3-container" action="placeHolder" method="POST">
                 <div class="w3-section">
-                  <label><b>Envoyé À</b><input class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="sentTo" readonly required></label>
+                  <label id="sentOrRecievedLabel"><b>Envoyé par</b></label><input id="sentOrRecievedButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="sent" readonly required>
                   
-                  <textarea class="w3-input w3-border" name="password" required>Douchebag Message</textarea>
+                  <textarea id="messageContent" readonly class="w3-input w3-border" name="password" required>Douchebag Message</textarea>
                 </div>
-              </form>
         
-              <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                <button onclick="closeSentModal()" type="button" class="w3-button w3-red">Fermez</button>
+        
+              <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
+                <button id="closeButton" onclick="closeSentModal()" type="button" class="w3-button w3-red">Fermez</button>
+                <button id="replyButton" type="button" onclick="rendreModalEditable()" type="button" class="w3-button w3-green">Répondre</button>
               </div>
+        </form>
         
             </div>
           </div>
