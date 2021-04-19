@@ -15,7 +15,7 @@ onclick="w3_close()">Close &times;</button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="received" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="boite" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
 <div class="w3-display-container w3-teal">

@@ -28,8 +28,8 @@ onclick="w3_close()">Close &times;</button>
 <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="boiteReception" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
+<a href="boite" class="w3-bar-item w3-button">Boite de Réception</a>
 
 <?php endif ?>
 
@@ -89,12 +89,11 @@ onclick="w3_close()">Close &times;</button>
                     <span class="w3-bar w3-left-align">
 
                             
-                            <form action="received" method="post">
-                              <button class="w3-button w3-hover-gray" name="received" onclick="getRecieved()">Messages Reçu</button>
-                            </form>
-                            <form action="received" method="post">
+                            
+                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecieved()">Messages Reçu</button>
+                            
                             <button class="w3-button w3-hover-gray" name="sent" onclick="getSent()">Messages Envoyés</button>
-                            </form>
+
                             
                 
                     </span>

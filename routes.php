@@ -20,7 +20,8 @@ $router->define([
     'message'=>'controllers/messages.php',
     'demande'=>'controllers/demande.php',
     'received'=>'controllers/received.php',
-    'sent'=>'controllers/sent.php'
+    'sent'=>'controllers/sent.php',
+    'boite'=>'controllers/boite.php'
 
 ]);
 if (isset($_GET['city'])) {
