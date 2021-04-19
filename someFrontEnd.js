@@ -180,7 +180,12 @@ function getCity(city)
             {
                 if(xhr.status==200)
                     {
+                        document.getElementById("quartierDiv").className += "w3-show";
                         document.getElementById("quartierDropDown").innerHTML = this.responseText;
+                    }
+                else
+                    {
+                        console.log("Something went awry with xhr request : "+this.statusText)
                     }
             }
         xhr.send();
@@ -351,6 +356,16 @@ function openSentModal()
         document.getElementById("sentModal").style.display ='block';
     }
 
+function openSendModal()
+    {
+        document.getElementById("sendModal").style.display ='block';
+    }
+
+function closeSendModal()
+    {
+        document.getElementById("sendModal").style.display ='none';
+    }    
+
 function rendreModalEditable()
     {
         document.getElementById("sentOrRecievedLabel").innerHTML = "<b>Envoyez À :</b>";
@@ -399,6 +414,8 @@ function closeEditModal()
         document.getElementById("editModal").style.display = "none";
         if(document.getElementById("hiddenDiv").className.indexOf("w3-show") !== -1)
         document.getElementById("hiddenDiv").className = document.getElementById("hiddenDiv").className.replace(" w3-show", "");
+        if(document.getElementById("quartierDiv").className.indexOf("w3-show") !== -1)
+        document.getElementById("quartierDiv").className = document.getElementById("quartierDiv").className.replace(" w3-show", "");
     }
 
 function openLoginP()

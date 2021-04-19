@@ -122,10 +122,12 @@
                   <select name="cityDropDown" id="cityDropDown" onchange="getCity(this.value)">
                       <option value="Oujda">Oujda</option>
                       <option value="Laayoune">Laayoune</option>
-                      <option value="Taroudant"></option>
+                      <option value="Taroudant">Taroudant</option>
                   </select><br>
+                  <div id="quartierDiv" class="w3-hide">
                   <label><b>Veuillez Selectioner le Quartier</b></label>
                   <select style="margin-top: 5px" name="quartierDropDown" onchange="showEditInputs()" id="quartierDropDown"></select>
+                  </div>
                   <div id="hiddenDiv" class="w3-hide">
                     <div class="w3-margin-bottom" id="permanenceDiv">
                         <label><b>Est-il Permanence?</b></label>
