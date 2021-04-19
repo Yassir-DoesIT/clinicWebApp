@@ -2,6 +2,8 @@
 <?php require('Partials/header.php')?>
 <style>
 td:not(#image_td){padding-top: 20px}
+button[disabled]{background-color: gray;
+color: white;}
 </style>
 
 <div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
@@ -20,7 +22,7 @@ onclick="w3_close()">Close &times;</button>
 
 <div class="w3-container w3-padding-64">
 
-<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px"></img>
+<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px">
 
 </div>
 </div>
@@ -77,7 +79,7 @@ onclick="w3_close()">Close &times;</button>
 
                          <tr><td colspan="2" style="padding-left: 315px">
                           <?php if (!$rows==0): ?>
-                            <button type="button" name="request" class="w3-button w3-border w3-hover-green w3-white w3-round-xlarge" disabled >Request Sent</button>
+                            <button type="button" name="request" class="w3-button w3-border w3-hover-black w3-black w3-round-xlarge" disabled >Request Sent</button>
                             <?php else: ?>
                               <form action="profile" method="post">
                            <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
