@@ -15,7 +15,7 @@ onclick="w3_close()">Close &times;</button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="received" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
 <div class="w3-display-container w3-teal">
@@ -109,23 +109,26 @@ onclick="w3_close()">Close &times;</button>
 </div>
 </div>
 </div>
-<div id="sendModal" class="w3-modal">
+
+          <div id="sendModal" class="w3-modal">
             <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
         
         
-              <form class="w3-container" action="placeHolder" method="POST">
+              <form class="w3-container" action="message" method="POST">
                 <div class="w3-section">
-                  <label id="sendLabel"><b>Envoyé À</b></label><input id="sendInput" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="send" required>
+                  <label id="sendLabel"><b>Envoyé À</b></label><input id="sendInput" class="w3-input w3-border w3-margin-bottom" type="text" value="<?=$profile[0]['NOM'].' '.$profile[0]['PRENOM'].'#'.$profile[0]['ID_USER']?>" name="send" readonly>
                   
                   <textarea id="messageContent" class="w3-input w3-border" name="contenu" required></textarea>
                 </div>
+                <input type="hidden" name="receiver_id" value="<?=$profile[0]['ID_USER']?>">
         
-        
+          
               <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
 
                 <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
-                <button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyer</button>
+                <input id="sendButton" type="submit" name="send" class="w3-button w3-green">
               </div>
+              <?php $_SESSION['location']='profile'?>
         </form>
         
             </div>

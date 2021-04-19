@@ -27,4 +27,30 @@ class Message{
 			$e->getMessage();
 		}
 	}
+	function getReceived($id_destinataire){
+		try {
+			$this->id_destinataire=$id_destinataire;
+			$sql="select * from messages where id_destinataire=:id_destinataire";
+			$get_statement=$this->pdo->prepare($sql);
+			$get_statement->bindValue(':id_destinataire', $this->id_destinataire);
+			$get_statement->execute();
+			return $get_statement->fetchAll(PDO::FETCH_OBJ);
+			
+		} catch (PDOException $e) {
+			$e->getMessage();
+		}
+	}
+	function getSent($id_expediteur){
+		try {
+			$this->id_expediteur=$id_expediteur;
+			$sql="select * from messages where id_expediteur=:id_expediteur";
+			$get_statement=$this->pdo->prepare($sql);
+			$get_statement->bindValue(':id_expediteur', $this->id_expediteur);
+			$get_statement->execute();
+			return $get_statement->fetchAll(PDO::FETCH_OBJ);
+			
+		} catch (PDOException $e) {
+			$e->getMessage();
+		}
+	}
 }

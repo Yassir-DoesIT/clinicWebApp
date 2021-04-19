@@ -17,8 +17,10 @@ $router->define([
     'consultationsDoctor'=>'controllers/consultationsDoctor.php',
     'profile'=>'controllers/profile.php',
     'patientProfile'=>'controllers/patientProfile.php',
-    'message'=>'controllers/message.php',
-    'demande'=>'controllers/demande.php'
+    'message'=>'controllers/messages.php',
+    'demande'=>'controllers/demande.php',
+    'received'=>'controllers/received.php',
+    'sent'=>'controllers/sent.php'
 
 ]);
 if (isset($_GET['city'])) {

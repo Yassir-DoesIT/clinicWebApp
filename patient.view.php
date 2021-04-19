@@ -3,7 +3,7 @@
 <?php 
 // if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 // 	echo "Hello ". $_SESSION['prenom'] . " " . $_SESSION['nom'] . ", your id is " . $_SESSION['user_id'];}
-//var_dump($_POST);
+// var_dump($_POST);
 ?>
 
         <script type="text/javascript">
@@ -42,7 +42,7 @@ onclick="w3_close()">Close &times;</button>
 </form>
 <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="#" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="received" class="w3-bar-item w3-button">Boite de Réception</a>
 </div>
 
 <div class="w3-display-container w3-teal">
@@ -84,7 +84,7 @@ onclick="w3_close()">Close &times;</button>
    <div class="w3-display-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
     <table class="w3-table w3-margin-top" style="margin-left: 100px">
       <tr><td>
-       <img src=<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?> onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer; display: block;"> 
+       <img src="<?="UsersCache/photoProfile/".$_SESSION['photoProfile']?>" onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 100px; height: 100px;margin-left: 20px; margin-top: 10px; cursor: pointer; display: block;"> 
        <form action="patient" id="imageForm" method="post" enctype="multipart/form-data">
         <label  style="float:left; margin-top: 10px;cursor: pointer;" for="photoProfile" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" >Charger une nouvelle image</label>
         
