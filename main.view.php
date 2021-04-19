@@ -37,7 +37,7 @@
 
     <div class="w3-display-container w3-teal">
         <div class="w3-container w3-padding-64">
-            <img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px"></img>
+            <img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px">
             <h1 class="w3-display-middle" style="font-family: 'Tangerine', serif;">Bienvenue sur HealthGeist!</h1>
           </div>
     </div>

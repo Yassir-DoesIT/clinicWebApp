@@ -172,7 +172,24 @@ function buildMap(latVar,lngVar,quartierId)
     
 
 
+function getCity(city)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET","responsibleFile?ville="+city,true);
+        xhr.onload = function()
+            {
+                if(xhr.status==200)
+                    {
+                        document.getElementById("quartierDropDown").innerHTML = this.responseText;
+                    }
+            }
+        xhr.send();
+    }
 
+function showEditInputs()
+    {
+        document.getElementById("hiddenDiv").className += "w3-show";
+    }
 
 function goToLoginAccordion()
     {
@@ -184,6 +201,17 @@ function goToLoginAccordion()
             }
         y.scrollIntoView({behavior: 'smooth'});
     }
+
+function goToDoctorsAccordion()
+    {
+        let y = document.getElementById('doctorsAnchor');
+        let x = document.getElementById('doctorsAccordion')
+        if(x.className.indexOf("w3-show") == -1)
+            {
+                x.className += " w3-show";
+            }
+        y.scrollIntoView({behavior: 'smooth'});   
+    }    
 
 function validateForm()
 {
@@ -303,6 +331,21 @@ function controlPharmacyAccordion()
             }
     }
 
+function controlDoctorsAccordion()
+    {
+        let y = document.getElementById('doctorsAnchor');
+        let x = document.getElementById('doctorsAccordion')
+        if(x.className.indexOf("w3-show") == -1)
+            {
+                x.className += " w3-show";
+            }
+        else
+            {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        y.scrollIntoView({behavior: 'smooth'});    
+    }
+
 function openSentModal()
     {
         document.getElementById("sentModal").style.display ='block';
@@ -334,6 +377,28 @@ function resetSentModal()
         document.getElementById("resetButton").style.display = "none";
         document.getElementById("sendButton").style.display = "none";
         closeSentModal();
+    }
+
+function openInsertModal()
+    {
+        document.getElementById("insertModal").style.display = "block";
+    }
+
+function closeInsertModal()
+    {
+        document.getElementById("insertModal").style.display = "none";
+    }
+
+function openEditModal()
+    {
+        document.getElementById("editModal").style.display = "block";
+    }
+
+function closeEditModal()
+    {
+        document.getElementById("editModal").style.display = "none";
+        if(document.getElementById("hiddenDiv").className.indexOf("w3-show") !== -1)
+        document.getElementById("hiddenDiv").className = document.getElementById("hiddenDiv").className.replace(" w3-show", "");
     }
 
 function openLoginP()
