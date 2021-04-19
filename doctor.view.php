@@ -172,7 +172,7 @@ onclick="w3_close()">Close &times;</button>
                             
                     </div>
                     <div class="button2" style="grid-row-start: 2/3; align-self: center">
-                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="button" id="goBack" onclick="back()" style="display: none">Retour</button>
+                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="reset" id="goBack" onclick="back()" style="display: none">Retour</button>
                     </div>
 
                     <div class="button3" style="grid-row-start: 3/4">

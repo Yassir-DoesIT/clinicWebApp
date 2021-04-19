@@ -78,6 +78,19 @@ class Service{
 			$e->getMessage();
 		}		
 	}
+	function updateService($id_service, $permanance){
+	try {
+
+		$services=$this->pdo->prepare("update services_medicaux set permanance=:permanance where id_service=:id_service");
+		$services->bindValue(':permanance', $this->permanance);
+		$services->bindValue(':id_service', $this->id_service);
+		$services->execute();
+ 		
+ 		return $services->fetchAll(PDO::FETCH_OBJ);
+		}catch (PDOException $e) {
+			$e->getMessage();
+		}		
+	}
 	
 	 
 	

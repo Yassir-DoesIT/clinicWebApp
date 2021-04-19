@@ -1,7 +1,15 @@
 <?php
-if (isset($_GET['profile'])) {
-	$profile=$doctor->selectApproved($_GET['profile']);
-	// var_dump($profile);
+$profile=$doctor->selectApproved($_SESSION['doctor_id']);
 
-require 'profile.view.php';
+if (isset($_POST['request'])) {
+	if (isset($_POST['doctor_id'])) {
+		$rows=$demande->getRequests($_SESSION['user_id'], $_POST['doctor_id'], false);
+		if ($rows==0) {
+		$demande->sendRequest($_SESSION['user_id'], $_POST['doctor_id']);
+		}
+	}
+	
 }
+$rows=$demande->getRequests($_SESSION['user_id'], $_SESSION['doctor_id'], false);
+	// var_dump($rows);
+require 'profile.view.php';

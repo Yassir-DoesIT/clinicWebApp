@@ -68,7 +68,7 @@ function back()
         for(var input of myInputs)
         {
             input.readOnly = true;
-            console.log(input);
+            // console.log(input);
         }
 
     }
