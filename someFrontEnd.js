@@ -244,6 +244,9 @@ function truncateString(str, num) {
 
 function getCity(city)
     {
+        document.getElementById("nomEtab").value = ' ';
+        document.getElementById("latEtab").value = ' ';
+        document.getElementById("lngEtab").value = ' ';
         var jsonObject_quartiers
         var xhr = new XMLHttpRequest();
         xhr.open("GET","quartiers?cityAdmin="+city,false);
@@ -275,9 +278,12 @@ function getCity(city)
 
 function getQuartier(quartier)
     {
+        document.getElementById("nomEtab").value = ' ';
+        document.getElementById("latEtab").value = ' ';
+        document.getElementById("lngEtab").value = ' ';
         var jsonObject_services
         var xhr = new XMLHttpRequest();
-        xhr.open("GET","service?quartierId="+quartier,false);
+        xhr.open("GET","allServices?quartierId="+quartier,false);
         xhr.onload = function()
             {
                 if(xhr.status==200)
@@ -285,9 +291,9 @@ function getQuartier(quartier)
                         document.getElementById("serviceDropDown").innerHTML = '<option selected disabled value="---">---------</option>';
                        // document.getElementById("serviceDiv").className += "w3-show";
                         jsonObject_services = JSON.parse(this.responseText);
-                        console.log("this is a message");
-                        console.log(this.responseText);
-                        console.log(jsonObject_services);
+                        //console.log("this is a message");
+                        //console.log(this.responseText);
+                       // console.log(jsonObject_services);
                        // document.getElementById("quartierDropDown").innerHTML = this.responseText;
                     }
                 else
@@ -306,8 +312,41 @@ function getQuartier(quartier)
 
 function fillForm(etabID)
     {
+        var jsonObject_etab;
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","")
+        xhr.open("GET","serviceinfo?serviceId="+etabID,false)
+        xhr.onload = function()
+            {
+                if(xhr.status==200)
+                {
+                    //console.log(this.responseText);
+                    jsonObject_etab = JSON.parse(this.responseText);
+                    
+                    console.log(jsonObject_etab);
+                    //console.log("inside if")
+                }
+                else
+                console.log("something went wrong with xhr")
+            }
+        xhr.send();
+           console.log(jsonObject_etab);
+            console.log("outside if");
+
+        if(jsonObject_etab[0].PERMANANCE==1)
+        {
+            document.getElementById("radioFalse").checked = false;
+            document.getElementById("radioTrue").checked = true;
+        }
+        else
+        {
+            document.getElementById("radioFalse").checked = true;
+            document.getElementById("radioTrue").checked = false;
+        }
+
+        document.getElementById("nomEtab").value = jsonObject_etab[0].INTITULE_SERVICE;
+        document.getElementById("latEtab").value = jsonObject_etab[0].LAT_SERVICE;
+        document.getElementById("lngEtab").value = jsonObject_etab[0].LNG_SERVICE;
+        
     }    
 
 function showEditInputs()

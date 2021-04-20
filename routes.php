@@ -25,6 +25,9 @@ $router->define([
     'quartiers'=>'controllers/quartiers.php'
 
 ]);
+if (isset($_GET['serviceId'])) {
+    $router->define(['serviceinfo?serviceId='.$_GET['serviceId']=>'controllers/serviceinfo.php']);
+}
 if (isset($_GET['city'])) {
     $router->define(['etab?city='.$_GET['city']=>'controllers/etab.php']);
 }
@@ -33,6 +36,9 @@ if (isset($_GET['cityAdmin'])) {
 }
 if (isset($_GET['quartierId'])) {
     $router->define(['service?quartierId='.$_GET['quartierId']=>'controllers/service.php']);
+}
+if (isset($_GET['quartierId'])) {
+    $router->define(['allServices?quartierId='.$_GET['quartierId']=>'controllers/allServices.php']);
 }
 if (isset($_GET['page'])) {
     $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));

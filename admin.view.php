@@ -120,11 +120,12 @@
                         <input class="w3-radio" id="radioTrue" type="radio" name="permanence" value="1"><label>Oui</label>
                         <input class="w3-radio" id="radioFalse" type="radio" name="permanence" value="0"><label>Non</label>
                       </div>
-        
+                      <label><b>Nom de l'Etablissment</b></label>
+                      <input id="nomEtab" class="w3-input w3-border w3-margin-bottom" type="text" name="nom" required>
                       <label><b>Latitude</b></label>
-                      <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Veuillez taper la latitude" name="lat" required>
+                      <input class="w3-input w3-border w3-margin-bottom" type="text" id="latEtab" name="lat" required>
                       <label><b>Longitude</b></label>
-                      <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Veuillez taper la longitude" name="longitude" required>           
+                      <input class="w3-input w3-border w3-margin-bottom" type="text" id="lngEtab" name="longitude" required>           
                       </div>
                       <button class="w3-button w3-block w3-green w3-section w3-padding" name="editForm" type="submit" value="submit">Insérez</button>
                     </div>

@@ -1,8 +1,8 @@
 <?php
 
-f (!isset($_SESSION['role'])) {
+if (!isset($_SESSION['role'])) {
 	header('location: signUpForm#login');
-}elseif (isset($_SESSION['role'])) {
+}elseif (isset($_SESSION['role']) && !($_SESSION['role']=='admin')) {
 	header('location:'. $_SESSION['role']);
 }
 

@@ -28,6 +28,18 @@ class Service{
 		}		
 	}
 
+	function selectService($id_service){
+		try {
+			$this->id_service=$id_service;
+			$services=$this->pdo->prepare("select * from services_medicaux where id_service=:id_service");
+			$services->bindValue(':id_service', $this->id_service);
+			$services->execute();
+	
+			 return $services->fetchAll(PDO::FETCH_OBJ);
+			}catch (PDOException $e) {
+				$e->getMessage();
+			}
+		}
 
 	function is247($id_quartier){
 	try {
