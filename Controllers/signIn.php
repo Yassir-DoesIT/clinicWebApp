@@ -2,9 +2,7 @@
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
 if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['role'])){
-  if ($_POST['role']=='a') {
-  	$result = $admin->logInUser($_POST['email'],$_POST['password'], 'a');
-  }elseif ($_POST['role']=='d') {
+  if ($_POST['role']=='d') {
   	$result = $doctor->logInUser($_POST['email'],$_POST['password'], 'd');
   }elseif ($_POST['role']=='p') {
   	$result = $patient->logInUser($_POST['email'],$_POST['password'], 'p');

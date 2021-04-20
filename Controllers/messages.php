@@ -1,5 +1,7 @@
 <?php
-
+if (!isset($_SESSION['role'])) {
+	header('location: signUpForm#login');
+}
 $rows = $demande->getRequests($_SESSION['user_id'], false);
 if ($_SESSION['role']=='patient') {
 	$consultations=$consultation->getAcceptedPatient($_SESSION['user_id'], true);

@@ -15,16 +15,24 @@ showErrorOrSuccess();
 
 </script>
 <style>
-
-#myGrid{
+      
+        #myGrid{
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
 grid-gap: 10px;
 align-items: center;
+grid-template-areas: 
+"card card card card"
+"card card card card"
+"pages pages pages pages";    
 
 }
 
-</style>
+.pages{
+  grid-area: pages;
+}
+      
+      </style>
 
 <div class='w3-modal' id='errorModal'>
 <div class="w3-modal-content w3-card-4 w3-animate-zoom" id='errorChild' style="max-width:600px">  
@@ -135,9 +143,16 @@ onclick="w3_close()">Close &times;</button>
           </div>
       
                  <?php endforeach ?>
+                  <div class="pages">
+                  <?php for ($page=1; $page<=$pages ; $page++) : ?>
+                  <?= '<a href="consultationsPatient?page='. $page .'">'.$page?>
+                  <?php endfor; ?>
+
                  <?php else: ?> 
+
                   <h1 style="padding-left: 490px">Pas de consultations</h1>
                  <?php endif;?>
+</div>
                  
              </div>
           </div>   

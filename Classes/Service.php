@@ -7,10 +7,7 @@ class Service{
 	private $id_service;
 	private $id_quartier;
 	private $intitule_service;
-	private $type;
 	private $permanance;
-	private $numero_fixe;
-	private $description_service;
 	private $lat_service;
 	private $lng_service;
 
@@ -45,11 +42,11 @@ class Service{
 		}		
 	}
 
-	function addService($id_quartier, $intitule_service, $type, $numero_fixe, $description_service, $lat_service, $lng_service){
+	function addService($quartier,$ville, $intitule_service, $permanance, $lat_service, $lng_service){
 	try {
-		$this->id_quartier=$id_quartier;
 		$this->intitule_service=$intitule_service;
 		$this->type=$type;
+		$this->permanance=$permanance;
 		$this->numero_fixe=$numero_fixe;
 		$this->description_service=$description_service;
 		$this->lat_service=$lat_service;
@@ -61,14 +58,12 @@ class Service{
 		if ($checkService->rowcount()==1) {
 			return ['errorMessage'=>'This service already listed with the 24/7h working services'];
 		}else{
-			$sql="insert into services_medicaux(id_quartier, intitule_service, type, permanance, numero_fixe, description_service, $lat_service, $lng_service)where id_quartier=:quartier and intitule_service=:intitule_service, :type, :permanance, :numero_fixe, :description_service, :lat_service, :lng_service";
+			$sql="insert into services_medicaux(id_quartier, intitule_service, permanance , $lat_service, $lng_service)values(select id_quartier from quartiers where intitule_quartier=:quartier and code_postale_ville=:(select code_postale_ville from villes where intitule_ville=:ville),:intitule_service, :permanance, :lat_service, :lng_service";
 			$insert_statement=$this->pdo->prepare($sql);
-			$insert_statement->bindValue(':id_quartier', $this->id_quartier);
+			$insert_statement->bindValue(':quartier', $quartier);
+			$insert_statement->bindValue(':ville', $ville);
 			$insert_statement->bindValue(':intitule_service', $this->intitule_service);
-			$insert_statement->bindValue(':type', $this->type);
-			$insert_statement->bindValue(':permanance', 1);
-			$insert_statement->bindValue(':numero_fixe', $this->numero_fixe);
-			$insert_statement->bindValue(':description_service', $this->description_service);
+			$insert_statement->bindValue(':permanance', $this->permanance);
 			$insert_statement->bindValue(':lat_service', $this->lat_service);
 			$insert_statement->bindValue(':lng_service', $this->lng_service);
 			$insert_statement->execute();

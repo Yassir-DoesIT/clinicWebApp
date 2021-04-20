@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION['role'])) {
+	header('location: signUpForm#login');
+}
 if (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
 	header('location:'. $_SESSION['role']);
 }

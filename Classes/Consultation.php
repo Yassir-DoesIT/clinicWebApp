@@ -42,34 +42,50 @@ class Consultation{
 		}
 		
 	}
-	function getAccepted($doctor,$data){
+	function getAccepted($doctor,$starting_number,$results_per_page){
 		try {
+			if (!($starting_number===null) && !($results_per_page===null)) {
 			$this->doctor=$doctor;
+			$sql="select * from consultation where doctor=:doctor LIMIT :starting_number,:results_per_page";
+			$statement=$this->pdo->prepare($sql);
+			$statement->bindValue(':doctor', $this->doctor);
+			$statement->bindValue(':starting_number', $starting_number, PDO::PARAM_INT);
+			$statement->bindValue(':results_per_page', $results_per_page, PDO::PARAM_INT);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_OBJ);
+			 	
+			 }else{
+			 	$this->doctor=$doctor;
 			$sql="select * from consultation where doctor=:doctor";
 			$statement=$this->pdo->prepare($sql);
 			$statement->bindValue(':doctor', $this->doctor);
 			$statement->execute();
-			if ($data==false) {
-			 	return $statement->rowCount();
-			 }else{
-				return $statement->fetchAll(PDO::FETCH_OBJ);
+			return $statement->rowCount();
 			 }
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
 		
 	}
-	function getAcceptedPatient($patient,$data){
+	function getAcceptedPatient($patient,$starting_number,$results_per_page){
 		try {
+			if (!($starting_number===null) && !($results_per_page===null)) {
 			$this->patient=$patient;
+			$sql="select * from consultation where patient=:patient LIMIT :starting_number,:results_per_page";
+			$statement=$this->pdo->prepare($sql);
+			$statement->bindValue(':patient', $this->patient);
+			$statement->bindValue(':starting_number', $starting_number, PDO::PARAM_INT);
+			$statement->bindValue(':results_per_page', $results_per_page, PDO::PARAM_INT);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_OBJ);
+			 	
+			 }else{
+			 	$this->patient=$patient;
 			$sql="select * from consultation where patient=:patient";
 			$statement=$this->pdo->prepare($sql);
 			$statement->bindValue(':patient', $this->patient);
 			$statement->execute();
-			if ($data==false) {
-			 	return $statement->rowCount();
-			 }else{
-				return $statement->fetchAll(PDO::FETCH_OBJ);
+			return $statement->rowCount();
 			 }
 		} catch (PDOException $e) {
 			$e->getMessage();
