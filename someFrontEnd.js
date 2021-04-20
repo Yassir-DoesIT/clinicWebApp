@@ -606,10 +606,10 @@ function openEditModal()
 function closeEditModal()
     {
         document.getElementById("editModal").style.display = "none";
-        if(document.getElementById("hiddenDiv").className.indexOf("w3-show") !== -1)
-        document.getElementById("hiddenDiv").className = document.getElementById("hiddenDiv").className.replace(" w3-show", "");
-        if(document.getElementById("quartierDiv").className.indexOf("w3-show") !== -1)
-        document.getElementById("quartierDiv").className = document.getElementById("quartierDiv").className.replace(" w3-show", "");
+       // if(document.getElementById("hiddenDiv").className.indexOf("w3-show") !== -1)
+        //document.getElementById("hiddenDiv").className = document.getElementById("hiddenDiv").className.replace(" w3-show", "");
+        //if(document.getElementById("quartierDiv").className.indexOf("w3-show") !== -1)
+        //document.getElementById("quartierDiv").className = document.getElementById("quartierDiv").className.replace(" w3-show", "");
     }
 
 function openLoginP()
