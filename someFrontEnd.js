@@ -171,6 +171,71 @@ function buildMap(latVar,lngVar,quartierId)
     }
     
 
+function getRecievedMessages()
+    {
+        document.getElementById("myGrid").innerHTML = '';
+        var jsonObject_recieved;
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","received",false)
+        xhr.onload = function()
+        {
+            if(xhr.status==200)
+            {
+                jsonObject_recieved = JSON.parse(this.responseText);
+                //console.log(this.responseText);
+                //console.log("before me is a string");
+                //console.log(jsonObject_recieved);
+                //console.log("before me is JSON object in function");
+            }
+        }
+        xhr.send();
+        //console.log(jsonObject_recieved);
+        //console.log("before me is JSON object outside of function");
+        for(var i = 0; i < jsonObject_recieved.length; i++)
+        {
+            var currentMessage = jsonObject_recieved[i];
+            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+
+        }
+    }
+
+function getSentMessages()
+    {
+        document.getElementById("myGrid").innerHTML = '';
+        var jsonObject_sent;
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","sent",false)
+        xhr.onload = function()
+        {
+            if(xhr.status==200)
+            {
+                jsonObject_sent = JSON.parse(this.responseText);
+                //console.log(this.responseText);
+                //console.log("before me is a string");
+                //console.log(jsonObject_sent);
+                //console.log("before me is JSON object in function");
+            }
+        }
+        xhr.send();
+        //console.log(jsonObject_sent);
+        //console.log("before me is JSON object outside of function");
+        for(var i = 0; i < jsonObject_sent.length; i++)
+        {
+            var currentMessage = jsonObject_sent[i];
+            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+
+        }
+    }
+
+function truncateString(str, num) {
+        // If the length of str is less than or equal to num
+        // just return str--don't truncate it.
+        if (str.length <= num) {
+          return str
+        }
+        // Return str truncated with '...' concatenated to the end of str.
+        return str.slice(0, num) + '...'
+      }
 
 function getCity(city)
     {

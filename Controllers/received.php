@@ -7,5 +7,4 @@ if (!isset($_SESSION['role'])) {
 			$messages=$message->getReceived($user_id);
 			$json=json_encode($messages);
 			echo $json;
-
-	require 'boite.view.php';
+			

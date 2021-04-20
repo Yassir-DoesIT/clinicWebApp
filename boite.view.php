@@ -1,5 +1,12 @@
 <?php $title='Boite de Réception'?>
 <?php require 'partials/header.php'?>
+<script>
+window.onload =setTimeout(() => {
+  getRecievedMessages();
+  
+}, 10);
+  
+</script>
 <style>
 
 #myGrid{
@@ -39,7 +46,7 @@ onclick="w3_close()">Close &times;</button>
 
 <div class="w3-container w3-padding-64">
 
-<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px"></img>
+<img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px">
 
 </div>
 </div>
@@ -90,9 +97,9 @@ onclick="w3_close()">Close &times;</button>
 
                             
                             
-                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecieved()">Messages Reçu</button>
+                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
                             
-                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSent()">Messages Envoyés</button>
+                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
 
                             
                 
@@ -100,9 +107,7 @@ onclick="w3_close()">Close &times;</button>
 
                    <div id="myGrid"  style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
                        
-                            <div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem sunt, consequatur dolorum optio nihil necessitatibus nemo cupiditate, ea amet debitis saepe nulla expedita...
-                            </div>
+                            
                            
                        
                    </div>
