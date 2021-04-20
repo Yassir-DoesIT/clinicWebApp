@@ -54,10 +54,11 @@ class Service{
 		}		
 	}
 
-	function addService($quartier,$ville, $intitule_service, $permanance, $lat_service, $lng_service){
+	function addService($id_quartier, $intitule_service, $permanance, $lat_service, $lng_service){
 	try {
 		$this->intitule_service=$intitule_service;
 		$this->type=$type;
+		$this->id_quartier=$id_quartier;
 		$this->permanance=$permanance;
 		$this->numero_fixe=$numero_fixe;
 		$this->description_service=$description_service;
@@ -70,10 +71,9 @@ class Service{
 		if ($checkService->rowcount()==1) {
 			return ['errorMessage'=>'This service already listed with the 24/7h working services'];
 		}else{
-			$sql="insert into services_medicaux(id_quartier, intitule_service, permanance , $lat_service, $lng_service)values(select id_quartier from quartiers where intitule_quartier=:quartier and code_postale_ville=:(select code_postale_ville from villes where intitule_ville=:ville),:intitule_service, :permanance, :lat_service, :lng_service";
+			$sql="insert into services_medicaux(id_quartier, intitule_service, permanance , $lat_service, $lng_service)values(:id_quartier,:intitule_service, :permanance, :lat_service, :lng_service";
 			$insert_statement=$this->pdo->prepare($sql);
-			$insert_statement->bindValue(':quartier', $quartier);
-			$insert_statement->bindValue(':ville', $ville);
+			$insert_statement->bindValue(':id_quartier', $this->id_quartier);
 			$insert_statement->bindValue(':intitule_service', $this->intitule_service);
 			$insert_statement->bindValue(':permanance', $this->permanance);
 			$insert_statement->bindValue(':lat_service', $this->lat_service);

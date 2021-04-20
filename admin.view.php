@@ -90,8 +90,8 @@
               <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Veuillez taper la longitude" name="lng" required>
     
               </div>
-              <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="submit">Insérez</button>
-              <button onclick="closeInsertModal()" type="button" name="insertForm"  class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
+              <button class="w3-button w3-block w3-green w3-section w3-padding" name="insertForm" type="submit" value="submit">Insérez</button>
+              <button onclick="closeInsertModal()" type="button" class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
             </div>
            
           </form>
