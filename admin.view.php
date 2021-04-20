@@ -75,7 +75,7 @@
                   <select style="margin-top: 5px" name="quartierDropDownInsert" id="quartierDropDownInsert"><option selected disabled>---------</option>
                   
                 </select><br>
-              
+    </div>
               <label><b>Nom de l'Etablissment</b></label>
               <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Veuillez taper le nom de l'établissment" name="nom" required>
               <div class="w3-margin-bottom">
@@ -141,15 +141,17 @@
                       <label><b>Longitude</b></label>
                       <input class="w3-input w3-border w3-margin-bottom" type="text" id="lngEtab" name="longitude" required>           
                       </div>
+                      <div class="w3-container ">
                       <button class="w3-button w3-block w3-green w3-section w3-padding" name="editForm" type="submit" value="submit">Insérez</button>
+                <button onclick="closeEditModal()" type="button" class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
+              </div>
+                      
                     </div>
                
               </form>
         
     
-              <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                <button onclick="closeEditModal()" type="button" class="w3-button w3-red">Annuler</button>
-              </div>
+              
         
             </div>
 </div>
