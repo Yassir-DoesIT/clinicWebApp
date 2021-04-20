@@ -10,6 +10,40 @@
       }
     
     </style>
+<script type="text/javascript">
+        function pageLoad() {
+            if(window.location.hash==='#login'){
+              let y = document.getElementById('loginAccordionButton');
+              y.click();
+            }
+        }
+        window.onload = function()
+         {
+           pageLoad();
+          showErrorOrSuccess();
+          }
+        
+        </script>
+
+<div class='w3-modal' id='errorModal'>
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" id='errorChild' style="max-width:600px">  
+        <?php if(isset($result['errorMessage'])) : ?>
+        <div class="w3-center"><br>
+         <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
+       
+       </div>
+       <div class="w3-container"><?=$result["errorMessage"]?></div><span style="visibility : hidden">;</span>
+       
+       <?php  elseif(isset($result['successMessage'])) : ?>
+          
+          <div class="w3-center"><br>
+         <span onclick="closeErrorModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Fermer">&times;</span>
+       </div>
+       <div class="w3-container"><?=$result['successMessage']?></div><span style="visibility : hidden">;</span>
+        <?php endif;?>
+     </div>   
+</div> 
+
     <div class="w3-display-container w3-teal">
         <div class="w3-container w3-padding-64">
             <img src="Images/Logo.png" class="w3-display-left" style="max-height: 150px; max-width: 150px"></img>
@@ -139,7 +173,7 @@
                       <label><b>Latitude</b></label>
                       <input class="w3-input w3-border w3-margin-bottom" type="text" id="latEtab" name="lat" required>
                       <label><b>Longitude</b></label>
-                      <input class="w3-input w3-border w3-margin-bottom" type="text" id="lngEtab" name="longitude" required>           
+                      <input class="w3-input w3-border w3-margin-bottom" type="text" id="lngEtab" name="lng" required>           
                       </div>
                       <div class="w3-container ">
                       <button class="w3-button w3-block w3-green w3-section w3-padding" name="editForm" type="submit" value="submit">Insérez</button>

@@ -57,21 +57,18 @@ class Service{
 	function addService($id_quartier, $intitule_service, $permanance, $lat_service, $lng_service){
 	try {
 		$this->intitule_service=$intitule_service;
-		$this->type=$type;
 		$this->id_quartier=$id_quartier;
 		$this->permanance=$permanance;
-		$this->numero_fixe=$numero_fixe;
-		$this->description_service=$description_service;
 		$this->lat_service=$lat_service;
 		$this->lng_service=$lng_service;
 		$checkService=$this->pdo->prepare("select * from services_medicaux where id_quartier=:quartier and intitule_service=:intitule_service");
-		$$checkService->bindValue(':quartier', $this->id_quartier);
-		$checkService->bindValue(':intitule_service', $this->intitule_service);
+		$checkService->bindValue(':quartier', $this->id_quartier);
+		$checkService->bindValue(':intitule_service', '$this->intitule_service');
 		$checkService->execute();
-		if ($checkService->rowcount()==1) {
+		if ($checkService->rowcount()>0) {
 			return ['errorMessage'=>'This service already listed with the 24/7h working services'];
 		}else{
-			$sql="insert into services_medicaux(id_quartier, intitule_service, permanance , $lat_service, $lng_service)values(:id_quartier,:intitule_service, :permanance, :lat_service, :lng_service";
+			$sql="insert into services_medicaux(id_quartier, intitule_service, permanance , lat_service, lng_service) values(:id_quartier,:intitule_service, :permanance, :lat_service, :lng_service)";
 			$insert_statement=$this->pdo->prepare($sql);
 			$insert_statement->bindValue(':id_quartier', $this->id_quartier);
 			$insert_statement->bindValue(':intitule_service', $this->intitule_service);
@@ -85,15 +82,23 @@ class Service{
 			$e->getMessage();
 		}		
 	}
-	function updateService($id_service, $permanance){
+	function updateService($id_service, $intitule_service, $permanance, $lat_service, $lng_service){
 	try {
-
-		$services=$this->pdo->prepare("update services_medicaux set permanance=:permanance where id_service=:id_service");
-		$services->bindValue(':permanance', $this->permanance);
+		$sql="update services_medicaux set intitule_service=:intitule_service, permanance=:permanance, lat_service=:lat_service,lng_service=:lng_service  where id_service=:id_service";
+		$services=$this->pdo->prepare($sql);
+		$this->id_service=$id_service;
+		$this->intitule_service=$intitule_service;
+		$this->permanance=$permanance;
+		$this->lat_service=$lat_service;
+		$this->lng_service=$lng_service;
 		$services->bindValue(':id_service', $this->id_service);
+		$services->bindValue(':intitule_service', $this->intitule_service);
+		$services->bindValue(':permanance', $this->permanance);
+		$services->bindValue(':lat_service', $this->lat_service);
+		$services->bindValue(':lng_service', $this->lng_service);
 		$services->execute();
  		
- 		return $services->fetchAll(PDO::FETCH_OBJ);
+ 		return ['successMessage'=>'Service was updated successfully'];
 		}catch (PDOException $e) {
 			$e->getMessage();
 		}		
