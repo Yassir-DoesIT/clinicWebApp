@@ -194,9 +194,81 @@ function getRecievedMessages()
         for(var i = 0; i < jsonObject_recieved.length; i++)
         {
             var currentMessage = jsonObject_recieved[i];
-            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openReceivedModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
+    }
+
+function openReceivedModal(messageId)
+    {
+        document.getElementById("receivedModal").style.display = "block";
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","someMessageFile?messageId="+messageId,true);
+        xhr.onload = function ()
+            {
+                if(xhr.status==200)
+                    {
+                        let jsonObject_message = JSON.parse(this.responseText);
+                        let sendersId = document.getElementById("sendersId");
+                        let sendersName = document.getElementById("recievedButton");
+                        let messageContent = document.getElementById("recievedMessageContent");
+                        sendersName.value = jsonObject_message[0].ID_EXPEDITEUR;
+                        messageContent.value = jsonObject_message[0].CONTENU;
+                        sendersId.value = jsonObject_message[0].ID_EXPEDITEUR;
+                    }
+                else
+                console.log("something went awry with xhr : "+this.statusText);
+            }
+        xhr.send();
+    }
+
+function openSendModal(messageId)
+    {
+        document.getElementById("receivedModal").style.display = "none";
+        document.getElementById("sendModal").style.display = "block";
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","someMessageFile?messageId="+messageId,true);
+        xhr.onload = function ()
+            {
+                if(xhr.status==200)
+                    {
+                        let jsonObject_message = JSON.parse(this.responseText);
+                        let sendToId = document.getElementById("sendToId");
+                        let sendToName = document.getElementById("sendButton");
+                        sendToName.value = jsonObject_message[0].ID_EXPEDITEUR;
+                        sendToId.value = jsonObject_message[0].ID_EXPEDITEUR;
+                    }
+                else
+                console.log("something went awry with xhr : "+this.statusText);
+            }
+        xhr.send();
+    }
+
+function openSentModal(messageId)
+    {
+        document.getElementById("sentModal").style.display = "block";
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","someMessageFile?messageId="+messageId,true);
+        xhr.onload = function ()
+            {
+                if(xhr.status==200)
+                    {
+                        let jsonObject_message = JSON.parse(this.responseText);
+                        let sentToName = document.getElementById("sentButton");
+                        let messageContent = document.getElementById("sentMessageContent");
+                        sentToName.value = jsonObject_message[0].ID_DESTINATAIRE;
+                        messageContent.value = jsonObject_message[0].CONTENU;
+                    }
+                else
+                console.log("something went awry with xhr : "+this.statusText);
+            }
+        xhr.send();    
+    }    
+
+function reply(messageId)
+    {
+        closeReceivedModal();
+        openSendModal(messageId);
     }
 
 function getSentMessages()
@@ -222,15 +294,11 @@ function getSentMessages()
         for(var i = 0; i < jsonObject_sent.length; i++)
         {
             var currentMessage = jsonObject_sent[i];
-            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal()" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
     }
 
-function fillMessageModal()
-    {
-
-    }
 
 function truncateString(str, num) {
         // If the length of str is less than or equal to num
@@ -545,7 +613,7 @@ function controlDoctorsAccordion()
         y.scrollIntoView({behavior: 'smooth'});    
     }
 
-function openSentModal()
+/*function openSentModal()
     {
         document.getElementById("sentModal").style.display ='block';
     }
@@ -554,13 +622,17 @@ function openSendModal()
     {
         document.getElementById("sendModal").style.display ='block';
     }
-
+*/
 function closeSendModal()
     {
         document.getElementById("sendModal").style.display ='none';
     }    
 
-function rendreModalEditable()
+function closeReceivedModal()
+    {
+        document.getElementById("receivedModal").style.display = 'none';
+    }
+/*function rendreModalEditable()
     {
         document.getElementById("sentOrRecievedLabel").innerHTML = "<b>Envoyez À :</b>";
         document.getElementById("sentOrRecievedButton").readOnly = false;
@@ -568,15 +640,15 @@ function rendreModalEditable()
         document.getElementById("replyButton").style.display = "none";
         document.getElementById("closeButton").style.display = "none";
         document.getElementById("buttonsDiv").insertAdjacentHTML('afterbegin','<button id="resetButton" onclick="resetSentModal()" type="button" class="w3-button w3-red">Annuler</button>');
-        document.getElementById("buttonsDiv").insertAdjacentHTML('beforeend',"<button id='sendButton' type='submit' type='button' class='w3-button w3-green'>Envoyer</button>");
-    }    
+        document.getElementById("buttonsDiv").insertAdjacentHTML('beforeend',"<button id='sendButton' ty/pe='submit' type='button' class='w3-button w3-green'>Envoyer</button>");
+    }    */
 
 function closeSentModal()
     {
         document.getElementById("sentModal").style.display ='none';
     }    
 
-function resetSentModal()
+/*function resetSentModal()
     {
         document.getElementById("sentOrRecievedLabel").innerHTML = "<b>Envoyez Par :</b>";
         document.getElementById("sentOrRecievedButton").readOnly = true;
@@ -587,7 +659,7 @@ function resetSentModal()
         document.getElementById("sendButton").style.display = "none";
         closeSentModal();
     }
-
+*/
 function openInsertModal()
     {
         document.getElementById("insertModal").style.display = "block";
