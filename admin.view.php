@@ -62,6 +62,20 @@
     
           <form class="w3-container" action="admin" method="post" id="insertForm" name="insertForm">
             <div class="w3-section">
+                  <label><b>Veuillez Selectioner la Ville</b></label>
+                  <select name="cityDropDownInsert" id="cityDropDownInsert" onchange="getCityInsert(this.value)">
+                  <option selected disabled value="---">---------</option>
+                  <option value="Oujda">Oujda</option>
+                      <option value="Laayoune">Laayoune</option>
+                      <option value="Taroudant">Taroudant</option>
+                      
+                  </select><br>
+                  <div id="quartierDiv">
+                  <label><b>Veuillez Selectioner le Quartier</b></label>
+                  <select style="margin-top: 5px" name="quartierDropDownInsert" id="quartierDropDownInsert"><option selected disabled>---------</option>
+                  
+                </select><br>
+              
               <label><b>Nom de l'Etablissment</b></label>
               <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Veuillez taper le nom de l'établissment" name="nom" required>
               <div class="w3-margin-bottom">

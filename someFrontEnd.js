@@ -242,6 +242,38 @@ function truncateString(str, num) {
         return str.slice(0, num) + '...'
       }
 
+
+      function getCityInsert(city)
+      {
+          var jsonObject_quartiers
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET","quartiers?cityAdmin="+city,false);
+          xhr.onload = function()
+              {
+                  if(xhr.status==200)
+                      {
+                          document.getElementById("quartierDropDownInsert").innerHTML = '<option selected disabled>---------</option>';
+                          //document.getElementById("quartierDiv").className += "w3-show";
+                          jsonObject_quartiers = JSON.parse(this.responseText);
+                          //console.log(this.responseText);
+                          //console.log(jsonObject_quartiers);
+                         // document.getElementById("quartierDropDown").innerHTML = this.responseText;
+                      }
+                  else
+                      {
+                          console.log("Something went awry with xhr request : "+this.statusText)
+                      }
+              }
+          xhr.send();
+  
+          for(var i = 0; i<jsonObject_quartiers.length; i++)
+              {
+                  var currentQuartier = jsonObject_quartiers[i];
+                  document.getElementById("quartierDropDownInsert").innerHTML += '<option value="'+jsonObject_quartiers[i].ID_QUARTIER+'">'+jsonObject_quartiers[i].INTITULE_QUARTIER+'</option>';
+              }
+      }
+  
+
 function getCity(city)
     {
         document.getElementById("nomEtab").value = ' ';
