@@ -17,7 +17,7 @@
           </div>
     </div>
     <div class="w3-bar w3-teal w3-right-align">
-        <button class="w3-button w3-teal w3-hover-gray" onclick="goToLogOut()">Se Déconnecter</button>
+        <button class="w3-button w3-teal w3-hover-gray" onclick="goToAdminLogOut()">Se Déconnecter</button>
     </div>
     <div class="w3-center w3-section">
         <div class="w3-card w3-container w3-teal w3-center w3-round-large" style="padding: 0" id="#home">

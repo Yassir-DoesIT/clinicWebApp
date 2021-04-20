@@ -422,6 +422,10 @@ function goToLogOut()
     {
         window.location.href = "logout";
     }
+function goToAdminLogOut()
+    {
+        window.location.href = "adminlogout";
+    }
 function goToProfile($role)
     {
         window.location.href = $role;

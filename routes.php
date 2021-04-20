@@ -10,6 +10,7 @@ $router->define([
     'admin'=>'controllers/admin.php',
     'SignInForm'=>'controllers/signIn.php',
     'logout'=>'controllers/logout.php',
+    'adminlogout'=>'controllers/adminlogout.php',
     'adminSignIn'=>'controllers/adminSignIn.php',
     'service'=>'controllers/service.php',
     'signUpForm'=>'controllers/main.php',
