@@ -97,19 +97,28 @@
                 <div class="w3-section">
                   <label><b>Veuillez Selectioner la Ville</b></label>
                   <select name="cityDropDown" id="cityDropDown" onchange="getCity(this.value)">
-                      <option value="Oujda">Oujda</option>
+                  <option selected disabled value="---">---------</option>
+                  <option value="Oujda">Oujda</option>
                       <option value="Laayoune">Laayoune</option>
                       <option value="Taroudant">Taroudant</option>
+                      
                   </select><br>
-                  <div id="quartierDiv" class="w3-hide">
+                  <div id="quartierDiv">
                   <label><b>Veuillez Selectioner le Quartier</b></label>
-                  <select style="margin-top: 5px" name="quartierDropDown" onchange="showEditInputs()" id="quartierDropDown"></select>
+                  <select style="margin-top: 5px" name="quartierDropDown" onchange="getQuartier(this.value)" id="quartierDropDown"><option selected disabled>---------</option>
+                  
+                </select>
                   </div>
-                  <div id="hiddenDiv" class="w3-hide">
+                  <div id="serviceDiv">
+                  <label><b>Veuillez Selectioner l'Etablissment</b></label>
+                  <select style="margin-top: 5px" name="serviceDropDown" onchange="fillForm(this.value)" id="serviceDropDown"><option selected disabled value="---">---------</option>
+                </select>
+                  </div>
+                  <div id="hiddenDiv">
                     <div class="w3-margin-bottom" id="permanenceDiv">
                         <label><b>Est-il Permanence?</b></label>
-                        <input class="w3-radio" type="radio" name="permanence" value="1"><label>Oui</label>
-                        <input class="w3-radio" type="radio" name="permanence" value="0"><label>Non</label>
+                        <input class="w3-radio" id="radioTrue" type="radio" name="permanence" value="1"><label>Oui</label>
+                        <input class="w3-radio" id="radioFalse" type="radio" name="permanence" value="0"><label>Non</label>
                       </div>
         
                       <label><b>Latitude</b></label>

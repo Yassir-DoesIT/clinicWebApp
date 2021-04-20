@@ -28,6 +28,9 @@ $router->define([
 if (isset($_GET['city'])) {
     $router->define(['etab?city='.$_GET['city']=>'controllers/etab.php']);
 }
+if (isset($_GET['cityAdmin'])) {
+    $router->define(['quartiers?cityAdmin='.$_GET['cityAdmin']=>'controllers/quartiers.php']);
+}
 if (isset($_GET['quartierId'])) {
     $router->define(['service?quartierId='.$_GET['quartierId']=>'controllers/service.php']);
 }

@@ -227,6 +227,11 @@ function getSentMessages()
         }
     }
 
+function fillMessageModal()
+    {
+
+    }
+
 function truncateString(str, num) {
         // If the length of str is less than or equal to num
         // just return str--don't truncate it.
@@ -239,14 +244,20 @@ function truncateString(str, num) {
 
 function getCity(city)
     {
+        var jsonObject_quartiers
         var xhr = new XMLHttpRequest();
-        xhr.open("GET","responsibleFile?ville="+city,true);
+        xhr.open("GET","quartiers?cityAdmin="+city,false);
         xhr.onload = function()
             {
                 if(xhr.status==200)
                     {
-                        document.getElementById("quartierDiv").className += "w3-show";
-                        document.getElementById("quartierDropDown").innerHTML = this.responseText;
+                        document.getElementById("serviceDropDown").innerHTML = '<option selected disabled value="---">---------</option>';
+                        document.getElementById("quartierDropDown").innerHTML = '<option selected disabled>---------</option>';
+                        //document.getElementById("quartierDiv").className += "w3-show";
+                        jsonObject_quartiers = JSON.parse(this.responseText);
+                        //console.log(this.responseText);
+                        //console.log(jsonObject_quartiers);
+                       // document.getElementById("quartierDropDown").innerHTML = this.responseText;
                     }
                 else
                     {
@@ -254,7 +265,50 @@ function getCity(city)
                     }
             }
         xhr.send();
+
+        for(var i = 0; i<jsonObject_quartiers.length; i++)
+            {
+                var currentQuartier = jsonObject_quartiers[i];
+                document.getElementById("quartierDropDown").innerHTML += '<option value="'+jsonObject_quartiers[i].ID_QUARTIER+'">'+jsonObject_quartiers[i].INTITULE_QUARTIER+'</option>';
+            }
     }
+
+function getQuartier(quartier)
+    {
+        var jsonObject_services
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET","service?quartierId="+quartier,false);
+        xhr.onload = function()
+            {
+                if(xhr.status==200)
+                    {
+                        document.getElementById("serviceDropDown").innerHTML = '<option selected disabled value="---">---------</option>';
+                       // document.getElementById("serviceDiv").className += "w3-show";
+                        jsonObject_services = JSON.parse(this.responseText);
+                        console.log("this is a message");
+                        console.log(this.responseText);
+                        console.log(jsonObject_services);
+                       // document.getElementById("quartierDropDown").innerHTML = this.responseText;
+                    }
+                else
+                    {
+                        console.log("Something went awry with xhr request : "+this.statusText)
+                    }
+            }
+        xhr.send();
+
+        for(var i = 0; i<jsonObject_services.length; i++)
+            {
+                var currentEtab = jsonObject_services[i];
+                document.getElementById("serviceDropDown").innerHTML += '<option value="'+jsonObject_services[i].ID_SERVICE+'">'+jsonObject_services[i].INTITULE_SERVICE+'</option>';
+            }
+    }
+
+function fillForm(etabID)
+    {
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","")
+    }    
 
 function showEditInputs()
     {
