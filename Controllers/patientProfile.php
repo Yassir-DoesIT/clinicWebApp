@@ -5,7 +5,7 @@ if (!isset($_SESSION['role'])) {
 if (isset($_SESSION['role']) && !($_SESSION['role']=='doctor')) {
 	header('location:'. $_SESSION['role']);
 }
-$rows = $demande->getRequests($_SESSION['user_id'], false);
+$rows = $demande->getRequests($_SESSION['user_id'], null,null,false);
 $ifSent = $demande->ifSent($_SESSION['patient_id'], $_SESSION['user_id']);
 
 $ifAccepted= $consultation->ifAccepted($_SESSION['patient_id'], $_SESSION['user_id'], false);

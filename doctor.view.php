@@ -13,8 +13,15 @@
 </script>
 
 <?php if($_SESSION['estVerifier']=='0') : ?>
-<div class="w3-display-container"><button class="w3-display-topright"><a href="logout">Log Out</a></button></div>
-<h1>Waiting to be verified</h1>
+
+<h1 style="position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);">Waiting to be verified</h1>
+  <button class="w3-button w3-round w3-teal w3-hover-gray" style="position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 130%);" onclick="goToLogOut()">Se Déconnecter</button>
 <?php else : ?>
 <script type="text/javascript">
         window.onload = function()
