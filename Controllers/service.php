@@ -36,9 +36,7 @@ if (isset($_GET['quartierId'])) {
 			// 	}
 			// echo '}';
 
-		}else{
-					require 'etab.view.php';
-				}
+		}
 
 
 

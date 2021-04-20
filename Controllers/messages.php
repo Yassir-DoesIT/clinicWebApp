@@ -4,11 +4,11 @@ if (!isset($_SESSION['role'])) {
 }
 $rows = $demande->getRequests($_SESSION['user_id'], false);
 if ($_SESSION['role']=='patient') {
-	$consultations=$consultation->getAcceptedPatient($_SESSION['user_id'], true);
-$consultations_rows=$consultation->getAcceptedPatient($_SESSION['user_id'], false);
+	$consultations=$consultation->getAcceptedPatient($_SESSION['user_id'], null, null, true);
+$consultations_rows=$consultation->getAcceptedPatient($_SESSION['user_id'], null ,null , false);
 }elseif ($_SESSION['role']=='doctor') {
-	$consultations=$consultation->getAccepted($_SESSION['user_id'], true);
-$consultations_rows=$consultation->getAccepted($_SESSION['user_id'], false);
+	$consultations=$consultation->getAccepted($_SESSION['user_id'], null , null , true);
+$consultations_rows=$consultation->getAccepted($_SESSION['user_id'], null , null, false);
 }
 if (isset($_POST['send'])) {
 	if (isset($_POST['contenu'])) {

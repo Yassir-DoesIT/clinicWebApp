@@ -8,7 +8,7 @@ if (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
 $result_per_page=8;
 $rows = $demande->getRequests($_SESSION['user_id'], false);
 
-$consultations_rows=$consultation->getAcceptedPatient($_SESSION['user_id'], null, null);
+$consultations_rows=$consultation->getAcceptedPatient($_SESSION['user_id'], null, null,false);
 $pages=ceil($consultations_rows/$result_per_page);
 if (!isset($_GET['page'])) {
 	$page=1;
@@ -16,5 +16,5 @@ if (!isset($_GET['page'])) {
 	$page=$_GET['page'];
 }
 $starting_number=($page-1)*$result_per_page;
-$consultations=$consultation->getAcceptedPatient($_SESSION['user_id'], $starting_number, $result_per_page);
+$consultations=$consultation->getAcceptedPatient($_SESSION['user_id'], $starting_number, $result_per_page,null);
 require 'consultationsPatient.view.php';

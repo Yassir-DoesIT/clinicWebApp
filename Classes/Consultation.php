@@ -42,9 +42,9 @@ class Consultation{
 		}
 		
 	}
-	function getAccepted($doctor,$starting_number,$results_per_page){
+	function getAccepted($doctor,$starting_number,$results_per_page,$data){
 		try {
-			if (!($starting_number===null) && !($results_per_page===null)) {
+			if (!($starting_number===null) && !($results_per_page===null) && ($data===null)) {
 			$this->doctor=$doctor;
 			$sql="select * from consultation where doctor=:doctor LIMIT :starting_number,:results_per_page";
 			$statement=$this->pdo->prepare($sql);
@@ -55,21 +55,30 @@ class Consultation{
 			return $statement->fetchAll(PDO::FETCH_OBJ);
 			 	
 			 }else{
-			 	$this->doctor=$doctor;
-			$sql="select * from consultation where doctor=:doctor";
-			$statement=$this->pdo->prepare($sql);
-			$statement->bindValue(':doctor', $this->doctor);
-			$statement->execute();
-			return $statement->rowCount();
+			 	if ($data==true) {
+			 		$this->doctor=$doctor;
+					$sql="select * from consultation where doctor=:doctor";
+					$statement=$this->pdo->prepare($sql);
+					$statement->bindValue(':doctor', $this->doctor);
+					$statement->execute();
+					return $statement->fetchAll(PDO::FETCH_OBJ);
+			 	}else{
+					$this->doctor=$doctor;
+					$sql="select * from consultation where doctor=:doctor";
+					$statement=$this->pdo->prepare($sql);
+					$statement->bindValue(':doctor', $this->doctor);
+					$statement->execute();
+					return $statement->rowCount();
+			 	}
 			 }
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
 		
 	}
-	function getAcceptedPatient($patient,$starting_number,$results_per_page){
+	function getAcceptedPatient($patient,$starting_number,$results_per_page,$data){
 		try {
-			if (!($starting_number===null) && !($results_per_page===null)) {
+			if (!($starting_number===null) && !($results_per_page===null)& ($data===null)) {
 			$this->patient=$patient;
 			$sql="select * from consultation where patient=:patient LIMIT :starting_number,:results_per_page";
 			$statement=$this->pdo->prepare($sql);
@@ -80,13 +89,22 @@ class Consultation{
 			return $statement->fetchAll(PDO::FETCH_OBJ);
 			 	
 			 }else{
-			 	$this->patient=$patient;
-			$sql="select * from consultation where patient=:patient";
-			$statement=$this->pdo->prepare($sql);
-			$statement->bindValue(':patient', $this->patient);
-			$statement->execute();
-			return $statement->rowCount();
-			 }
+			 		if($data==true){
+			 		$this->patient=$patient;
+					$sql="select * from consultation where patient=:patient";
+					$statement=$this->pdo->prepare($sql);
+					$statement->bindValue(':patient', $this->patient);
+					$statement->execute();
+					return $statement->fetchAll(PDO::FETCH_OBJ);
+					}else{
+					 	$this->patient=$patient;
+					$sql="select * from consultation where patient=:patient";
+					$statement=$this->pdo->prepare($sql);
+					$statement->bindValue(':patient', $this->patient);
+					$statement->execute();
+					return $statement->rowCount();
+					 }
+		}
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
