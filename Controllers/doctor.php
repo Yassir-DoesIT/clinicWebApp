@@ -30,7 +30,7 @@ if (isset($_SESSION['prenom']) && isset($_SESSION['nom']) && $_SESSION['role']==
 			$result=$doctor->updateUser($_POST['nom'], $_POST['prenom'], $_POST['cin'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['email'], $_POST['password'], $_POST['role'],$_POST['specialite'], $_POST['lieuTravaille']);
 		}
 }
-$rows = $demande->getRequests($_SESSION['user_id'], null,null,false);
+$rows = $demande->getRequests($_SESSION['user_id'], false);
 require 'doctor.view.php';
 }elseif (isset($_SESSION['role']) && !($_SESSION['role']=='doctor')) {
 	header('location:'. $_SESSION['role']);

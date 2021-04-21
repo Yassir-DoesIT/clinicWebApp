@@ -301,7 +301,7 @@ function getSentMessages()
             if(xhr.status==200)
             {
                 jsonObject_sent = JSON.parse(this.responseText);
-                // console.log(this.responseText);
+                //console.log(this.responseText);
                 //console.log("before me is a string");
                 //console.log(jsonObject_sent);
                 //console.log("before me is JSON object in function");

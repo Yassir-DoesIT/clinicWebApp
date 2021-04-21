@@ -43,13 +43,12 @@ class Message{
 	}
 	function getSent($id_expediteur){
 		try {
-					$this->id_expediteur=$id_expediteur;
-					$sql="select * from messages where id_expediteur=:id_expediteur";
-					$get_statement=$this->pdo->prepare($sql);
-					$get_statement->bindValue(':id_expediteur', $this->id_expediteur);
-
-					$get_statement->execute();
-					return $get_statement->fetchAll(PDO::FETCH_OBJ);
+			$this->id_expediteur=$id_expediteur;
+			$sql="select * from messages where id_expediteur=:id_expediteur";
+			$get_statement=$this->pdo->prepare($sql);
+			$get_statement->bindValue(':id_expediteur', $this->id_expediteur);
+			$get_statement->execute();
+			return $get_statement->fetchAll(PDO::FETCH_OBJ);
 			
 		} catch (PDOException $e) {
 			$e->getMessage();
