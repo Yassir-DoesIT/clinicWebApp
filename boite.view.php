@@ -138,9 +138,9 @@ onclick="w3_close()">Close &times;</button>
 
                             
                             
-                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
+                              <button id="getReceivedButton" type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
                             
-                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
+                            <button id="getSentButton" class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
 
                             
                 

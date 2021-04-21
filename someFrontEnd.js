@@ -173,6 +173,8 @@ function buildMap(latVar,lngVar,quartierId)
 
 function getRecievedMessages()
     {
+        document.getElementById("getSentButton").className = "w3-button w3-hover-gray";
+        document.getElementById("getReceivedButton").className = "w3-button w3-hover-gray w3-border-green w3-bottombar";
         document.getElementById("myGrid").innerHTML = '';
         var jsonObject_recieved;
         let xhr = new XMLHttpRequest;
@@ -199,11 +201,26 @@ function getRecievedMessages()
         }
     }
 
+function getUserFromId(userId)
+    {
+        let xhr = new XMLHttpRequest;
+        xhr.open("GET","received?userId="+userId,true);
+        xhr.onload = function()
+            {
+                if(xhr.status==200)
+                    {
+                        let jsonObject_User = JSON.parse(this.responseText);
+                        return jsonObject_User[0].NOM+' '+jsonObject_User[0].PRENOM;
+                    }
+            }
+        xhr.send();
+    }
+
 function openReceivedModal(messageId)
     {
         document.getElementById("receivedModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","someMessageFile?messageId="+messageId,true);
+        xhr.open("GET","received?messageId="+messageId,true);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
@@ -212,7 +229,7 @@ function openReceivedModal(messageId)
                         let sendersId = document.getElementById("sendersId");
                         let sendersName = document.getElementById("recievedButton");
                         let messageContent = document.getElementById("recievedMessageContent");
-                        sendersName.value = jsonObject_message[0].ID_EXPEDITEUR;
+                        sendersName.value = getUserFromId(jsonObject_message[0].ID_EXPEDITEUR);
                         messageContent.value = jsonObject_message[0].CONTENU;
                         sendersId.value = jsonObject_message[0].ID_EXPEDITEUR;
                     }
@@ -227,7 +244,7 @@ function openSendModal(messageId)
         document.getElementById("receivedModal").style.display = "none";
         document.getElementById("sendModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","someMessageFile?messageId="+messageId,true);
+        xhr.open("GET","received?messageId="+messageId,true);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
@@ -235,7 +252,7 @@ function openSendModal(messageId)
                         let jsonObject_message = JSON.parse(this.responseText);
                         let sendToId = document.getElementById("sendToId");
                         let sendToName = document.getElementById("sendButton");
-                        sendToName.value = jsonObject_message[0].ID_EXPEDITEUR;
+                        sendToName.value = getUserFromId(jsonObject_message[0].ID_EXPEDITEUR);
                         sendToId.value = jsonObject_message[0].ID_EXPEDITEUR;
                     }
                 else
@@ -248,7 +265,7 @@ function openSentModal(messageId)
     {
         document.getElementById("sentModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","someMessageFile?messageId="+messageId,true);
+        xhr.open("GET","receive?messageId="+messageId,true);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
@@ -256,7 +273,7 @@ function openSentModal(messageId)
                         let jsonObject_message = JSON.parse(this.responseText);
                         let sentToName = document.getElementById("sentButton");
                         let messageContent = document.getElementById("sentMessageContent");
-                        sentToName.value = jsonObject_message[0].ID_DESTINATAIRE;
+                        sentToName.value = getUserFromId(jsonObject_message[0].ID_DESTINATAIRE);
                         messageContent.value = jsonObject_message[0].CONTENU;
                     }
                 else
@@ -273,6 +290,8 @@ function reply(messageId)
 
 function getSentMessages()
     {
+        document.getElementById("getReceivedButton").className = "w3-button w3-hover-gray";
+        document.getElementById("getSentButton").className = "w3-button w3-hover-gray w3-border-green w3-bottombar";
         document.getElementById("myGrid").innerHTML = '';
         var jsonObject_sent;
         let xhr = new XMLHttpRequest;
