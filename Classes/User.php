@@ -229,4 +229,12 @@ class User{
             $e->getMessage();
         }
     }
+    function getUserById($user_id)
+    {
+        $this->user_id=$user_id;
+        $statement=$this->pdo->prepare("SELECT * FROM utilisateurs where id_user=:user_id ");
+        $statement->bindValue(':user_id', $this->user_id);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
 }

@@ -125,7 +125,7 @@
     
               </div>
               <button class="w3-button w3-block w3-green w3-section w3-padding" name="insertForm" type="submit" value="submit">Insérez</button>
-              <button onclick="closeInsertModal()" type="button" class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
+              <button onclick="closeInsertModal()" type="reset" class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
             </div>
            
           </form>
@@ -177,7 +177,7 @@
                       </div>
                       <div class="w3-container ">
                       <button class="w3-button w3-block w3-green w3-section w3-padding" name="editForm" type="submit" value="submit">Insérez</button>
-                <button onclick="closeEditModal()" type="button" class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
+                <button onclick="closeEditModal()" type="reset" class="w3-button w3-block w3-section w3-padding w3-red">Annuler</button>
               </div>
                       
                     </div>

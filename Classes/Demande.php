@@ -21,30 +21,17 @@ class Demande {
 			$e->getMessage();
 		}
 	}
-	function getRequests($id_doctor,$starting_number, $result_per_page, $data){
+	function getRequests($id_doctor, $data){
 		try {
 			$this->id_doctor=$id_doctor;
-			if ($starting_number!=null && $result_per_page!=null && $data) {
-					$sql="select * from demande_attente where id_doctor=:id_doctor LIMIT :starting_number, :result_per_page";
-					$result=$this->pdo->prepare($sql);
-					$result->bindValue(':id_doctor', $this->id_doctor);
-					$result->bindValue(':starting_number', $starting_number);
-					$result->bindValue(':result_per_page', $result_per_page);
-					$result->execute();
-					return $result->fetchAll(PDO::FETCH_OBJ);
-			}
+			$sql="select * from demande_attente where id_doctor=:id_doctor";
+			$result=$this->pdo->prepare($sql);
+			$result->bindValue(':id_doctor', $this->id_doctor);
+			$result->execute();
 			if ($data==true) {
-					$sql="select * from demande_attente where id_doctor=:id_doctor";
-					$result=$this->pdo->prepare($sql);
-					$result->bindValue(':id_doctor', $this->id_doctor);
-					$result->execute();
-					return $result->fetchAll(PDO::FETCH_OBJ);
+				return $result->fetchAll(PDO::FETCH_OBJ);
 			}else{
-					$sql="select * from demande_attente where id_doctor=:id_doctor";
-					$result=$this->pdo->prepare($sql);
-					$result->bindValue(':id_doctor', $this->id_doctor);
-					$result->execute();
-					return $result->rowCount();
+				return $result->rowCount();
 			}
 			
 		} catch (PDOException $e) {

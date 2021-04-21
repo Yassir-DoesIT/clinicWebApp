@@ -60,4 +60,9 @@ if (isset($_GET['patientProfile'])) {
     // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
     $router->define(['patientProfile?patientProfile='.$_GET['patientProfile']=>'controllers/patientProfile.php']);
 }
-
+if (isset($_GET['userId'])) {
+    $router->define(['received?userId='.$_GET['userId']=>'controllers/received.php']);
+}
+if (isset($_GET['messageId'])) {
+    $router->define(['received?messageId='.$_GET['messageId']=>'controllers/received.php']);
+}

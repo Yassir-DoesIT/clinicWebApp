@@ -60,21 +60,62 @@ onclick="w3_close()">Close &times;</button>
 
 </div>
 
+<div id="receivedModal" class="w3-modal">
+<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+
+
+<form class="w3-container" action="placeHolder" method="POST">
+<div class="w3-section">
+<label id="recievedLabel"><b>Envoyé par</b></label><input id="recievedButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="received" readonly required><input id="sendersId" type="hidden">
+
+<textarea id="receivedMessageContent" readonly class="w3-input w3-border" name="password" required></textarea>
+</div>
+
+
+<div id="buttonsDivReceived" class="w3-container w3-border-top w3-padding-16">
+<button id="closeButtonReceived" onclick="closeReceivedModal()" type="button" class="w3-button w3-red">Fermer</button>
+<button id="replyButtonReceived" type="button" onclick="reply()" type="button" class="w3-button w3-green">Répondre</button>
+</div>
+</form>
+
+</div>
+</div>
+
 <div id="sentModal" class="w3-modal">
 <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
 
 
 <form class="w3-container" action="placeHolder" method="POST">
 <div class="w3-section">
-<label id="sentOrRecievedLabel"><b>Envoyé par</b></label><input id="sentOrRecievedButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="sent" readonly required>
+<label id="sentLabel"><b>Envoyé À</b></label><input id="sentButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="sent" readonly required>
 
-<textarea id="messageContent" readonly class="w3-input w3-border" name="password" required>Douchebag Message</textarea>
+<textarea id="sentMessageContent" readonly class="w3-input w3-border" name="password" required></textarea>
 </div>
 
 
-<div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
-<button id="closeButton" onclick="closeSentModal()" type="button" class="w3-button w3-red">Fermer</button>
-<button id="replyButton" type="button" onclick="rendreModalEditable()" type="button" class="w3-button w3-green">Répondre</button>
+<div id="buttonsDivSent" class="w3-container w3-border-top w3-padding-16">
+<button id="closeButtonSent" onclick="closeSentModal()" type="button" class="w3-button w3-red">Fermer</button>
+</div>
+</form>
+
+</div>
+</div>
+
+
+<div id="sendModal" class="w3-modal">
+<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+
+
+<form class="w3-container" action="placeHolder" method="POST">
+<div class="w3-section">
+<label id="sendLabel"><b>Envoyé À</b></label><input id="sendButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="send" readonly required><input id="sendToId" type="hidden">
+
+<textarea id="sendMessageContent" class="w3-input w3-border" name="password" required></textarea>
+</div>
+
+
+<div id="buttonsDivSend" class="w3-container w3-border-top w3-padding-16">
+<button id="closeButtonSend" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
 </div>
 </form>
 
@@ -97,9 +138,9 @@ onclick="w3_close()">Close &times;</button>
 
                             
                             
-                              <button type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
+                              <button id="getReceivedButton" type="button" class="w3-button w3-hover-gray" name="received" onclick="getRecievedMessages()">Messages Reçu</button>
                             
-                            <button class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
+                            <button id="getSentButton" class="w3-button w3-hover-gray" name="sent" onclick="getSentMessages()">Messages Envoyés</button>
 
                             
                 
