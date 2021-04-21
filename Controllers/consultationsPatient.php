@@ -6,7 +6,7 @@ if (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
 	header('location:'. $_SESSION['role']);
 }
 $result_per_page=8;
-$rows = $demande->getRequests($_SESSION['user_id'], false);
+$rows = $demande->getRequests($_SESSION['user_id'], null,null,false);
 
 $consultations_rows=$consultation->getAcceptedPatient($_SESSION['user_id'], null, null,false);
 $pages=ceil($consultations_rows/$result_per_page);

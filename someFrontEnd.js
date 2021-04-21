@@ -315,7 +315,7 @@ function getQuartier(quartier)
         document.getElementById("lngEtab").value = ' ';
         var jsonObject_services
         var xhr = new XMLHttpRequest();
-        xhr.open("GET","allServices?quartierId="+quartier,false);
+        xhr.open("GET","allServices?quartierIdAdmin="+quartier,false);
         xhr.onload = function()
             {
                 if(xhr.status==200)

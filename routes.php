@@ -38,8 +38,8 @@ if (isset($_GET['cityAdmin'])) {
 if (isset($_GET['quartierId'])) {
     $router->define(['service?quartierId='.$_GET['quartierId']=>'controllers/service.php']);
 }
-if (isset($_GET['quartierId'])) {
-    $router->define(['allServices?quartierId='.$_GET['quartierId']=>'controllers/allServices.php']);
+if (isset($_GET['quartierIdAdmin'])) {
+    $router->define(['allServices?quartierIdAdmin='.$_GET['quartierIdAdmin']=>'controllers/allServices.php']);
 }
 if (isset($_GET['page'])) {
     $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));

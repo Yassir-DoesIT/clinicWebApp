@@ -21,8 +21,8 @@ if ($ifSent==0 && $ifAccepted==0) {
 		$demande->deleteRequest($_POST['patient_id'], $_SESSION['user_id']);
 		header('location: demande');
 }elseif (isset($_POST['delete'])) {
-		$consultation->deleteAccepted( $_SESSION['user_id'],$_POST['doctor_id']);
-		header('location: consultationsPatient');
+		$consultation->deleteAccepted( $_POST['patient_id'],$_SESSION['user_id']);
+		header('location: consultationsDoctor');
 }
 
 

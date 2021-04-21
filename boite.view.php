@@ -22,7 +22,7 @@ onclick="w3_close()">Close &times;</button>
 <?php if ($_SESSION['role']=='doctor'): ?>
   <a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
 <a href="consultationsDoctor" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="received" class="w3-bar-item w3-button">Boite de Réception</a>
+<a href="boite" class="w3-bar-item w3-button">Boite de Réception</a>
 <a href="demande" class="w3-bar-item w3-button"><span>Demandes de Consultation</span>
   <?php if ($rows>0) : ?>
    <span style="padding: 5px; position: relative; left: 50px;background: red;color: white;"><?=$rows?></span>
