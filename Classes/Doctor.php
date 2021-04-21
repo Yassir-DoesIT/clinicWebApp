@@ -7,12 +7,18 @@ class Doctor extends User{
 		parent::__construct($pdo);
 	}
 
-	function selectNotApproved(){
+	function selectNotApproved($data){
 		try {
 		
-			$doctors=$this->pdo->prepare("select * from utilisateurs where role='d' and estverifier=0");
-			$doctor->execute();
-			return $doctor->fetchAll(PDO::FETCH_OBJ);
+			if ($data) {
+				$doctors=$this->pdo->prepare("select * from utilisateurs where role='d' and estverifier=0");
+			$doctors->execute();
+			return $doctors->fetchAll(PDO::FETCH_OBJ);
+			}else{
+				$doctors=$this->pdo->prepare("select * from utilisateurs where role='d' and estverifier=0");
+			$doctors->execute();
+			return $doctors->rowcount();
+			}
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}

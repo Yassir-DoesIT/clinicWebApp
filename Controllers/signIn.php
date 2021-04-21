@@ -1,5 +1,7 @@
 <?php
-
+if (isset($_SESSION['role'])) {
+	header('location:'. $_SESSION['role']);
+}
 if($_SERVER['REQUEST_METHOD']=="POST"){
 if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['role'])){
   if ($_POST['role']=='d') {
@@ -8,9 +10,8 @@ if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['role']))
   	$result = $patient->logInUser($_POST['email'],$_POST['password'], 'p');
   }
 }
+}
+
 // IF USER ALREADY LOGGED IN
-if (isset($_SESSION['role'])) {
-	header('location:'. $_SESSION['role']);
-}
-}
+
 require 'main.view.php';

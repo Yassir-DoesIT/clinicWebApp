@@ -1,6 +1,8 @@
 <?php
 if (!isset($_SESSION['role'])) {
 	header('location: signUpForm#login');
+}elseif (isset($_SESSION['role'])!='admin') {
+	header('location: ' .$_SESSION['role']);
 }
 // Initialize the session.
 // If you are using session_name("something"), don't forget it now!

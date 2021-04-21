@@ -10,10 +10,11 @@ if (isset($_SESSION['prenom']) && isset($_SESSION['nom']) && $_SESSION['role']==
 		// var_dump($_POST);
 		$result=$service->updateService($_POST['serviceDropDown'], $_POST['nom'], $_POST['permanence'], $_POST['lat'], $_POST['lng']);
 	}
+	$rows=$doctor->selectNotApproved(false);
+	$notApprovedDoctors=$doctor->selectNotApproved(true);
 require 'admin.view.php';
 }elseif (isset($_SESSION['role']) && !($_SESSION['role']=='admin')) {
 	header('location:'. $_SESSION['role']);
 }else{
 	header('location: signUpForm#login');
 }
-

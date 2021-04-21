@@ -130,7 +130,7 @@ function buildMap(latVar,lngVar,quartierId)
               "elementType": "labels",
               "stylers": [
                 {
-                  "visibility": "on"
+                  "visibility": "off"
                 }
               ]
             },

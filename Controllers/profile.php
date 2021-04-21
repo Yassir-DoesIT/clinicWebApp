@@ -1,8 +1,7 @@
 <?php
 if (!isset($_SESSION['role'])) {
 	header('location: signUpForm#login');
-}
-if (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
+}elseif (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
 	header('location:'. $_SESSION['role']);
 }
 $ifAccepted= $consultation->ifAccepted( $_SESSION['user_id'], $_SESSION['doctor_id'], false);

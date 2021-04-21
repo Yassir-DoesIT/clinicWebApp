@@ -1,15 +1,16 @@
 <?php $title='Espace Administrateur'?>
 <?php require 'partials/header.php'?>
 <style>
-      
-      #myGrid{
-              display: grid;
-              grid-template-columns: repeat(4, 24.35%);
-              grid-gap: 10px;
 
-      }
-    
-    </style>
+#myGrid{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-gap: 10px;
+align-items: center;
+
+}
+
+</style>
 <script type="text/javascript">
         function pageLoad() {
             if(window.location.hash==='#login'){
@@ -204,11 +205,15 @@
            <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
 
                <div id="myGrid"  style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed'; padding: 10px">
-                   
+                <?php if ($rows>0): ?>
+                    <?php foreach ($notApprovedDoctors as $notApprovedDoctor): ?>
                         <div class="w3-card w3-white w3-round-xlarge" style="border: 2px solid teal">
-                                <img src="placeHolder.jpg" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> PLACEHOLDER</div><div><button style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border">PLACEHOLDER</button><button style="margin: 0 0 5px 0" class="w3-button w3-border w3-hover-pale-blue w3-round-xlarge">PLACEHOLDER</button></div>
+                                <img src="<?="UsersCache/photoProfile/".$notApprovedDoctor->PHOTOPROFILE?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$notApprovedDoctor->NOM. ' ' . $notApprovedDoctor->PRENOM ?></div><div><?php echo '<a  href="profile?profile='.$notApprovedDoctor->ID_USER.'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?></div>
                         </div>
-                       
+                       <?php endforeach ?>
+                 <?php else: ?> 
+                  <h1 style="padding-left: 510px">No doctors to check</h1>
+                 <?php endif;?>
                    
                </div>
             </div>   

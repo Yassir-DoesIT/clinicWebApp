@@ -1,9 +1,10 @@
 <?php
 if (!isset($_SESSION['role'])) {
 	header('location: signUpForm#login');
-}
-if (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
+}elseif (isset($_SESSION['role']) && !($_SESSION['role']=='patient')) {
 	header('location:'. $_SESSION['role']);
+}elseif (isset($_SESSION['role']) && $_SESSION['estVerifier']==0) {
+	header('location: ' . $_SESSION['role']);
 }
 $result_per_page=8;
 $rows = $demande->getRequests($_SESSION['user_id'], null,null,false);
