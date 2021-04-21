@@ -241,6 +241,7 @@ function openReceivedModal(messageId)
 
 function openSendModal(messageId)
     {
+        if(document.getElementById("receivedModal") !== null)
         document.getElementById("receivedModal").style.display = "none";
         document.getElementById("sendModal").style.display = "block";
         let xhr = new XMLHttpRequest;
