@@ -56,7 +56,7 @@ class Message{
 	}
 	function getMessage($id_message){
 		try {
-					$this->$id_message=$$id_message;
+					$this->$id_message=$id_message;
 					$sql="select * from messages where id_message=:id_message";
 					$get_statement=$this->pdo->prepare($sql);
 					$get_statement->bindValue(':id_message', $this->id_message);
