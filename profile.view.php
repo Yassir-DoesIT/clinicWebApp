@@ -88,7 +88,7 @@ onclick="w3_close()">Close &times;</button>
                                 </form> 
                                 <?php endif ?>
                           <?php else: ?>
-                            <button type="submit" name="contact" onclick="openSendModal()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Contact</button>
+                            <button type="button" name="contact" onclick="openSendModal()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Contact</button>
                             <form action="profile" method="post" style="display: inline">
                            <input type="hidden" name="doctor_id" value="<?=$profile[0]['ID_USER']?>" > 
                           <button type="submit" name="delete" class="w3-button w3-border w3-hover-red w3-pale-blue w3-round-xlarge">Delete</button>

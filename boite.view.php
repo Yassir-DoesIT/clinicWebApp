@@ -132,7 +132,7 @@ onclick="w3_close()">Close &times;</button>
 
            <div class="w3-container w3-margin w3-padding-large w3-round-large">
 
-               <h3>Resultats de Recherche:</h3>
+               <h3>Boite de reception:</h3>
                <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
                     <span class="w3-bar w3-left-align">
 
