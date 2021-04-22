@@ -91,11 +91,18 @@ class Doctor extends User{
 	function approveDoctor($user_id){
 		try {
 			$this->user_id=$user_id;
-			$approve=$this->pdo->prepare("update utilisateurs set estverifier=1 where user_id=?");
-			$approve->execute($this->user_id);
+			$approve=$this->pdo->prepare("update utilisateurs set estverifier=1 where id_user=?");
+			$approve->execute([$this->user_id]);
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
 	}
+	function deleteDoctorById($user_id)
+    {
+        $this->user_id=$user_id;
+        $statement=$this->pdo->prepare("DELETE FROM utilisateurs where id_user=:user_id ");
+        $statement->bindValue(':user_id', $this->user_id);
+        $statement->execute();
+    }
 
 }

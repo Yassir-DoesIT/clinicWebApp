@@ -6,17 +6,6 @@ button[disabled]{background-color: gray;
 color: white;}
 </style>
 
-<div class="w3-sidebar w3-pale-blue w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-<button class="w3-bar-item w3-button w3-large"
-onclick="w3_close()">Close &times;</button>
-<form action="search" method="get">
-<input class="w3-input" type="text" placeholder="Search.." name="search">
-<button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
-</form>
-<a href="<?= $_SESSION['role']?>" class="w3-bar-item w3-button">Mes Informations</a>
-<a href="consultationsPatient" class="w3-bar-item w3-button">Mes Consultations</a>
-<a href="boite" class="w3-bar-item w3-button">Boite de Réception</a>
-</div>
 
 <div class="w3-display-container w3-teal">
 
@@ -29,8 +18,7 @@ onclick="w3_close()">Close &times;</button>
 
 <div class="w3-bar w3-teal w3-right-align">
 
-<button id="openNav" style="float: left" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
-<button class="w3-button w3-teal w3-hover-gray" onclick="goToEtab()">Consulter Les Etablissments de Santé</button>
+<button class="w3-button w3-teal w3-hover-gray"><a href="admin" style="text-decoration: none">Espace Administrateur</a></button>
 <button class="w3-button w3-teal w3-hover-gray" onclick="goToLogOut()">Se Déconnecter</button>
 
 
@@ -40,7 +28,7 @@ onclick="w3_close()">Close &times;</button>
 <img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
 </div>
 <div id="modal02" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['JUSTIFICATIF']?>" style="width: 500px; height: 500px">
+<img class="w3-modal-content" src="<?="UsersCache/Justificatif/".$profile[0]['JUSTIFICATIF']?>" style="width: 500px; height: 500px">
 </div>
 
 <div id="mainDiv">

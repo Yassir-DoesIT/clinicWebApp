@@ -220,7 +220,7 @@ class User{
         try {
             $this->user_id=$user_id;
             $this->photoProfile=$photoProfile;
-            $statement=$this->pdo->prepare("update utilisateurs set PHOTOPROFILE=:photoProfile where id_user=:user_id ");
+            $statement=$this->pdo->prepare("UPDATE utilisateurs set PHOTOPROFILE=:photoProfile where id_user=:user_id ");
             $statement->bindValue(':photoProfile', $this->photoProfile);
             $statement->bindValue(':user_id', $this->user_id);
             $statement->execute();
@@ -237,4 +237,5 @@ class User{
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+    
 }
