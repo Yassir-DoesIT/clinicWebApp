@@ -16,6 +16,7 @@ if (!isset($_SESSION['role'])) {
 	elseif(isset($_GET['messageId']))
 	{
 		$message_id=$_GET['messageId'];
+		echo $message_id;
 			$messageInfo=$message->getMessage($message_id);
 			$json=json_encode($messageInfo);
 			echo $json;
