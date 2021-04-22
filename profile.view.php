@@ -39,6 +39,9 @@ onclick="w3_close()">Close &times;</button>
 <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
 <img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
 </div>
+<div id="modal02" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
+<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
+</div>
 
 <div id="mainDiv">
 
@@ -57,9 +60,10 @@ onclick="w3_close()">Close &times;</button>
          <div class="w3-card w3-margin w3-round-large w3-border-red w3-pale-blue" >
            
              <div class="w3-container" style="font-size: 20px; font-weight: 200; font-family: 'Open Sans Condensed';">
+             
               
-                 <table  style=" margin-left: 350px" class="w3-table w3-margin-top">
-
+                 <table style="margin-left: 350px" class="w3-table w3-margin-top">
+                  
                   <tr>
                       <td id="image_td" style="width: 300px" rowspan="4">
                               <img src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" onclick="document.getElementById('modal01').style.display='block'" class="w3-circle" alt="profile_picture" style="width: 200px; height: 200px; cursor: pointer;"> 
@@ -76,6 +80,8 @@ onclick="w3_close()">Close &times;</button>
                              <td><?= "Lieu de travaille: ".ucwords( $profile[0]['LIEUTRAVAILLE'])?></td>
                              
                          </tr>
+
+                         <tr><td></td><td><img onclick="document.getElementById('modal02').style.display='block'"  src="placeHolder.jpg" alt="placeHolder" style="height: 100px; width: 100px; cursor: pointer"></td></tr>
 
                          <tr><td colspan="2" style="padding-left: 315px">
                           <?php if($ifAccepted==0): ?>
