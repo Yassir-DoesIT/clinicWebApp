@@ -39,9 +39,6 @@ onclick="w3_close()">Close &times;</button>
 <div id="modal01" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
 <img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
 </div>
-<div id="modal02" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
-</div>
 
 <div id="mainDiv">
 
@@ -80,8 +77,6 @@ onclick="w3_close()">Close &times;</button>
                              <td><?= "Lieu de travaille: ".ucwords( $profile[0]['LIEUTRAVAILLE'])?></td>
                              
                          </tr>
-
-                         <tr><td></td><td><img onclick="document.getElementById('modal02').style.display='block'"  src="placeHolder.jpg" alt="placeHolder" style="height: 100px; width: 100px; cursor: pointer"></td></tr>
 
                          <tr><td colspan="2" style="padding-left: 315px">
                           <?php if($ifAccepted==0): ?>
