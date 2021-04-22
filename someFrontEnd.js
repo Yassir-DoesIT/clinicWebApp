@@ -42,6 +42,7 @@ function show(cityName)
 
 function renderEditable()
     {
+        document.getElementById("editButton").style.display = "none";
         document.getElementById("maleRadio").disabled = false;
         document.getElementById("femaleRadio").disabled = false;
         // document.getElementById("imageChange").style.display = "table-row";
@@ -57,6 +58,7 @@ function renderEditable()
     }
 function back()
     {
+        document.getElementById("editButton").style.display = "inline";
         document.getElementById("maleRadio").disabled = true;
         document.getElementById("femaleRadio").disabled = true;
         // document.getElementById("imageChange").style.display = "none";

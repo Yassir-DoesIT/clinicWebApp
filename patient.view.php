@@ -153,11 +153,11 @@ onclick="w3_close()">Close &times;</button>
 
 
                     <div class="button1" style="grid-row-start: 1/2">
-                            <button type="button" onclick="renderEditable()" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">Modifier</button>
+                            <input type="button" id="editButton" onclick="renderEditable()" value="Modifier" class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge">
                             
                     </div>
                     <div class="button2" style="grid-row-start: 2/3; align-self: center">
-                            <button class="w3-button w3-border w3-margin w3-hover-teal w3-round-xlarge" type="reset" id="goBack" onclick="back()" style="display: none">Retour</button>
+                            <button class="w3-button w3-border w3-margin w3-hover-red w3-round-xlarge" type="reset" id="goBack" onclick="back()" style="display: none">Annuler</button>
                     </div>
 
                     <div class="button3" style="grid-row-start: 3/4">
