@@ -66,9 +66,9 @@ onclick="w3_close()">Close &times;</button>
 
 <form class="w3-container" action="placeHolder" method="POST">
 <div class="w3-section">
-<label id="recievedLabel"><b>Envoyé par</b></label><input id="recievedButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="received" readonly required><input id="sendersId" type="hidden">
+<label id="recievedLabel"><b>Envoyé par</b></label><input id="recievedButton" class="w3-input w3-border w3-margin-bottom" type="text"  name="received" readonly required><input id="sendersId" type="hidden">
 
-<textarea id="receivedMessageContent" readonly class="w3-input w3-border" name="password" required></textarea>
+<textarea id="recievedMessageContent" readonly class="w3-input w3-border" name="password" required></textarea>
 </div>
 
 
@@ -106,16 +106,18 @@ onclick="w3_close()">Close &times;</button>
 <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
 
 
-<form class="w3-container" action="placeHolder" method="POST">
+<form class="w3-container" action="message" method="POST">
 <div class="w3-section">
-<label id="sendLabel"><b>Envoyé À</b></label><input id="sendButton" class="w3-input w3-border w3-margin-bottom" type="text" value="Some Douchebag" name="send" readonly required><input id="sendToId" type="hidden">
+<label id="sendLabel"><b>Envoyé À</b></label><input id="sendButton" class="w3-input w3-border w3-margin-bottom" type="text" name="send" readonly required><input id="sendToId" name="receiver_id" type="hidden">
 
-<textarea id="sendMessageContent" class="w3-input w3-border" name="password" required></textarea>
+<textarea id="sendMessageContent" class="w3-input w3-border" name="contenu" required></textarea>
 </div>
 
 
 <div id="buttonsDivSend" class="w3-container w3-border-top w3-padding-16">
 <button id="closeButtonSend" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
+<input value="Envoyé" type="submit" name="send" class="w3-button w3-green">
+<?php $_SESSION['location']='boite'?>
 </div>
 </form>
 

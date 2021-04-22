@@ -138,7 +138,7 @@ onclick="w3_close()">Close &times;</button>
               <div id="buttonsDiv" class="w3-container w3-border-top w3-padding-16">
 
                 <button id="closeButton" onclick="closeSendModal()" type="button" class="w3-button w3-red">Fermer</button>
-                <input id="sendButton" type="submit" name="send" class="w3-button w3-green">
+                <input type="submit" name="send" value="Envoyé" class="w3-button w3-green">
               </div>
               <?php $_SESSION['location']='consultationsDoctor'?>
         </form>

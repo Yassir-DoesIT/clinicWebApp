@@ -204,33 +204,39 @@ function getRecievedMessages()
     }
 
 function getUserFromId(userId)
-    {
+    {   var jsonObject_User;
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","received?userId="+userId,true);
+        xhr.open("GET","received?userId="+userId,false);
         xhr.onload = function()
             {
                 if(xhr.status==200)
                     {
-                        let jsonObject_User = JSON.parse(this.responseText);
-                        return jsonObject_User[0].NOM+' '+jsonObject_User[0].PRENOM;
+                       jsonObject_User = JSON.parse(this.responseText);
+                        // console.log(jsonObject_User);
+                        
                     }
             }
+
         xhr.send();
+        return jsonObject_User[0].NOM+' '+jsonObject_User[0].PRENOM;
     }
 
 function openReceivedModal(messageId)
     {
         document.getElementById("receivedModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","received?messageId="+messageId,true);
+        xhr.open("GET","received?messageId="+messageId,false);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
-                    {
+                    {   
+                      // console.log(this.responseText);
                         let jsonObject_message = JSON.parse(this.responseText);
                         let sendersId = document.getElementById("sendersId");
                         let sendersName = document.getElementById("recievedButton");
                         let messageContent = document.getElementById("recievedMessageContent");
+                        // console.log(jsonObject_message[0].ID_EXPEDITEUR);
+                        // console.log("yo");
                         sendersName.value = getUserFromId(jsonObject_message[0].ID_EXPEDITEUR);
                         messageContent.value = jsonObject_message[0].CONTENU;
                         sendersId.value = jsonObject_message[0].ID_EXPEDITEUR;
@@ -241,21 +247,25 @@ function openReceivedModal(messageId)
         xhr.send();
     }
 
+
 function openSendModal(messageId)
     {
         if(document.getElementById("receivedModal") !== null)
         document.getElementById("receivedModal").style.display = "none";
         document.getElementById("sendModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","received?messageId="+messageId,true);
+        xhr.open("GET","test?sendmessageId="+messageId,false);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
-                    {
+                    {   
+                        // console.log(this.responseText);
                         let jsonObject_message = JSON.parse(this.responseText);
                         let sendToId = document.getElementById("sendToId");
                         let sendToName = document.getElementById("sendButton");
+                        
                         sendToName.value = getUserFromId(jsonObject_message[0].ID_EXPEDITEUR);
+
                         sendToId.value = jsonObject_message[0].ID_EXPEDITEUR;
                     }
                 else
@@ -268,11 +278,12 @@ function openSentModal(messageId)
     {
         document.getElementById("sentModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","receive?messageId="+messageId,true);
+        xhr.open("GET","sent?sentmessageId="+messageId,false);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
-                    {
+                    {   
+                      // console.log(this.responseText);
                         let jsonObject_message = JSON.parse(this.responseText);
                         let sentToName = document.getElementById("sentButton");
                         let messageContent = document.getElementById("sentMessageContent");
