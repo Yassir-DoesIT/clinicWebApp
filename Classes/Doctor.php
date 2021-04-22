@@ -71,6 +71,23 @@ class Doctor extends User{
 		}
 
 	}
+	function selectNotApprovedById($id_user){
+		try {
+			$this->user_id=$id_user;
+			$doctor=$this->pdo->prepare("select * from utilisateurs where role='d' and estverifier=0 and id_user=:id_user");
+			$doctor->bindValue(':id_user', $this->user_id, PDO::PARAM_STR);
+			$doctor->execute();
+			if ($doctor->rowcount()==1) {
+				return $doctor->fetchAll(PDO::FETCH_ASSOC);
+			}else{
+				return "user not found";
+			}
+			
+		} catch (PDOException $e) {
+			$e->getMessage();
+		}
+
+	}
 	function approveDoctor($user_id){
 		try {
 			$this->user_id=$user_id;

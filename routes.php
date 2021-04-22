@@ -23,7 +23,8 @@ $router->define([
     'received'=>'controllers/received.php',
     'sent'=>'controllers/sent.php',
     'boite'=>'controllers/boite.php',
-    'quartiers'=>'controllers/quartiers.php'
+    'quartiers'=>'controllers/quartiers.php',
+    'notApproved'=>'controllers/notApproved.php'
 
 ]);
 if (isset($_GET['serviceId'])) {
@@ -60,6 +61,12 @@ if (isset($_GET['patientProfile'])) {
     // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
     $router->define(['patientProfile?patientProfile='.$_GET['patientProfile']=>'controllers/patientProfile.php']);
 }
+if (isset($_GET['notApprovedId'])) {
+    $_SESSION['notApprovedId']=$_GET['notApprovedId'];
+    // $route=explode("?", trim($_SERVER['REQUEST_URI'], "/"));
+    $router->define(['notApproved?notApprovedId='.$_GET['notApprovedId']=>'controllers/notApproved.php']);
+}
+
 if (isset($_GET['userId'])) {
     $router->define(['received?userId='.$_GET['userId']=>'controllers/received.php']);
 }

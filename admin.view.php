@@ -208,7 +208,7 @@ align-items: center;
                 <?php if ($rows>0): ?>
                     <?php foreach ($notApprovedDoctors as $notApprovedDoctor): ?>
                         <div class="w3-card w3-white w3-round-xlarge" style="border: 2px solid teal">
-                                <img src="<?="UsersCache/photoProfile/".$notApprovedDoctor->PHOTOPROFILE?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$notApprovedDoctor->NOM. ' ' . $notApprovedDoctor->PRENOM ?></div><div><?php echo '<a  href="profile?profile='.$notApprovedDoctor->ID_USER.'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?></div>
+                                <img src="<?="UsersCache/photoProfile/".$notApprovedDoctor->PHOTOPROFILE?>" class="w3-circle" style="display: inline-block; width: 100px; height: 100px" alt="placeHolder"><div> <?=$notApprovedDoctor->NOM. ' ' . $notApprovedDoctor->PRENOM ?></div><div><?php echo '<a  href="notApproved?notApprovedId='.$notApprovedDoctor->ID_USER.'" style="text-decoration: none" style="margin-right: 5px; margin-bottom: 5px" class=" w3-round-xlarge w3-button w3-hover-pale-blue  w3-border" >Profile </a>';?></div>
                         </div>
                        <?php endforeach ?>
                  <?php else: ?> 
