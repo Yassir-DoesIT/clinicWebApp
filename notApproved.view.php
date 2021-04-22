@@ -40,7 +40,7 @@ onclick="w3_close()">Close &times;</button>
 <img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
 </div>
 <div id="modal02" class="w3-modal w3-animate-zoom w3-center" onclick="this.style.display='none'">
-<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['PHOTOPROFILE']?>" style="width: 500px; height: 500px">
+<img class="w3-modal-content" src="<?="UsersCache/photoProfile/".$profile[0]['JUSTIFICATIF']?>" style="width: 500px; height: 500px">
 </div>
 
 <div id="mainDiv">
