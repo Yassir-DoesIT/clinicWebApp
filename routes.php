@@ -24,7 +24,8 @@ $router->define([
     'sent'=>'controllers/sent.php',
     'boite'=>'controllers/boite.php',
     'quartiers'=>'controllers/quartiers.php',
-    'notApproved'=>'controllers/notApproved.php'
+    'notApproved'=>'controllers/notApproved.php',
+    'test'=>'controllers/test.php'
 
 ]);
 if (isset($_GET['serviceId'])) {
@@ -72,4 +73,10 @@ if (isset($_GET['userId'])) {
 }
 if (isset($_GET['messageId'])) {
     $router->define(['received?messageId='.$_GET['messageId']=>'controllers/received.php']);
+}
+if (isset($_GET['sentmessageId'])) {
+    $router->define(['sent?sentmessageId='.$_GET['sentmessageId']=>'controllers/sent.php']);
+}
+if (isset($_GET['sendmessageId'])) {
+    $router->define(['test?sendmessageId='.$_GET['sendmessageId']=>'controllers/test.php']);
 }
