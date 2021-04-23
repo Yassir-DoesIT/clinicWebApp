@@ -21,6 +21,14 @@ if (!isset($_SESSION['role'])) {
 			$json=json_encode($messageInfo);
 			echo $json;
 	}
+	// elseif(isset($_GET['sendmessageId']))
+	// {
+	// 	$message_id=$_GET['sendmessageId'];
+	// 	// echo $message_id;
+	// 		$messageInfo=$message->getMessage($message_id);
+	// 		$json=json_encode($messageInfo);
+	// 		echo $json;
+	// }
 	else
 	{
 		$user_id=$_SESSION['user_id'];

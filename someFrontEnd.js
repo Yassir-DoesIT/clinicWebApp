@@ -172,7 +172,6 @@ function buildMap(latVar,lngVar,quartierId)
             }
     }
     
-
 function getRecievedMessages()
     {
         document.getElementById("getSentButton").className = "w3-button w3-hover-gray";
@@ -196,11 +195,12 @@ function getRecievedMessages()
         //console.log(jsonObject_recieved);
         //console.log("before me is JSON object outside of function");
         for(var i = 0; i < jsonObject_recieved.length; i++)
-        {
+        {    
             var currentMessage = jsonObject_recieved[i];
             document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openReceivedModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
+
     }
 
 function getUserFromId(userId)
@@ -240,6 +240,9 @@ function openReceivedModal(messageId)
                         sendersName.value = getUserFromId(jsonObject_message[0].ID_EXPEDITEUR);
                         messageContent.value = jsonObject_message[0].CONTENU;
                         sendersId.value = jsonObject_message[0].ID_EXPEDITEUR;
+                        id_expediteur_test=jsonObject_message[0].ID_EXPEDITEUR;
+                        id_message_test=jsonObject_message[0].ID_MESSAGE;
+
                     }
                 else
                 console.log("something went awry with xhr : "+this.statusText);
@@ -248,13 +251,15 @@ function openReceivedModal(messageId)
     }
 
 
+var id_expediteur_test;
+var id_message_test;
 function openSendModal(messageId)
     {
         if(document.getElementById("receivedModal") !== null)
         document.getElementById("receivedModal").style.display = "none";
         document.getElementById("sendModal").style.display = "block";
         let xhr = new XMLHttpRequest;
-        xhr.open("GET","test?sendmessageId="+messageId,false);
+        xhr.open("GET","received?messageId="+id_message_test,false);
         xhr.onload = function ()
             {
                 if(xhr.status==200)
@@ -263,10 +268,11 @@ function openSendModal(messageId)
                         let jsonObject_message = JSON.parse(this.responseText);
                         let sendToId = document.getElementById("sendToId");
                         let sendToName = document.getElementById("sendButton");
+                        console.log(jsonObject_message);
                         
                         sendToName.value = getUserFromId(jsonObject_message[0].ID_EXPEDITEUR);
 
-                        sendToId.value = jsonObject_message[0].ID_EXPEDITEUR;
+                        sendToId.value = id_expediteur_test;
                     }
                 else
                 console.log("something went awry with xhr : "+this.statusText);

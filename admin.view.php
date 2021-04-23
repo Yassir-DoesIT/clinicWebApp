@@ -98,7 +98,7 @@ align-items: center;
           <form class="w3-container" action="admin" method="post" id="insertForm" name="insertForm">
             <div class="w3-section">
                   <label><b>Veuillez Selectioner la Ville</b></label>
-                  <select name="cityDropDownInsert" id="cityDropDownInsert" onchange="getCityInsert(this.value)">
+                  <select name="cityDropDownInsert" id="cityDropDownInsert" onchange="getCityInsert(this.value)" required>
                   <option selected disabled value="---">---------</option>
                   <option value="Oujda">Oujda</option>
                       <option value="Laayoune">Laayoune</option>
@@ -107,7 +107,7 @@ align-items: center;
                   </select><br>
                   <div id="quartierDiv">
                   <label><b>Veuillez Selectioner le Quartier</b></label>
-                  <select style="margin-top: 5px" name="quartierDropDownInsert" id="quartierDropDownInsert"><option selected disabled>---------</option>
+                  <select style="margin-top: 5px" name="quartierDropDownInsert" id="quartierDropDownInsert"><option selected disabled required>---------</option>
                   
                 </select><br>
     </div>
@@ -145,7 +145,7 @@ align-items: center;
               <form class="w3-container" action="admin" method="post" id="editForm" name="editForm">
                 <div class="w3-section">
                   <label><b>Veuillez Selectioner la Ville</b></label>
-                  <select name="cityDropDown" id="cityDropDown" onchange="getCity(this.value)">
+                  <select name="cityDropDown" id="cityDropDown" onchange="getCity(this.value)" required>
                   <option selected disabled value="---">---------</option>
                   <option value="Oujda">Oujda</option>
                       <option value="Laayoune">Laayoune</option>
@@ -154,13 +154,13 @@ align-items: center;
                   </select><br>
                   <div id="quartierDiv">
                   <label><b>Veuillez Selectioner le Quartier</b></label>
-                  <select style="margin-top: 5px" name="quartierDropDown" onchange="getQuartier(this.value)" id="quartierDropDown"><option selected disabled>---------</option>
+                  <select style="margin-top: 5px" name="quartierDropDown" onchange="getQuartier(this.value)" id="quartierDropDown" required><option selected disabled>---------</option>
                   
                 </select>
                   </div>
                   <div id="serviceDiv">
                   <label><b>Veuillez Selectioner l'Etablissment</b></label>
-                  <select style="margin-top: 5px" name="serviceDropDown" onchange="fillForm(this.value)" id="serviceDropDown"><option selected disabled value="---">---------</option>
+                  <select style="margin-top: 5px" name="serviceDropDown" onchange="fillForm(this.value)" id="serviceDropDown"><option selected disabled value="---" required>---------</option>
                 </select>
                   </div>
                   <div id="hiddenDiv">

@@ -3,12 +3,20 @@
 if (isset($_SESSION['prenom']) && isset($_SESSION['nom']) && $_SESSION['role']=='admin' && isset($_SESSION['user_id'])) {
 
 	if (isset($_POST['insertForm'])) {
-		// var_dump($_POST);
-		$result=$service->addService($_POST['quartierDropDownInsert'], $_POST['nom'], $_POST['permanence'], floatval($_POST['lat']), floatval($_POST['lng']));
+		if (isset($_POST['quartierDropDownInsert'])) {
+			$result=$service->addService($_POST['quartierDropDownInsert'], $_POST['nom'], $_POST['permanence'], floatval($_POST['lat']), floatval($_POST['lng']));
+		}else{
+			$result=['errorMessage'=>'Fill the form correctly'];
+		}
 	}
 	if (isset($_POST['editForm'])) {
 		// var_dump($_POST);
-		$result=$service->updateService($_POST['serviceDropDown'], $_POST['nom'], $_POST['permanence'], $_POST['lat'], $_POST['lng']);
+		if (isset($_POST['serviceDropDown'])) {
+			$result=$service->updateService($_POST['serviceDropDown'], $_POST['nom'], $_POST['permanence'], $_POST['lat'], $_POST['lng']);
+		}else{
+			$result=['errorMessage'=>'Fill the form correctly'];
+		}
+		
 	}
 	$rows=$doctor->selectNotApproved(false);
 	$notApprovedDoctors=$doctor->selectNotApproved(true);
