@@ -197,7 +197,7 @@ function getRecievedMessages()
         for(var i = 0; i < jsonObject_recieved.length; i++)
         {    
             var currentMessage = jsonObject_recieved[i];
-            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openReceivedModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+            document.getElementById("myGrid").insertAdjacentHTML("afterbegin",'<div class="w3-card w3-row w3-round-xlarge w3-hover-green" onclick="openReceivedModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal; cursor: pointer; margin-top:5px">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
 
@@ -333,7 +333,7 @@ function getSentMessages()
         for(var i = 0; i < jsonObject_sent.length; i++)
         {
             var currentMessage = jsonObject_sent[i];
-            document.getElementById("myGrid").insertAdjacentHTML("beforeend",'<div class="w3-card w3-row w3-round-xlarge" onclick="openSentModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+            document.getElementById("myGrid").insertAdjacentHTML("afterbegin",'<div class=" w3-hover-green w3-card w3-row w3-round-xlarge" onclick="openSentModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal;cursor: pointer; margin-top:5px ">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
     }
