@@ -197,7 +197,8 @@ function getRecievedMessages()
         for(var i = 0; i < jsonObject_recieved.length; i++)
         {    
             var currentMessage = jsonObject_recieved[i];
-            document.getElementById("myGrid").insertAdjacentHTML("afterbegin",'<div class="w3-card w3-row w3-round-xlarge w3-hover-green" onclick="openReceivedModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal; cursor: pointer; margin-top:5px">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+
+            document.getElementById("myGrid").insertAdjacentHTML("afterbegin",'<div style="margin-top: 5px; cursor: pointer" class="w3-card w3-hover-green w3-row w3-round-xlarge" onclick="openReceivedModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
 
@@ -232,6 +233,7 @@ function openReceivedModal(messageId)
                     {   
                       // console.log(this.responseText);
                         let jsonObject_message = JSON.parse(this.responseText);
+                        console.log(this.responseText);
                         let sendersId = document.getElementById("sendersId");
                         let sendersName = document.getElementById("recievedButton");
                         let messageContent = document.getElementById("recievedMessageContent");
@@ -266,6 +268,7 @@ function openSendModal(messageId)
                     {   
                         // console.log(this.responseText);
                         let jsonObject_message = JSON.parse(this.responseText);
+                        console.log(this.responseText);
                         let sendToId = document.getElementById("sendToId");
                         let sendToName = document.getElementById("sendButton");
                         console.log(jsonObject_message);
@@ -291,6 +294,7 @@ function openSentModal(messageId)
                     {   
                       // console.log(this.responseText);
                         let jsonObject_message = JSON.parse(this.responseText);
+                        console.log(this.responseText);
                         let sentToName = document.getElementById("sentButton");
                         let messageContent = document.getElementById("sentMessageContent");
                         sentToName.value = getUserFromId(jsonObject_message[0].ID_DESTINATAIRE);
@@ -333,7 +337,8 @@ function getSentMessages()
         for(var i = 0; i < jsonObject_sent.length; i++)
         {
             var currentMessage = jsonObject_sent[i];
-            document.getElementById("myGrid").insertAdjacentHTML("afterbegin",'<div class=" w3-hover-green w3-card w3-row w3-round-xlarge" onclick="openSentModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal;cursor: pointer; margin-top:5px ">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
+
+            document.getElementById("myGrid").insertAdjacentHTML("afterbegin",'<div style="margin-top: 5px; cursor: pointer" class="w3-card w3-hover-green w3-row w3-round-xlarge" onclick="openSentModal('+currentMessage.ID_MESSAGE+')" style="border: 2px solid teal">'+truncateString(currentMessage.CONTENU,20)+'<span style="margin-left:70px">'+currentMessage.DATE_ENVOI+'</span>'+'</div>')
 
         }
     }
